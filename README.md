@@ -1,3 +1,20 @@
 # nt-parking
 Parking management app
-test
+test kata
+
+sebastian
+
+
+
+
+
+
+
+
+
+
+
+qwerty binti
+
+test iulia
+
