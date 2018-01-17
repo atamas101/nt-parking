@@ -1,4 +1,20 @@
 <!--The content below is only a placeholder and can be replaced.-->
+
+<button mat-button [matMenuTriggerFor]="menu">Menu</button>
+<mat-menu #menu="matMenu">
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<mat-menu #otherMenu>
+  <button mat-menu-item>Item 1</button>
+  <button mat-menu-item>Item 2</button>
+</mat-menu>
+
+<button mat-icon-button [matMenuTriggerFor]="otherMenu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+
 <div style="text-align:center">
   <h1>
     Welcome to {{ title }}!
@@ -8,13 +24,18 @@
 <h2>Here are some links to help you start: </h2>
 <ul>
   <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
+    <h2>
+      <a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a>
+    </h2>
   </li>
   <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
+    <h2>
+      <a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a>
+    </h2>
   </li>
   <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
+    <h2>
+      <a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a>
+    </h2>
   </li>
 </ul>
-
