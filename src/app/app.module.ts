@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
 
 import { WeekViewComponent } from './week-view-wrapper/week-view.component';
+import { WeekNavComponent } from './week-view-wrapper/week-nav.component';
 
 @NgModule({
-  declarations: [AppComponent, WeekViewComponent],
+  declarations: [AppComponent, WeekViewComponent, WeekNavComponent],
 
   imports: [BrowserModule, BrowserAnimationsModule, NtmaterialModule],
   providers: [],
