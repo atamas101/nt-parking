@@ -6,8 +6,10 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
 
+import { WeekViewComponent } from './week-view-wrapper/week-view.component';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, WeekViewComponent],
 
   imports: [BrowserModule, BrowserAnimationsModule, NtmaterialModule],
   providers: [],
