@@ -11,6 +11,14 @@
   <button mat-menu-item>Item 2</button>
 </mat-menu>
 
+<mat-form-field>
+  <mat-select placeholder="Favorite food">
+    <mat-option *ngFor="let food of foods" [value]="food.value">
+      {{ food.value }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 <button mat-icon-button [matMenuTriggerFor]="otherMenu">
   <mat-icon>more_vert</mat-icon>
 </button>

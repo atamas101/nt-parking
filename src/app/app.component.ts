@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'app';
+  public foods = [{ value: 'food1' }, { value: 'pizza' }];
 }
