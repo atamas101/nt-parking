@@ -8,16 +8,20 @@ import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
 import { UserModifierComponent } from './user-modifier/user-modifier.component';
 import { UserModifierContentComponent } from './user-modifier/user-modifier-content.component';
 
+import { UsersComponent } from './users/users-list.component';
+import { UsersService } from './users/users.service';
+
 @NgModule({
   declarations: [
     AppComponent,
     UserModifierComponent,
-    UserModifierContentComponent
+    UserModifierContentComponent,
+    UsersComponent
   ],
 
   imports: [BrowserModule, BrowserAnimationsModule, NtmaterialModule],
   entryComponents: [UserModifierComponent, UserModifierContentComponent],
-  providers: [],
+  providers: [UsersService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
