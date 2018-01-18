@@ -5,7 +5,12 @@ import {
   MatCheckboxModule,
   MatMenuModule,
   MatIconModule,
-  MatSelectModule
+  MatSelectModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule,
+  MatFormFieldModule,
+  MatInputModule
 } from '@angular/material';
 
 @NgModule({
@@ -15,14 +20,24 @@ import {
     MatCheckboxModule,
     MatMenuModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   exports: [
     MatButtonModule,
     MatCheckboxModule,
     MatMenuModule,
     MatIconModule,
-    MatSelectModule
+    MatSelectModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   declarations: []
 })
