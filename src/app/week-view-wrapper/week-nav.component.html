@@ -9,7 +9,7 @@
     <h1> {{ datePicker }}
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-form-field class="hidden">
-        <input (dateInput)="addEvent('am ales ziua de :', $event)" ng-model="selectedDate" matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <input (dateInput)="addEvent($event)" ng-model="selectedDate" matInput [matDatepicker]="picker" placeholder="Choose a date">
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </h1>
