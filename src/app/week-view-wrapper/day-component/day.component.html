@@ -1,4 +1,19 @@
 {{title}}
 <mat-card>
-    <mat-card-title>{{dayOfTheWeek |date:'EEEE, MMMM d'}}</mat-card-title>
+
+    <mat-card-title class="inline">
+        <span class="week-day">{{dayOfTheWeek |date:"EEEE "}}</span>
+        <br>
+        <span class="month-day">{{dayOfTheWeek |date:"dd MMM"}}</span>
+    </mat-card-title>
+
+    <mat-card-content class="inline">
+        <slot [user]="subscribers.alocated[0]"></slot>
+        <slot [user]="subscribers.alocated[1]"></slot>
+        <slot [user]="subscribers.alocated[2]"></slot>
+        <div class="others">And {{othersNumber}} others..</div>
+    </mat-card-content>
+    <mat-card-actions class="parking-buttons">
+        <button mat-raised-button color="primary" class="parking-button" (click)="toggleBtn()">{{btnText}}</button>
+    </mat-card-actions>
 </mat-card>

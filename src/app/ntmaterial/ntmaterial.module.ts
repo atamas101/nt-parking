@@ -6,7 +6,8 @@ import {
   MatMenuModule,
   MatIconModule,
   MatSelectModule,
-  MatCardModule
+  MatCardModule,
+  MatDialogModule
 } from '@angular/material';
 
 @NgModule({

@@ -8,10 +8,10 @@ import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
 
 import { WeekViewComponent } from './week-view-wrapper/week-view.component';
 import { DayComponent } from './week-view-wrapper/day-component/day.component';
-
+import { SlotComponent } from './week-view-wrapper/day-component/slot.component';
 
 @NgModule({
-  declarations: [AppComponent, WeekViewComponent, DayComponent],
+  declarations: [AppComponent, WeekViewComponent, DayComponent, SlotComponent],
 
   imports: [BrowserModule, BrowserAnimationsModule, NtmaterialModule],
   providers: [],
