@@ -5,11 +5,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
+import { UserModifierComponent } from './user-modifier/user-modifier.component';
+import { UserModifierContentComponent } from './user-modifier/user-modifier-content.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [
+    AppComponent,
+    UserModifierComponent,
+    UserModifierContentComponent
+  ],
 
   imports: [BrowserModule, BrowserAnimationsModule, NtmaterialModule],
+  entryComponents: [UserModifierComponent, UserModifierContentComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
