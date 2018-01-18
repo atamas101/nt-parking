@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { UserModifierContentComponent } from './user-modifier-content.component';
+import { UserModifierForm } from './user-modifier-form.component';
 
 @Component({
   selector: 'user-modifier',
@@ -13,11 +14,17 @@ export class UserModifierComponent {
   openDialog(potentialUser = {}): void {
     let dialogRef = this.dialog.open(UserModifierContentComponent, {
       width: '50vw',
-      data: potentialUser //this data goes into the EDIT
+      data: {
+        id: 3,
+        lastName: 'Voicu',
+        firstName: 'Iulia',
+        hireDate: new Date(2015, 11, 20)
+      } //this data goes into the EDIT
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed and form data is in the result');
       this.newUser = result; // whatever comes out of the add/edit form
+      console.log(this.newUser);
     });
   }
 }

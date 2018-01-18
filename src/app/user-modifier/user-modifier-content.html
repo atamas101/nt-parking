@@ -1,16 +1,10 @@
-<div mat-dialog-title>title</div>
+<div mat-dialog-title>Add / Edit User</div>
 <div mat-dialog-content>
-    <!-- <user-modifier-form></user-modifier-form> -->
-    <form class="example-form">
-        <mat-form-field class="example-full-width">
-            <input matInput placeholder="Favorite food" value="Sushi">
-        </mat-form-field>
 
-        <mat-form-field class="example-full-width">
-            <textarea matInput placeholder="Leave a comment"></textarea>
-        </mat-form-field>
-    </form>
+    <user-modifier-form [userToEdit]='data'></user-modifier-form>
+
 </div>
-<div mat-dialog-actions>
+<!-- <div mat-dialog-actions>
     <button mat-button>Ok</button>
-</div>
+    <button mat-button>Cancel</button>
+</div> -->

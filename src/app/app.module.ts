@@ -5,22 +5,28 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
-import { UserModifierComponent } from './user-modifier/user-modifier.component';
-import { UserModifierContentComponent } from './user-modifier/user-modifier-content.component';
 
 import { UsersComponent } from './users/users-list.component';
 import { UsersService } from './users/users.service';
+import { UserModifierComponent } from './user-modifier/user-modifier.component';
+import { UserModifierContentComponent } from './user-modifier/user-modifier-content.component';
+import { UserModifierForm } from './user-modifier/user-modifier-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    UsersComponent,
     UserModifierComponent,
     UserModifierContentComponent,
-    UsersComponent
+    UserModifierForm
   ],
 
   imports: [BrowserModule, BrowserAnimationsModule, NtmaterialModule],
-  entryComponents: [UserModifierComponent, UserModifierContentComponent],
+  entryComponents: [
+    UserModifierComponent,
+    UserModifierContentComponent,
+    UserModifierForm
+  ],
   providers: [UsersService],
   bootstrap: [AppComponent]
 })
