@@ -1,32 +1,39 @@
+<!-- Filter -->
+<!-- <div class="filter-header">
+    <mat-form-field>
+        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+    </mat-form-field>
+</div> -->
 <div class="list-container mat-elevation-z8">
-    <mat-table #table [dataSource]="usersList">
+    <mat-table #table [dataSource]="usersList" matSort>
         <!-- Id Column -->
         <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef> Id </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
             <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
         </ng-container>
 
         <!-- First Name Column -->
         <ng-container matColumnDef="firstName">
-            <mat-header-cell *matHeaderCellDef> First Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
             <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
         </ng-container>
 
         <!-- Last Name Column -->
         <ng-container matColumnDef="lastName">
-            <mat-header-cell *matHeaderCellDef> Last Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
             <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
         </ng-container>
 
         <!-- Hire Date Column -->
         <ng-container matColumnDef="hireDate">
-            <mat-header-cell *matHeaderCellDef> Hire Date </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Hire Date </mat-header-cell>
             <mat-cell *matCellDef="let user"> {{user.hireDate | date}} </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        <!-- <list-pagination [newComponent]="usersList"></list-pagination> -->
     </mat-table>
-    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]">
-    </mat-paginator>
+    <!-- Pagination -->
+    <mat-paginator #paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 20]"></mat-paginator>
 </div>

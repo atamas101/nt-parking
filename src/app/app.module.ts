@@ -5,14 +5,18 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
-import { UsersComponent } from './users/users-list.component';
-import { UsersService } from './users/users.service';
+import { UsersModule } from './users/users.module';
 
 @NgModule({
-  declarations: [AppComponent, UsersComponent],
-
-  imports: [BrowserModule, BrowserAnimationsModule, NtmaterialModule],
-  providers: [UsersService],
+  declarations: [AppComponent],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    NtmaterialModule,
+    UsersModule
+  ],
+  exports: [],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
