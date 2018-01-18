@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 
 import { UsersService } from './users.service';
 import { IUsers } from './users.model';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'users-list',
@@ -17,5 +17,10 @@ export class UsersComponent implements OnInit {
   ngOnInit() {
     this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
     console.log(this.usersList);
+  }
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  ngAfterViewInit() {
+    this.usersList.paginator = this.paginator;
   }
 }
