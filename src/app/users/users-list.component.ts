@@ -18,8 +18,7 @@ import {
 export class UsersComponent implements OnInit {
   public usersList: any;
   displayedColumns = ['id', 'lastName', 'firstName', 'hireDate'];
-  value = 'Clear me';
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private users: UsersService) {}
@@ -36,7 +35,6 @@ export class UsersComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.usersList.paginator = this.paginator;
     this.usersList.sort = this.sort;
   }
 }
