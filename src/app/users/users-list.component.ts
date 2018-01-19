@@ -18,7 +18,7 @@ import {
 export class UsersComponent implements OnInit {
   public usersList: any;
   displayedColumns = ['id', 'lastName', 'firstName', 'hireDate'];
-
+  value = 'Clear me';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
@@ -29,11 +29,11 @@ export class UsersComponent implements OnInit {
     console.log(this.usersList);
   }
 
-  // applyFilter(filterValue: string) {
-  //   filterValue = filterValue.trim();
-  //   filterValue = filterValue.toLowerCase();
-  //   this.usersList.filter = filterValue;
-  // }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.usersList.filter = filterValue;
+  }
 
   ngAfterViewInit() {
     this.usersList.paginator = this.paginator;

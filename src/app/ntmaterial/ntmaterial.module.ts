@@ -12,8 +12,14 @@ import {
   MatPaginatorModule,
   MatDatepickerModule,
   MatNativeDateModule,
-  MatSortModule
+  MatSortModule,
+  MatCardModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule,
+  MatFormFieldModule
 } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -27,9 +33,16 @@ import {
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatDatepickerModule,
     MatNativeDateModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     CommonModule,
@@ -42,10 +55,18 @@ import {
     MatInputModule,
     MatTableModule,
     MatPaginatorModule,
-    MatDatepickerModule,
     MatNativeDateModule,
-    MatSortModule
+    MatSortModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  declarations: []
+  declarations: [],
+  providers: []
 })
 export class NtmaterialModule {}
