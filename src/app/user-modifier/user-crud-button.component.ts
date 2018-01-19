@@ -5,10 +5,11 @@ import { UserModifierForm } from './edit-user-form.component';
 
 @Component({
   selector: 'user-crud-button',
-  template: `<button mat-raised-button (click)="openDialog()">Add user</button>`
+  template: `<button mat-raised-button (click)="openDialog()">{{btnType || "Please specify the btnType"}}</button>`
 })
 export class UserCrudBtn {
   @Input() selectedUser;
+  @Input() btnType;
   newUser: {} = {};
   constructor(public dialog: MatDialog) {}
 

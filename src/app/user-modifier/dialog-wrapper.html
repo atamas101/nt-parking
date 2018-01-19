@@ -3,4 +3,8 @@
 
     <user-modifier-form [userToEdit]='data'></user-modifier-form>
     <!-- incoming ok / cancel buttons belonging to dialog -->
+    <div>
+        <button mat-button>Wrapper OK</button>
+        <button mat-button (click)='onCancel()'>Wrapper Cancel</button>
+    </div>
 </div>
