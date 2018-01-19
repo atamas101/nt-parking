@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { WeekNavComponent } from './week-nav.component';
 
 @Component({
   selector: 'week-wrapper',
@@ -6,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class WeekViewComponent {
   title = 'salut';
+  public weekDays;
+
+  myMethod(dataFromChild) {
+    console.log('Data from child: ', dataFromChild);
+    this.weekDays = dataFromChild;
+  }
 }
