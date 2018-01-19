@@ -6,11 +6,18 @@ import {
   MatMenuModule,
   MatIconModule,
   MatSelectModule,
+  MatDialogModule,
+  MatInputModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSortModule,
+  MatCardModule,
   MatToolbarModule,
   MatSidenavModule,
   MatListModule,
-  MatFormFieldModule,
-  MatInputModule
+  MatFormFieldModule
 } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
@@ -22,28 +29,44 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatMenuModule,
     MatIconModule,
     MatSelectModule,
+    MatDialogModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatNativeDateModule,
+    MatSortModule,
+    MatCardModule,
+    MatDatepickerModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
-    MatInputModule,
     ReactiveFormsModule,
     FormsModule
   ],
   exports: [
+    CommonModule,
     MatButtonModule,
     MatCheckboxModule,
     MatMenuModule,
     MatIconModule,
     MatSelectModule,
+    MatDialogModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatNativeDateModule,
+    MatSortModule,
+    MatCardModule,
+    MatDatepickerModule,
     MatToolbarModule,
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
-    MatInputModule,
     ReactiveFormsModule,
     FormsModule
   ],
-  declarations: []
+  declarations: [],
+  providers: []
 })
 export class NtmaterialModule {}

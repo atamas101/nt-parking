@@ -1,0 +1,25 @@
+<form class='example-form' (submit)="onSubmit($event)">
+    <mat-form-field class='example-full-width'>
+        <input matInput placeholder='Last Name' value='{{userToEdit.lastName}}'>
+    </mat-form-field>
+    <mat-form-field class='example-full-width'>
+        <input matInput placeholder='First Name' value='{{userToEdit.firstName}}'>
+    </mat-form-field>
+    <mat-form-field class='example-full-width'>
+        <input matInput placeholder='Hire Date' value='{{userToEdit.hireDate | date}}'>
+    </mat-form-field>
+
+    <mat-form-field>
+        <input matInput [matDatepicker]='picker' placeholder='Hire Date: {{userToEdit.hireDate | date:"w" }}'>
+        <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <div>
+        <button mat-button>Ok</button>
+        <button mat-button (click)='onCancel()'>Cancel</button>
+    </div>
+
+</form>
+
+<!-- mat-dialog-actions -->
