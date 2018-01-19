@@ -15,7 +15,7 @@ export class UserCrudBtn {
   openDialog(potentialUser = {}): void {
     let dialogRef = this.dialog.open(DialogWrapper, {
       width: '50vw',
-      data: this.selectedUser
+      data: this.selectedUser ? this.selectedUser : {}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed and form data is in the result');
