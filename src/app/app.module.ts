@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
@@ -24,6 +24,8 @@ import { UsersModule } from './users/users.module';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule,
     NtmaterialModule,
     UsersModule,
     RouterModule.forRoot(routes)

@@ -8,15 +8,16 @@ import { MatDialogRef } from '@angular/material';
 })
 export class UserModifierForm {
   @Input() userToEdit;
-  constructor(public dialogRef: MatDialogRef<DialogWrapper>) {}
+  private _newUser;
+  constructor(public dialogRef: MatDialogRef<UserModifierForm>) {}
   onConfirmation() {
-    this.dialogRef.close();
+    this.dialogRef.close(this._newUser);
   }
   onCancel() {
     this.dialogRef.close();
-    console.log('lulu');
   }
-  onSubmit(e) {
-    e.preventDefault();
+  onSubmit(formValues) {
+    this._newUser = formValues;
+    this.onConfirmation();
   }
 }

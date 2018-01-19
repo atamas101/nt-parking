@@ -1,16 +1,16 @@
-<form class='example-form' (submit)="onSubmit($event)">
+<form #userModifyForm='ngForm' class='example-form' (ngSubmit)="onSubmit(userModifyForm.value)">
     <mat-form-field class='example-full-width'>
-        <input matInput placeholder='Last Name' value='{{userToEdit.lastName}}'>
+        <input matInput [(ngModel)]='userToEdit.lastName' name='lastName' placeholder='Last Name'>
     </mat-form-field>
     <mat-form-field class='example-full-width'>
-        <input matInput placeholder='First Name' value='{{userToEdit.firstName}}'>
+        <input matInput [(ngModel)]='userToEdit.firstName' name='firstName' placeholder='First Name'>
     </mat-form-field>
     <!-- <mat-form-field class='example-full-width'>
         <input matInput placeholder='Hire Date' value='{{userToEdit.hireDate | date}}'>
     </mat-form-field> -->
 
     <mat-form-field>
-        <input matInput [matDatepicker]='picker' placeholder='Hire Date'>
+        <input matInput [(ngModel)]='userToEdit.hireDate' name='hireDate' [matDatepicker]='picker' placeholder='Hire Date'>
         <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
@@ -21,5 +21,6 @@
     </div>
 
 </form>
+
 
 <!-- mat-dialog-actions -->

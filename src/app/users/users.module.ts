@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NtmaterialModule } from '../ntmaterial/ntmaterial.module';
+
 import { UsersComponent } from './users-list.component';
 import { UsersService } from './users.service';
 
@@ -11,7 +13,7 @@ import { UserModifierForm } from '../user-modifier/edit-user-form.component';
   declarations: [UsersComponent, UserCrudBtn, DialogWrapper, UserModifierForm],
   exports: [UsersComponent, UserCrudBtn, DialogWrapper, UserModifierForm],
   entryComponents: [UserCrudBtn, DialogWrapper, UserModifierForm],
-  imports: [NtmaterialModule],
+  imports: [NtmaterialModule, FormsModule, ReactiveFormsModule],
   providers: [UsersService]
 })
 export class UsersModule {}

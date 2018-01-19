@@ -17,7 +17,7 @@ import {
 })
 export class UsersComponent implements OnInit {
   public usersList: any;
-  displayedColumns = ['id', 'lastName', 'firstName', 'hireDate'];
+  displayedColumns = ['id', 'lastName', 'firstName', 'hireDate', 'edit'];
   value = 'Clear me';
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
