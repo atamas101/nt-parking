@@ -9,8 +9,13 @@ import {
   MatCardModule,
   MatDatepickerModule,
   MatNativeDateModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule,
+  MatFormFieldModule,
   MatInputModule
 } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -23,7 +28,14 @@ import {
     MatCardModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
     MatButtonModule,
@@ -33,7 +45,14 @@ import {
     MatSelectModule,
     MatCardModule,
     MatDatepickerModule,
-    MatInputModule
+    MatInputModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [],
   providers: []
