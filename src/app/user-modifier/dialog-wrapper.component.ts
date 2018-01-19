@@ -3,15 +3,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'dialog-content',
-  templateUrl: './user-modifier-content.html'
+  templateUrl: './dialog-wrapper.html'
 })
-export class UserModifierContentComponent {
+export class DialogWrapper {
   constructor(
-    public dialogRef: MatDialogRef<UserModifierContentComponent>,
+    public dialogRef: MatDialogRef<DialogWrapper>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {} //aka => INJECTED here, made available
-
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 }

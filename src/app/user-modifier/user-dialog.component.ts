@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { UserModifierContentComponent } from './user-modifier-content.component';
-import { UserModifierForm } from './user-modifier-form.component';
+import { DialogWrapper } from './dialog-wrapper.component';
+import { UserModifierForm } from './edit-user-form.component';
 
 @Component({
   selector: 'user-modifier',
@@ -12,7 +12,7 @@ export class UserModifierComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(potentialUser = {}): void {
-    let dialogRef = this.dialog.open(UserModifierContentComponent, {
+    let dialogRef = this.dialog.open(DialogWrapper, {
       width: '50vw',
       data: {
         id: 3,

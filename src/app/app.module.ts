@@ -8,25 +8,21 @@ import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
 
 import { UsersComponent } from './users/users-list.component';
 import { UsersService } from './users/users.service';
-import { UserModifierComponent } from './user-modifier/user-modifier.component';
-import { UserModifierContentComponent } from './user-modifier/user-modifier-content.component';
-import { UserModifierForm } from './user-modifier/user-modifier-form.component';
+import { UserModifierComponent } from './user-modifier/user-dialog.component';
+import { DialogWrapper } from './user-modifier/dialog-wrapper.component';
+import { UserModifierForm } from './user-modifier/edit-user-form.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     UsersComponent,
     UserModifierComponent,
-    UserModifierContentComponent,
+    DialogWrapper,
     UserModifierForm
   ],
 
   imports: [BrowserModule, BrowserAnimationsModule, NtmaterialModule],
-  entryComponents: [
-    UserModifierComponent,
-    UserModifierContentComponent,
-    UserModifierForm
-  ],
+  entryComponents: [UserModifierComponent, DialogWrapper, UserModifierForm],
   providers: [UsersService],
   bootstrap: [AppComponent]
 })
