@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { WeekNavComponent } from './week-nav.component';
 import { Moment } from 'moment';
 import * as moment from 'moment';
 
