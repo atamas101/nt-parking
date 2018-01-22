@@ -9,6 +9,9 @@ import { UserModifierComponent } from '../user-modifier/user-dialog.component';
 import { DialogWrapper } from '../user-modifier/dialog-wrapper.component';
 import { UserModifierForm } from '../user-modifier/edit-user-form.component';
 
+
+import { BrowserModule } from '@angular/platform-browser'; 
+import { HttpModule } from '@angular/http';
 @NgModule({
   declarations: [
     UsersComponent,
@@ -25,7 +28,7 @@ import { UserModifierForm } from '../user-modifier/edit-user-form.component';
     PaginationComponent
   ],
   entryComponents: [UserModifierComponent, DialogWrapper, UserModifierForm],
-  imports: [NtmaterialModule],
+  imports: [NtmaterialModule,BrowserModule,HttpModule],
   providers: [UsersService]
 })
 export class UsersModule {}

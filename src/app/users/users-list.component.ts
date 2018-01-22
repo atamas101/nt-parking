@@ -18,15 +18,26 @@ import {
 export class UsersComponent implements OnInit {
   public usersList: any;
   displayedColumns = ['id', 'lastName', 'firstName', 'hireDate'];
-
+  errorMessage: String;
+  user : IUsers;
+  lastName = String;
+  firstName = String;
+  hireDate: String;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private users: UsersService) {}
+  //constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
     console.log(this.usersList);
   }
+  // ngOnInit() {
+  //   this.users.getUsers().subscribe((data) => { 
+  //     console.log(data);
+  //     this.usersList = data;
+  //   });
+  // }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -37,4 +48,19 @@ export class UsersComponent implements OnInit {
   ngAfterViewInit() {
     this.usersList.sort = this.sort;
   }
+
+  add(newUser): void {
+    this.users.addEditUser(newUser)
+      .subscribe((user) => {console.log(user);},
+        error => this.errorMessage = <any>error
+      );
+    }
+  }
+
+
+
+
+
+
+
 }

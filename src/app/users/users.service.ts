@@ -1,9 +1,36 @@
 import { Injectable } from '@angular/core';
 import { IUsers } from './users.model';
-
+import { Observable } from 'rxjs/Observable';
+import { Http, RequestOptions, Response, Headers } from '@angular/http';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/catch';
 @Injectable()
 export class UsersService {
-  constructor() {}
+  private _url: '...';
+  constructor(private _http: Http) {}
+
+  // getUsers():Observable<IUsers[]> {
+  //   return this.http.get(this._http).map((response: Response) => {
+  //       return <IUsers[]>response.json();
+  //   }).catch(this.handleError);
+  // }
+
+  addEditUser(newUser: IUsers): Observable<IUsers> {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+
+    return this._http
+      .post(this._url, JSON.stringify(newUser), options)
+      .map((response: Response) => {
+        return response.json();
+      })
+      .catch(this.handleError);
+  }
+
+  private handleError(error: Response) {
+    return Observable.throw(error.statusText);
+  }
+
   getUsers(): IUsers[] {
     return [
       {
