@@ -1,4 +1,38 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr 4fr 1fr;
+  grid-template-columns: 1fr 5fr 1fr;
+}
+.inline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-row-gap: 10px;
+}
+ul {
+  list-style: none;
+}
+ul li {
+  position: relative;
+}
+ul li ul.dropdown {
+  display: none;
+  position: absolute;
+  z-index: 999;
+  border-radius: 20px;
+}
+ul li:hover ul.dropdown {
+  display: block;
+  background-color: aliceblue;
+}
+.btn-group:first-child {
+  /* border-top-left-radius: 20px; */
+  border-bottom-left-radius: 30px;
+  margin-right: 0;
+  padding: 0;
+}
+.btn-group:nth-child(2) {
+  border-top-right-radius: 30px;
+  /* border-bottom-right-radius: 30px; */
+  margin-left: -3px;
+  width: 30px;
+  padding: 0;
 }
