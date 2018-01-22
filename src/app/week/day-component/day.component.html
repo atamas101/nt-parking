@@ -1,20 +1,20 @@
 {{title}}
 <mat-card class="container">
 
-    <mat-card-title class="inline">
-        <span class="week-day">{{inputDay |date:"EEEE "}}</span>
-        <br>
-        <span class="month-day">{{inputDay |date:"dd MMM"}}</span>
-    </mat-card-title>
+  <mat-card-title class="inline">
+    <span class="week-day">{{inputDay |date:"EEEE "}}</span>
+    <br>
+    <span class="month-day">{{inputDay |date:"dd MMM"}}</span>
+  </mat-card-title>
 
-    <mat-card-content class="inline">
-        <slot [user]="subscribers.alocated[0]"></slot>
-        <slot [user]="subscribers.alocated[1]"></slot>
-        <slot [user]="subscribers.alocated[2]"></slot>
-        <div class="others">And {{othersNumber}} others..</div>
-    </mat-card-content>
-    <mat-card-actions class="parking-buttons">
-        <button *ngIf="subscribeBtnState" mat-raised-button color="primary" class="subscribing-btn" (click)="subscribeBtn()">SUBSCRIBE PARKING</button>
-        <button *ngIf="unsubscribeBtnState" mat-raised-button color="warn" class="unsubscribing-btn" (click)="unsubscribeBtn()">UNSUBSCRIBE PARKING</button>
-    </mat-card-actions>
+  <mat-card-content class="inline">
+    <slot [user]="subscribers.alocated[0]"></slot>
+    <slot [user]="subscribers.alocated[1]"></slot>
+    <slot [user]="subscribers.alocated[2]"></slot>
+    <div class="others">And {{othersNumber}} others..</div>
+  </mat-card-content>
+  <mat-card-actions class="parking-buttons">
+    <button *ngIf="subscribeBtnState" mat-raised-button color="primary" class="subscribing-btn" (click)="subscribeBtn()">SUBSCRIBE PARKING</button>
+    <button *ngIf="unsubscribeBtnState" mat-raised-button color="warn" class="unsubscribing-btn" (click)="unsubscribeBtn()">UNSUBSCRIBE PARKING</button>
+  </mat-card-actions>
 </mat-card>
