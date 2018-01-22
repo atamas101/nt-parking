@@ -10,9 +10,8 @@ import { Moment } from 'moment';
 export class DayComponent {
   @Input() inputDay: Moment;
 
-  dayOfTheWeek = new Date();
-  btnState: boolean = false;
-  btnText: string = 'SUBSCRIBE PARKING';
+  subscribeBtnState: boolean = true;
+  unsubscribeBtnState: boolean = false;
   public subscribers = {
     alocated: [
       { name: 'Bintintan Alexandru', slot: 's1' },
@@ -27,12 +26,25 @@ export class DayComponent {
   };
   othersNumber = this.subscribers.others.length;
 
-  toggleBtn() {
-    if (this.btnState) {
-      this.btnText = 'SUBSCRIBE PARKING';
-    } else {
-      this.btnText = 'UNSUBSCRIBE PARKING';
-    }
-    this.btnState = !this.btnState;
+  subscribeBtn() {
+    this.subscribeBtnState = !this.subscribeBtnState;
+    this.unsubscribeBtnState = !this.unsubscribeBtnState;
+    console.log(
+      'subscribe:',
+      this.subscribeBtnState,
+      'unsubscribe:',
+      this.unsubscribeBtnState
+    );
+  }
+
+  unsubscribeBtn() {
+    this.unsubscribeBtnState = !this.unsubscribeBtnState;
+    this.subscribeBtnState = !this.subscribeBtnState;
+    console.log(
+      'subscribe:',
+      this.subscribeBtnState,
+      'unsubscribe:',
+      this.unsubscribeBtnState
+    );
   }
 }
