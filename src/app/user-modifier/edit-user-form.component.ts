@@ -1,4 +1,11 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  Output,
+  EventEmitter,
+  OnInit,
+  OnChanges
+} from '@angular/core';
 import { DialogWrapper } from './dialog-wrapper.component';
 import { MatDialogRef } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -10,6 +17,7 @@ import 'rxjs/add/operator/debounceTime';
 })
 export class UserModifierForm {
   @Input() userToEdit;
+  @Input() parentOkBtn;
   @Output() formValidator: EventEmitter<any> = new EventEmitter();
   private _newUser;
   constructor(public dialogRef: MatDialogRef<UserModifierForm>) {}
@@ -43,6 +51,11 @@ export class UserModifierForm {
     this.userModifyForm.valueChanges.debounceTime(200).subscribe(formValues => {
       this.formValidator.emit(this.userModifyForm.invalid);
     });
+  }
+  ngOnChanges() {
+    if (this.parentOkBtn) {
+      console.log('Dialog clicked OK');
+    }
   }
 
   onConfirmation() {
