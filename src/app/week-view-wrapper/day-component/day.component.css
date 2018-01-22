@@ -1,17 +1,4 @@
-.month-day {
-  font-size: 14px;
-}
-
-.inline {
-  display: inline-block;
-}
-.others {
-  display: inline-block;
-}
-.parking-buttons {
-  width: 40%;
-  margin-left: 60%;
-}
-.parking-button {
-  width: 200px;
+.container {
+  display: grid;
+  grid-template-columns: 1fr 4fr 1fr;
 }

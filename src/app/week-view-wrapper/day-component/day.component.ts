@@ -25,11 +25,11 @@ export class DayComponent {
   othersNumber = this.subscribers.others.length;
 
   toggleBtn() {
-    this.btnState = !this.btnState;
     if (this.btnState) {
       this.btnText = 'SUBSCRIBE PARKING';
     } else {
       this.btnText = 'UNSUBSCRIBE PARKING';
     }
+    this.btnState = !this.btnState;
   }
 }
