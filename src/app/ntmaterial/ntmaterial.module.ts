@@ -7,8 +7,19 @@ import {
   MatIconModule,
   MatSelectModule,
   MatCardModule,
-  MatDialogModule
+  MatDialogModule,
+  MatInputModule,
+  MatTableModule,
+  MatPaginatorModule,
+  MatDatepickerModule,
+  MatNativeDateModule,
+  MatSortModule,
+  MatToolbarModule,
+  MatSidenavModule,
+  MatListModule,
+  MatFormFieldModule
 } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
@@ -18,16 +29,44 @@ import {
     MatMenuModule,
     MatIconModule,
     MatSelectModule,
-    MatCardModule
+    MatDialogModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatNativeDateModule,
+    MatSortModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   exports: [
+    CommonModule,
     MatButtonModule,
     MatCheckboxModule,
     MatMenuModule,
     MatIconModule,
     MatSelectModule,
-    MatCardModule
+    MatDialogModule,
+    MatInputModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatNativeDateModule,
+    MatSortModule,
+    MatCardModule,
+    MatDatepickerModule,
+    MatToolbarModule,
+    MatSidenavModule,
+    MatListModule,
+    MatFormFieldModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  declarations: []
+  declarations: [],
+  providers: []
 })
 export class NtmaterialModule {}
