@@ -61,6 +61,7 @@ export class UserModifierForm {
     if (this.parentOkBtn) {
       console.log('Dialog clicked OK');
       this._newUser = this.userModifyForm.value;
+
       this.closeDialogConfirmation.emit(
         this.usersService.editUser(this._newUser)
       );

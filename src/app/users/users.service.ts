@@ -112,6 +112,6 @@ export class UsersService {
     console.log(newUserInfo);
     this.users.push(newUserInfo);
     /* faking an Ok reponse from the server, errors to be handled later*/
-    return true;
+    return newUserInfo;
   }
 }

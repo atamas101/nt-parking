@@ -31,7 +31,7 @@ export class DialogWrapper {
   }
   closeDialog(childResponse) {
     if (childResponse) {
-      this.dialogRef.close();
+      this.dialogRef.close(childResponse);
     }
   }
 }
