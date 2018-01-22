@@ -1,5 +1,6 @@
-import { Component, NgModule } from '@angular/core';
+import { Component, NgModule, Input } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { Moment } from 'moment';
 
 @Component({
   selector: 'day-comp',
@@ -7,6 +8,8 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./day.component.css']
 })
 export class DayComponent {
+  @Input() inputDay: Moment;
+
   dayOfTheWeek = new Date();
   btnState: boolean = false;
   btnText: string = 'SUBSCRIBE PARKING';

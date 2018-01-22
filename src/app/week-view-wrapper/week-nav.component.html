@@ -2,21 +2,19 @@
   <mat-card-content>
     <div class="flex">
       <mat-card-actions>
-        <button mat-button>PREVIOUS</button>
-        <button mat-button>NEXT</button>
+        <button (click)="previousWeek()" mat-button>PREVIOUS</button>
+        <button (click)="nextWeek()" mat-button>NEXT</button>
       </mat-card-actions>
     </div>
     <h1> {{ datePicker }}
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
       <mat-form-field class="hidden">
-        <input (dateInput)="addEvent($event)" ng-model="selectedDate" matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <input (dateInput)="addEvent($event)" ng-model="selectedDateModel" matInput [matDatepicker]="picker" placeholder="Choose a date">
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
     </h1>
   </mat-card-content>
-  <div class="date-wrapper">
-    <span> {{ dateDisplay | date:'w' }} </span>
-  </div>
 
-  <div *ngFor="let e of selectedDate">{{ e }}</div>
+
+  <div *ngFor="let e of selectedDateModel"> {{ e }}</div>
 </mat-card>
