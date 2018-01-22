@@ -12,6 +12,8 @@ import { Moment } from 'moment';
 export class WeekNavComponent implements OnInit {
   public datePicker: string;
   public selectedDate: Date;
+  public firstDay: Moment;
+  public lastDay: Moment;
 
   @Output() notify = new EventEmitter();
 
@@ -22,18 +24,25 @@ export class WeekNavComponent implements OnInit {
 
   nextWeek() {
     const selectedWeek = moment(this.selectedDate).isoWeek();
-    this.selectedDate = moment(this.selectedDate).isoWeek(selectedWeek + 1).toDate();
+    this.selectedDate = moment(this.selectedDate)
+      .isoWeek(selectedWeek + 1)
+      .toDate();
     this.refreshDate(this.selectedDate);
   }
 
   previousWeek() {
     const selectedWeek = moment(this.selectedDate).isoWeek();
-    this.selectedDate = moment(this.selectedDate).isoWeek(selectedWeek - 1).toDate();
+    this.selectedDate = moment(this.selectedDate)
+      .isoWeek(selectedWeek - 1)
+      .toDate();
     this.refreshDate(this.selectedDate);
   }
 
   refreshDate(newDate: Date) {
-    this.datePicker = 'WEEK ' + moment(newDate).isoWeek();
+    this.datePicker = 'Week ' + moment(newDate).isoWeek();
+    this.firstDay = moment(newDate).isoWeekday(1);
+    this.lastDay = moment(newDate).isoWeekday(5);
+
     const weekDaysSelected = [
       moment(newDate).isoWeekday(1),
       moment(newDate).isoWeekday(2),
