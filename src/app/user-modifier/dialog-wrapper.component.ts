@@ -29,4 +29,9 @@ export class DialogWrapper {
   sendOkToForm() {
     this.inputToChild = true;
   }
+  closeDialog(childResponse) {
+    if (childResponse) {
+      this.dialogRef.close();
+    }
+  }
 }

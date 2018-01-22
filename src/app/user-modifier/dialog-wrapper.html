@@ -1,7 +1,8 @@
 <div mat-dialog-title>Add / Edit User</div>
 <div mat-dialog-content>
 
-    <user-modifier-form (formValidator)='validateOkBtn($event)' [userToEdit]='data' [parentOkBtn]='inputToChild'></user-modifier-form>
+    <user-modifier-form (formValidator)='validateOkBtn($event)' (closeDialogConfirmation)="closeDialog($event)" [userToEdit]='data'
+        [parentOkBtn]='inputToChild'></user-modifier-form>
     <!-- incoming ok / cancel buttons belonging to dialog -->
     <div>
         <button type="submit" [disabled]='invalidBtn' (click)="sendOkToForm()" mat-button>Wrapper OK</button>

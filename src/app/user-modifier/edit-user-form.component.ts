@@ -10,6 +10,7 @@ import { DialogWrapper } from './dialog-wrapper.component';
 import { MatDialogRef } from '@angular/material';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import 'rxjs/add/operator/debounceTime';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'user-modifier-form',
@@ -19,8 +20,12 @@ export class UserModifierForm {
   @Input() userToEdit;
   @Input() parentOkBtn;
   @Output() formValidator: EventEmitter<any> = new EventEmitter();
+  @Output() closeDialogConfirmation: EventEmitter<any> = new EventEmitter();
   private _newUser;
-  constructor(public dialogRef: MatDialogRef<UserModifierForm>) {}
+  constructor(
+    public dialogRef: MatDialogRef<UserModifierForm>,
+    private usersService: UsersService
+  ) {}
 
   userModifyForm: FormGroup;
   lastName: FormControl;
@@ -55,19 +60,26 @@ export class UserModifierForm {
   ngOnChanges() {
     if (this.parentOkBtn) {
       console.log('Dialog clicked OK');
+      this._newUser = this.userModifyForm.value;
+      this.closeDialogConfirmation.emit(
+        this.usersService.editUser(this._newUser)
+      );
+
+      // this.dialogRef.close();
     }
   }
 
-  onConfirmation() {
-    this.dialogRef.close(this._newUser);
-  }
-  onCancel() {
-    this.dialogRef.close();
-  }
-  onSubmit(form) {
-    this._newUser = form.value;
-    this.onConfirmation();
-    console.log(this.userModifyForm);
-    // console.log(form, 'sent from html');
-  }
+  // onConfirmation() {
+  //   this.dialogRef.close(this._newUser);
+  // }
+
+  // onCancel() {
+  //   this.dialogRef.close();
+  // }
+  // onSubmit(form) {
+  //   this._newUser = form.value;
+  //   this.onConfirmation();
+  //   console.log(this.userModifyForm);
+  // console.log(form, 'sent from html');
+  // }
 }
