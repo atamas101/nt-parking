@@ -1,25 +1,26 @@
-<form #userModifyForm='ngForm' class='example-form' (ngSubmit)="onSubmit(userModifyForm.value)" novalidate>
+<form [formGroup]="userModifyForm" class='example-form' (ngSubmit)="onSubmit(userModifyForm)" novalidate>
+
+    <!-- (ngSubmit)="onSubmit(userModifyForm.value)" HOW TO ACCES THIS?? -->
 
     <mat-form-field class='example-full-width'>
-        <input matInput [(ngModel)]='userToEdit.lastName' name='lastName' placeholder='Last Name' required>
+        <input matInput formControlName="lastName" placeholder='Last Name' required>
     </mat-form-field>
 
     <mat-form-field class='example-full-width'>
-        <input matInput [(ngModel)]='userToEdit.firstName' name='firstName' placeholder='First Name' required>
+        <input matInput formControlName="firstName" placeholder='First Name' required>
     </mat-form-field>
 
     <mat-form-field>
-        <input matInput [(ngModel)]='userToEdit.hireDate' name='hireDate' [matDatepicker]='picker' placeholder='Hire Date' required>
+        <input matInput formControlName="hireDate" [matDatepicker]='picker' placeholder='Hire Date' required>
         <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
 
     <div>
-        <button mat-button [disabled]="userModifyForm.invalid">Ok</button>
+        <button type="submit" [disabled]="userModifyForm.invalid" mat-button>Ok</button>
+        <!--  -->
         <button mat-button (click)='onCancel()'>Cancel</button>
     </div>
 
+
 </form>
-
-
-<!-- mat-dialog-actions -->

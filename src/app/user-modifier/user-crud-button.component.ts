@@ -21,6 +21,7 @@ export class UserCrudBtn {
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed and form data is in the result');
       this.newUser = result;
+      console.log(this.newUser);
     });
   }
 }
