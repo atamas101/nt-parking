@@ -1,0 +1,40 @@
+{{title}}
+<mat-card class="container">
+
+    <mat-card-title class="inline">
+        <span class="week-day">{{inputDay |date:"EEEE "}}</span>
+        <br>
+        <span class="month-day">{{inputDay |date:"dd MMM"}}</span>
+    </mat-card-title>
+
+    <mat-card-content class="inline">
+        <slot [user]="subscribers.alocated[0]"></slot>
+        <slot [user]="subscribers.alocated[1]"></slot>
+        <slot [user]="subscribers.alocated[2]"></slot>
+
+        <ul class="others">
+            <li>And {{othersNumber}} others..
+                <ul class="dropdown">
+                    <li *ngFor='let other of subscribers.others'>
+                        {{other.name}}
+                    </li>
+
+                </ul>
+            </li>
+        </ul>
+    </mat-card-content>
+    <mat-card-actions class="parking-buttons">
+        <div *ngIf="subscribeBtnState" class="btn-group">
+            <button mat-raised-button color="primary" class="btn" (click)="subscribeBtn()">Park</button>
+            <button mat-raised-button color="primary" class="btn" [matMenuTriggerFor]="menu">
+                <i class="material-icons">arrow_drop_down</i>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Park Underground</button>
+                <button mat-menu-item>Park Outside</button>
+            </mat-menu>
+        </div>
+        <button *ngIf="unsubscribeBtnState" mat-raised-button color="warn" class="unsubscribing-btn" (click)="unsubscribeBtn()">Cancel</button>
+
+    </mat-card-actions>
+</mat-card>

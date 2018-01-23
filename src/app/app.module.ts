@@ -8,24 +8,17 @@ import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
 import { LoginComponent } from './login/login.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
-import { WeekViewComponent } from './week-view-wrapper/week-view.component';
-import { WeekNavComponent } from './week-view-wrapper/week-nav.component';
-import { DayComponent } from './week-view-wrapper/day-component/day.component';
 import { UsersModule } from './users/users.module';
+import { WeekModule } from './week/week.module';
 @NgModule({
-  declarations: [
-    AppComponent,
-    LoginComponent,
-    WeekViewComponent,
-    WeekNavComponent,
-    DayComponent
-  ],
+  declarations: [AppComponent, LoginComponent],
 
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     NtmaterialModule,
     UsersModule,
+    WeekModule,
     RouterModule.forRoot(routes)
   ],
   providers: [],
