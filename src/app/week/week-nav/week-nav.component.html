@@ -1,20 +1,38 @@
 <mat-card>
-  <mat-card-content>
-    <div class="flex">
+  <mat-card-content fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutWrap>
+    <!-- <div class="flex">
       <mat-card-actions>
         <button (click)="previousWeek()" mat-button>PREVIOUS</button>
         <button (click)="nextWeek()" mat-button>NEXT</button>
       </mat-card-actions>
-    </div>
-    <h1> {{ datePicker }} - {{ lastDay | date:"y" }}
+    </div> -->
 
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <!-- <h2 (click)="picker.open()">
+       -->
+
+    <i (click)="previousWeek()" class="material-icons size">keyboard_arrow_left</i>
+
+    <div (click)="picker.open()" class="wrap">
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h2> {{ datePicker }} - {{ lastDay | date:"y" }} </h2>
+        <i class="material-icons">event_note</i>
+      </div>
+
       <mat-form-field class="hidden">
         <input (dateInput)="addEvent($event)" ng-model="selectedDateModel" matInput [matDatepicker]="picker" placeholder="Choose a date">
         <mat-datepicker #picker></mat-datepicker>
+        <mat-datepicker touchUi="true" #picker></mat-datepicker>
       </mat-form-field>
-    </h1>
-    <p> {{firstDay | date:"MMM dd" }} - {{lastDay | date:"MMM dd" }}</p>
+
+      <div fxLayout="row" fxLayoutAlign="center center">
+        <h2> {{firstDay | date:"MMM dd" }} - {{lastDay | date:"MMM dd" }}</h2>
+      </div>
+
+    </div>
+
+    <i (click)="nextWeek()" class="material-icons size">keyboard_arrow_right</i>
+
   </mat-card-content>
 
 
