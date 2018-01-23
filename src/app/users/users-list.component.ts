@@ -19,10 +19,6 @@ export class UsersComponent implements OnInit {
   public usersList: any;
   displayedColumns = ['id', 'lastName', 'firstName', 'hireDate'];
   errorMessage: String;
-  user : IUsers;
-  lastName = String;
-  firstName = String;
-  hireDate: String;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private users: UsersService) {}
@@ -33,7 +29,7 @@ export class UsersComponent implements OnInit {
     console.log(this.usersList);
   }
   // ngOnInit() {
-  //   this.users.getUsers().subscribe((data) => { 
+  //   this.users.getUsers().subscribe((data) => {
   //     console.log(data);
   //     this.usersList = data;
   //   });
@@ -50,17 +46,8 @@ export class UsersComponent implements OnInit {
   }
 
   add(newUser): void {
-    this.users.addEditUser(newUser)
-      .subscribe((user) => {console.log(user);},
-        error => this.errorMessage = <any>error
-      );
-    }
+    this.users.addEditUser(newUser).subscribe(user => {
+      console.log(user);
+    }, error => (this.errorMessage = <any>error));
   }
-
-
-
-
-
-
-
 }
