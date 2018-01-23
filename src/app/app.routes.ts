@@ -1,5 +1,5 @@
 import { Routes } from '@angular/router';
-import { WeekViewComponent } from './week-view-wrapper/week-view.component';
+import { WeekViewComponent } from './week/week-view.component';
 
 import { LoginComponent } from './login/login.component';
 import { UsersComponent } from './users/users-list.component';

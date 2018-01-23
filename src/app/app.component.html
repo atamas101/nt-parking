@@ -1,16 +1,16 @@
+<p [routerLink]="['login']" mat-button>
+  <button mat-button class="login-button">Login</button>
+</p>
 <mat-toolbar color="primary">
   <i class="material-icons" (click)="sidenav.toggle()">menu</i>
   <p class="logo">NextTech</p>
-  <button mat-button class="login-button">Login</button>
-
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+  <mat-sidenav #sidenav [(opened)]="opened" [mode]="mode">
     <mat-nav-list>
-      <a [routerLink] ="['users']" mat-list-item >Users</a>
-      <a [routerLink] ="['week']" mat-list-item >Week</a>
-      
+      <a [routerLink]="['users']" mat-list-item>Users</a>
+      <a [routerLink]="['week']" mat-list-item>Week</a>
     </mat-nav-list>
   </mat-sidenav>
 

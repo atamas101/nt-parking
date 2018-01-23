@@ -18,15 +18,21 @@ import {
 export class UsersComponent implements OnInit {
   public usersList: any;
   displayedColumns = ['id', 'lastName', 'firstName', 'hireDate', 'edit'];
-  value = 'Clear me';
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  errorMessage: String;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(private users: UsersService) {}
+  //constructor(private http: HttpClient) {}
 
   ngOnInit() {
     this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
   }
+  // ngOnInit() {
+  //   this.users.getUsers().subscribe((data) => {
+  //     console.log(data);
+  //     this.usersList = data;
+  //   });
+  // }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -35,23 +41,10 @@ export class UsersComponent implements OnInit {
   }
 
   ngAfterViewInit() {
-    this.usersList.paginator = this.paginator;
     this.usersList.sort = this.sort;
   }
 
   addEditHandler(newUser) {
-    // let usersArr = this.usersList.filteredData;
-    // console.log(usersArr);
-    // let check = usersArr.filter(newUser => newUser.id);
-    // if (check.length > 0) {
-    //   usersArr.map(
-    //     user =>
-    //       user.id === newUser.id ? (user = Object.assign({}, newUser)) : ''
-    //   );
-    //   this.usersList.filteredData = usersArr;
-    // } else {
-    //   this.usersList.filteredData.push(newUser);
-    // }
     this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
   }
 }

@@ -1,0 +1,48 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 5fr 1fr;
+}
+.inline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 200px);
+  grid-row-gap: 10px;
+}
+ul {
+  list-style: none;
+}
+ul li {
+  position: relative;
+}
+ul li ul.dropdown {
+  min-width: 130px;
+  display: none;
+  position: absolute;
+  z-index: 999;
+  text-align: center;
+  border-radius: 20px;
+}
+ul li:hover ul.dropdown {
+  display: block;
+  background-color: aliceblue;
+}
+.btn-group {
+  display: table;
+  min-width: 200px;
+}
+.btn-group .btn:first-child {
+  /* border-top-left-radius: 20px; */
+  border-bottom-left-radius: 30px;
+  margin-right: 0;
+  padding: 0;
+}
+.btn-group .btn:nth-child(2) {
+  border-top-right-radius: 30px;
+  /* border-bottom-right-radius: 30px; */
+  margin-left: 0;
+}
+
+/* .subscribing-btn:hover,
+.unsubscribing-btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+} */

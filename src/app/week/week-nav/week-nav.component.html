@@ -1,0 +1,20 @@
+<mat-card>
+  <mat-card-content>
+    <div class="flex">
+      <mat-card-actions>
+        <button (click)="previousWeek()" mat-button>PREVIOUS</button>
+        <button (click)="nextWeek()" mat-button>NEXT</button>
+      </mat-card-actions>
+    </div>
+    <h1 (click)="picker.open()"> {{ datePicker }} - {{ lastDay | date:"y" }}
+      <mat-form-field class="hidden">
+        <input (dateInput)="addEvent($event)" ng-model="selectedDateModel" matInput [matDatepicker]="picker" placeholder="Choose a date">
+        <mat-datepicker #picker></mat-datepicker>
+      </mat-form-field>
+    </h1>
+    <p> {{firstDay | date:"MMM dd" }} - {{lastDay | date:"MMM dd" }}</p>
+  </mat-card-content>
+
+
+  <div *ngFor="let e of selectedDateModel"> {{ e }}</div>
+</mat-card>
