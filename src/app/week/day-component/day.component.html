@@ -24,9 +24,9 @@
         </ul>
     </mat-card-content>
     <mat-card-actions class="parking-buttons">
-        <div *ngIf="subscribeBtnState">
-            <button mat-raised-button color="primary" class="btn-group" (click)="subscribeBtn()">Park</button>
-            <button mat-raised-button color="primary" class="btn-group" [matMenuTriggerFor]="menu">
+        <div *ngIf="subscribeBtnState" class="btn-group">
+            <button mat-raised-button color="primary" class="btn" (click)="subscribeBtn()">Park</button>
+            <button mat-raised-button color="primary" class="btn" [matMenuTriggerFor]="menu">
                 <i class="material-icons">arrow_drop_down</i>
             </button>
             <mat-menu #menu="matMenu">
