@@ -11,10 +11,30 @@
     <slot [user]="subscribers.alocated[0]"></slot>
     <slot [user]="subscribers.alocated[1]"></slot>
     <slot [user]="subscribers.alocated[2]"></slot>
-    <div class="others">And {{othersNumber}} others..</div>
+
+    <ul class="others">
+      <li>And {{othersNumber}} others..
+        <ul class="dropdown">
+          <li *ngFor='let other of subscribers.others'>
+            {{other.name}}
+          </li>
+
+        </ul>
+      </li>
+    </ul>
   </mat-card-content>
   <mat-card-actions class="parking-buttons">
-    <button *ngIf="subscribeBtnState" mat-raised-button color="primary" class="subscribing-btn" (click)="subscribeBtn()">SUBSCRIBE PARKING</button>
-    <button *ngIf="unsubscribeBtnState" mat-raised-button color="warn" class="unsubscribing-btn" (click)="unsubscribeBtn()">UNSUBSCRIBE PARKING</button>
+    <div *ngIf="subscribeBtnState">
+      <button mat-raised-button color="primary" class="btn-group" (click)="subscribeBtn()">Park</button>
+      <button mat-raised-button color="primary" class="btn-group" [matMenuTriggerFor]="menu">
+        <i class="material-icons">arrow_drop_down</i>
+      </button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Park Underground</button>
+        <button mat-menu-item>Park Outside</button>
+      </mat-menu>
+    </div>
+    <button *ngIf="unsubscribeBtnState" mat-raised-button color="warn" class="unsubscribing-btn" (click)="unsubscribeBtn()">Cancel</button>
+
   </mat-card-actions>
 </mat-card>
