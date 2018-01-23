@@ -26,7 +26,6 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
-    console.log(this.usersList);
   }
 
   applyFilter(filterValue: string) {
@@ -38,5 +37,21 @@ export class UsersComponent implements OnInit {
   ngAfterViewInit() {
     this.usersList.paginator = this.paginator;
     this.usersList.sort = this.sort;
+  }
+
+  addEditHandler(newUser) {
+    // let usersArr = this.usersList.filteredData;
+    // console.log(usersArr);
+    // let check = usersArr.filter(newUser => newUser.id);
+    // if (check.length > 0) {
+    //   usersArr.map(
+    //     user =>
+    //       user.id === newUser.id ? (user = Object.assign({}, newUser)) : ''
+    //   );
+    //   this.usersList.filteredData = usersArr;
+    // } else {
+    //   this.usersList.filteredData.push(newUser);
+    // }
+    this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
   }
 }

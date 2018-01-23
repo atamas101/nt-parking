@@ -8,11 +8,11 @@ import { UsersService } from './users.service';
 
 import { UserCrudBtn } from '../user-modifier/user-crud-button.component';
 import { DialogWrapper } from '../user-modifier/dialog-wrapper.component';
-import { UserModifierForm } from '../user-modifier/edit-user-form.component';
+
 @NgModule({
-  declarations: [UsersComponent, UserCrudBtn, DialogWrapper, UserModifierForm],
-  exports: [UsersComponent, UserCrudBtn, DialogWrapper, UserModifierForm],
-  entryComponents: [UserCrudBtn, DialogWrapper, UserModifierForm],
+  declarations: [UsersComponent, UserCrudBtn, DialogWrapper],
+  exports: [UsersComponent, UserCrudBtn, DialogWrapper],
+  entryComponents: [UserCrudBtn, DialogWrapper],
   imports: [NtmaterialModule, FormsModule, ReactiveFormsModule],
   providers: [UsersService]
 })

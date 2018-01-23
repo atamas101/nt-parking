@@ -1,37 +1,43 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'dialog-content',
   templateUrl: './dialog-wrapper.html'
 })
 export class DialogWrapper {
-  invalidBtn: boolean;
-  inputToChild: boolean;
+  userModifyForm: FormGroup;
+  lastName: FormControl;
+  firstName: FormControl;
+  hireDate: FormControl;
+
   constructor(
     public dialogRef: MatDialogRef<DialogWrapper>,
-    @Inject(MAT_DIALOG_DATA) public data: any
-  ) {} //aka => INJECTED here, made available
+    @Inject(MAT_DIALOG_DATA)
+    public data: any = { lastName: '', firstName: '', hireDate: '' },
+    private _usersService: UsersService
+  ) {}
 
   ngOnInit() {
-    if (this.data.newUser === true) {
-      this.invalidBtn = true;
-    } else {
-      this.invalidBtn = false;
-    }
-    console.log(this.data);
-    console.log('Invalid btn: ', this.invalidBtn);
+    this.lastName = new FormControl(this.data.lastName, Validators.required);
+    this.firstName = new FormControl(this.data.firstName, Validators.required);
+    this.hireDate = new FormControl(this.data.hireDate, Validators.required);
+
+    this.userModifyForm = new FormGroup({
+      lastName: this.lastName,
+      firstName: this.firstName,
+      hireDate: this.hireDate
+    });
   }
-  validateOkBtn(status) {
-    this.invalidBtn = status;
-    console.log('Invalid btn: ', this.invalidBtn);
+
+  postToServer() {
+    let newUser = this.userModifyForm.value;
+    this.dialogRef.close(this._usersService.editUser(newUser));
   }
-  sendOkToForm() {
-    this.inputToChild = true;
-  }
-  closeDialog(childResponse) {
-    if (childResponse) {
-      this.dialogRef.close(childResponse);
-    }
+
+  onCancel() {
+    this.dialogRef.close();
   }
 }

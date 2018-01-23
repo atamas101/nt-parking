@@ -95,10 +95,13 @@ export class UsersService {
       hireDate: new Date(2017, 12, 16)
     }
   ];
+
   constructor() {}
+
   getUsers(): IUsers[] {
     return this.users;
   }
+
   addUser(newUser: IUsers) {
     /* POST */
     console.log(newUser);
@@ -107,9 +110,11 @@ export class UsersService {
     /* faking an Ok reponse from the server, errors to be handled later*/
     return true;
   }
+
   editUser(newUserInfo: IUsers) {
     /* PUT */
-    console.log(newUserInfo);
+    // console.log(newUserInfo);
+    // NOT PUSH, SEARCH IN ARR
     this.users.push(newUserInfo);
     /* faking an Ok reponse from the server, errors to be handled later*/
     return newUserInfo;
