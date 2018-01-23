@@ -5,7 +5,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'week-wrapper',
   templateUrl: './week-view.component.html',
-  styleUrls: ['week-view.component.css']
+  styleUrls: ['week-view.component.scss']
 })
 export class WeekViewComponent {
   title = 'salut';
