@@ -6,9 +6,7 @@
         <button (click)="nextWeek()" mat-button>NEXT</button>
       </mat-card-actions>
     </div>
-    <h1> {{ datePicker }} - {{ lastDay | date:"y" }}
-
-      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <h1 (click)="picker.open()"> {{ datePicker }} - {{ lastDay | date:"y" }}
       <mat-form-field class="hidden">
         <input (dateInput)="addEvent($event)" ng-model="selectedDateModel" matInput [matDatepicker]="picker" placeholder="Choose a date">
         <mat-datepicker #picker></mat-datepicker>
