@@ -1,16 +1,18 @@
 <mat-card>
-  <form class="login-form">
-    <div class="login-container">
-      <mat-form-field>
-        <input matInput placeholder="Enter your email" [formControl]="email" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-      </mat-form-field>
-      <mat-form-field>
-        <input matInput placeholder="Enter your password" [type]="hide ? 'password' : 'text'">
-        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
-      </mat-form-field>
+  <form class="login-form" fxLayout="column" fxFlex="grow" fxLayoutAlign="center">
+    <mat-form-field>
+      <input matInput placeholder="Enter your email" [formControl]="email" type="email" required>
+      <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Enter your password" [formControl]="password" [type]="hide ? 'password' : 'text'" required>
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+      <mat-error *ngIf="password.invalid">You must enter a password</mat-error>
+
+    </mat-form-field>
+    <div class="form-actions">
+      <button mat-button>Cancel</button>
+      <button mat-button color="primary">Login</button>
     </div>
-    <button mat-button>Cancel</button>
-    <button mat-button color="primary">Login</button>
   </form>
 </mat-card>
