@@ -2,3 +2,7 @@
   text-align: center;
   margin-top: 6em;
 }
+mat-card {
+  max-width: 300px;
+  margin-top: 5em;
+}
