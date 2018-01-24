@@ -5,7 +5,7 @@ import { Moment } from 'moment';
 @Component({
   selector: 'day-comp',
   templateUrl: './day.component.html',
-  styleUrls: ['./day.component.css']
+  styleUrls: ['./day.component.scss']
 })
 export class DayComponent {
   @Input() inputDay: Moment;

@@ -1,6 +1,45 @@
 {{title}}
-<mat-card class="container">
+<mat-card fxLayout="row" fxLayoutAlign="space-between start" class="container">
 
+<<<<<<< HEAD
+    <mat-card-title>
+        <span class="week-day">{{inputDay |date:"EEE "}}</span>
+        <br>
+        <span class="month-day">{{inputDay |date:"dd MMM"}}</span>
+    </mat-card-title>
+
+    <mat-card-content fxLayout="row" fxLayout.sm="column" fxLayoutAlign="space-evenly center" fxLayoutWrap>
+        <slot [user]="subscribers.alocated[0]"></slot>
+        <slot [user]="subscribers.alocated[1]"></slot>
+        <slot [user]="subscribers.alocated[2]"></slot>
+        <div class="others">
+            <p>And {{othersNumber}} others...</p>
+            <ul class="dropdown">
+                <li *ngFor='let other of subscribers.others'>
+                    {{other.name}}
+                </li>
+
+            </ul>
+        </div>
+
+    </mat-card-content>
+
+    <div class="parking-buttons">
+        <div *ngIf="subscribeBtnState" fxLayout="row" fxLayoutAlign="center none" class="btn-group">
+            <button class="btn btn-text" (click)="subscribeBtn()">Park</button>
+            <button class="btn btn-select" [matMenuTriggerFor]="menu">
+                <i class="material-icons down-arrow">arrow_drop_down</i>
+            </button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item>Park Underground</button>
+                <button mat-menu-item>Park Outside</button>
+            </mat-menu>
+        </div>
+        <button *ngIf="unsubscribeBtnState" (click)="unsubscribeBtn()">Cancel</button>
+
+    </div>
+</mat-card>
+=======
   <mat-card-title class="inline">
     <span class="week-day">{{inputDay |date:"EEEE "}}</span>
     <br>
@@ -38,3 +77,4 @@
 
   </mat-card-actions>
 </mat-card>
+>>>>>>> origin/dev-alexbinti
