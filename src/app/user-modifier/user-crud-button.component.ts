@@ -1,7 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { DialogWrapper } from './dialog-wrapper.component';
-import { UserModifierForm } from './edit-user-form.component';
 import 'rxjs/add/operator/filter';
 import { EventEmitter } from '@angular/core';
 
