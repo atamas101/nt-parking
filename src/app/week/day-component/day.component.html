@@ -1,13 +1,16 @@
-<mat-card fxLayout="row" fxLayoutAlign="space-between start" class="container">
+<mat-card class="day-card" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutAlign.xs="space-evenly center"
+  class="container">
 
   <mat-card-title>
-    <span class="week-day">{{inputDay |date:"EEE "}}</span>
-    <br>
-    <span class="month-day">{{inputDay |date:"dd MMM"}}</span>
-
+    <time ngClass.gt-xs="date-widget" ngClass.xs="extra-small">
+      <span class="day-of-week">{{inputDay |date:"EEE "}}</span>
+      <span class="month">{{inputDay |date:" MMM"}}</span>
+      <span class="day-of-month">{{inputDay |date:"dd"}}</span>
+    </time>
   </mat-card-title>
 
-  <mat-card-content fxLayout="row" fxLayout.sm="column" fxLayoutAlign="space-evenly center" fxLayoutWrap>
+  <mat-card-content fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly center" fxLayoutAlign.lt-md="space-around center"
+    fxLayoutWrap>
     <slot [user]="subscribers.alocated[0]"></slot>
     <slot [user]="subscribers.alocated[1]"></slot>
     <slot [user]="subscribers.alocated[2]"></slot>
@@ -34,7 +37,7 @@
         <button mat-menu-item>Park Outside</button>
       </mat-menu>
     </div>
-    <button *ngIf="unsubscribeBtnState" (click)="unsubscribeBtn()">Cancel</button>
+    <button *ngIf="unsubscribeBtnState" class="btn btn-text btn-cancel" (click)="unsubscribeBtn()">Cancel</button>
 
   </div>
 </mat-card>
