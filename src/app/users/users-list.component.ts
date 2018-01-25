@@ -25,7 +25,9 @@ export class UsersComponent implements OnInit {
   //constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
+    this.usersList = new MatTableDataSource<IUsers>(
+      this.users.getHardcodedUsers()
+    );
   }
   // ngOnInit() {
   //   this.users.getUsers().subscribe((data) => {
