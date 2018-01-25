@@ -6,12 +6,13 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  hide = true;
+  public hide = true;
+  public email = new FormControl('', [Validators.required, Validators.email]);
+  public password = new FormControl('', [Validators.required]);
 
-  email = new FormControl('', [Validators.required, Validators.email]);
   getErrorMessage() {
     return this.email.hasError('required')
-      ? 'You must enter a value'
+      ? 'You must enter an email address'
       : this.email.hasError('email') ? 'Not a valid email' : '';
   }
 }

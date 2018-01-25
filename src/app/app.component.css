@@ -9,7 +9,7 @@ mat-sidenav {
   margin-top: 13px;
 }
 .mat-drawer-container {
-  min-height: 650px;
+  min-height: 500px;
 }
 .material-icons {
   cursor: pointer;

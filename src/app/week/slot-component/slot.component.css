@@ -1,11 +1,10 @@
 .slot {
   background: #76b3fa;
-  border-radius: 30px;
-  padding: 10px 30px;
+  border-radius: 5px;
+  padding: 10px 10px;
   color: #fff;
-  font-size: 1.45em;
-  margin: 0 10px;
-  width: auto;
-  display: inline-block;
+  margin-right: 15px;
+  font-size: 1.2em;
   text-align: center;
+  min-width: 170px;
 }
