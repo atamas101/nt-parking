@@ -24,14 +24,18 @@ export class AuthenticationService {
         if (resp) {
           this.currentUser = <IUsers>resp.json().user;
         }
+
+        console.log(this.currentUser);
       })
       .catch(error => {
         return Observable.of(false);
       });
   }
-  //isAdmin
-  //isAuth
+
   isAuthenticated() {
     return !!this.currentUser;
+  }
+  isAdmin() {
+    return !!this.isAdmin;
   }
 }

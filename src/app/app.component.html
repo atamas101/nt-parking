@@ -1,5 +1,5 @@
 <p [routerLink]="['login']" mat-button>
-  <button mat-button class="login-button">Login</button>
+  <button [hidden]="auth.isAuthenticated()" mat-button class="login-button">Login</button>
 </p>
 <mat-toolbar color="primary">
   <i class="material-icons" (click)="sidenav.toggle()">menu</i>

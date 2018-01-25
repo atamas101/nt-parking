@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from './auth.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -10,7 +11,11 @@ export class LoginComponent {
   public hide = true;
   public email = new FormControl('', [Validators.required, Validators.email]);
   public password = new FormControl('', [Validators.required]);
-  constructor(private authenticationService: AuthenticationService) {}
+  constructor(
+    private authenticationService: AuthenticationService,
+    private router: Router
+  ) {}
+
   getErrorMessage() {
     return this.email.hasError('required')
       ? 'You must enter an email address'
@@ -31,9 +36,11 @@ export class LoginComponent {
       .loginUser(this.email.value, this.password.value)
       .subscribe(
         data => {
-          console.log('muuuu');
+          console.log(data);
+          this.router.navigate(['/week']);
         },
         error => {
+          console.log(error);
           this.loading = false;
         }
       );
