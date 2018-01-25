@@ -8,5 +8,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'week', component: WeekViewComponent },
   { path: 'users', component: UsersComponent },
-  { path: '', pathMatch: 'full', redirectTo: 'week' }
+  { path: '', pathMatch: 'full', redirectTo: 'login' }
 ];
