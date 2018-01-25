@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable';
 import { Component, NgModule, Input } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Moment } from 'moment';
-import { SubscribersService } from '../subscribers.service';
 
 @Component({
   selector: 'day-comp',

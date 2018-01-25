@@ -47,8 +47,8 @@ ul {
 .down-arrow {
   font-size: 10px;
 }
-time.icon {
-  font-size: 1em; /* change icon size */
+time.date-widget {
+  font-size: 1em; /* change date-widget size */
   display: block;
   position: relative;
   width: 7em;
@@ -86,6 +86,8 @@ time.icon {
     padding-top: 0.8em;
     color: #fd9f1b;
   }
+}
+.extra-small {
 }
 
 /* .subscribing-btn:hover,
