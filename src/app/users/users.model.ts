@@ -1,6 +1,7 @@
 export interface IUsers {
   id?: number;
-  lastName: string;
-  firstName: string;
+  name: string;
+  email: string;
   hireDate: Date;
+  admin?: boolean;
 }
