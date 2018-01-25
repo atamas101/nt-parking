@@ -9,7 +9,9 @@ import { IUsers } from '../users/users.model';
 @Injectable()
 export class AuthenticationService {
   constructor(private _http: Http) {}
+
   _url = 'http://localhost:7777/api/login';
+  public currentUser: IUsers;
 
   loginUser(email: string, password: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -20,11 +22,16 @@ export class AuthenticationService {
       .post(this._url, JSON.stringify(loginInfo), options)
       .do(resp => {
         if (resp) {
-          //this.currentUser = <IUsers>resp.json().user;
+          this.currentUser = <IUsers>resp.json().user;
         }
       })
       .catch(error => {
         return Observable.of(false);
       });
+  }
+  //isAdmin
+  //isAuth
+  isAuthenticated() {
+    return !!this.currentUser;
   }
 }
