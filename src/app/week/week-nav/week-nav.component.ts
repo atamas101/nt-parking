@@ -36,7 +36,6 @@ export class WeekNavComponent implements OnInit {
       .isoWeek(selectedWeek - 1)
       .toDate();
     this.refreshDate(this.selectedDate);
-    console.log(this.selectedDate);
   }
 
   refreshDate(newDate: Date) {
