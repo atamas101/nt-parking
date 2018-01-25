@@ -1,6 +1,9 @@
+import { SubscribersService } from './../subscribers.service';
+import { Observable } from 'rxjs/Observable';
 import { Component, NgModule, Input } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Moment } from 'moment';
+import { SubscribersService } from '../subscribers.service';
 
 @Component({
   selector: 'day-comp',
@@ -8,22 +11,12 @@ import { Moment } from 'moment';
   styleUrls: ['./day.component.scss']
 })
 export class DayComponent {
+  constructor(private SubscribersService: SubscribersService) {}
   @Input() inputDay: Moment;
-
+  public subscribers = this.SubscribersService.subscribers;
   subscribeBtnState: boolean = true;
   unsubscribeBtnState: boolean = false;
-  public subscribers = {
-    alocated: [
-      { name: 'Bintintan Alexandru', slot: 's1' },
-      { name: 'Voicu Iulia', slot: 's2' },
-      { name: 'Popoviciu Sebastian', slot: 's3' }
-    ],
-    others: [
-      { name: 'Bintintan Alexandru', slot: 's1' },
-      { name: 'Voicu Iulia', slot: 's2' },
-      { name: 'Popoviciu Sebastian', slot: 's3' }
-    ]
-  };
+
   othersNumber = this.subscribers.others.length;
 
   subscribeBtn() {
