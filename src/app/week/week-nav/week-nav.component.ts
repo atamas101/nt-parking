@@ -55,17 +55,6 @@ export class WeekNavComponent implements OnInit {
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
     const date = event.value;
-
-    // console.log('selected date', date);
-    // console.log('selected week', moment(date).isoWeek());
-    // console.log('this week', moment().isoWeek());
-
-    // console.log('selected Monday', moment(date).isoWeekday(1));
-    // console.log('selected Tuesday', moment(date).isoWeekday(2));
-    // console.log('selected wed', moment(date).isoWeekday(3));
-    // console.log('selected thur', moment(date).isoWeekday(4));
-    // console.log('selected fri', moment(date).isoWeekday(4));
-
     this.selectedDate = date;
     this.refreshDate(date);
   }
