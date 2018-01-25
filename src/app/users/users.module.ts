@@ -17,7 +17,6 @@ import { HttpModule } from '@angular/http';
     UsersComponent,
     UserCrudBtn,
     DialogWrapper,
-
     PaginationComponent
   ],
   exports: [UsersComponent, UserCrudBtn, DialogWrapper, PaginationComponent],

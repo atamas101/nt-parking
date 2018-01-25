@@ -24,7 +24,10 @@ export class DialogWrapper {
 
   ngOnInit() {
     this.hireDate = new FormControl(this.data.hireDate, Validators.required);
-    this.email = new FormControl(this.data.email, Validators.required);
+    this.email = new FormControl(this.data.email, [
+      Validators.required,
+      Validators.email
+    ]);
     this.name = new FormControl(this.data.name, Validators.required);
     this.password = new FormControl(this.data.password, Validators.required);
     this.confirmPasswd = new FormControl(this.data.confirmPasswd, [
