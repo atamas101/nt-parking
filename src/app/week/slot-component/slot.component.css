@@ -1,9 +1,10 @@
 .slot {
-  background: #76b3fa;
+  background: black;
   border-radius: 5px;
   padding: 10px 10px;
   color: #fff;
   margin-right: 15px;
+  margin-bottom: 10px;
   font-size: 1.2em;
   text-align: center;
   min-width: 170px;

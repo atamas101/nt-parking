@@ -14,7 +14,8 @@ ul {
   }
   &:hover ul.dropdown {
     display: block;
-    background-color: aliceblue;
+    background-color: #fd9f1b;
+    color: white;
     padding-left: 10px;
   }
 }
@@ -38,8 +39,53 @@ ul {
   border: 1px solid rgb(37, 26, 26);
   color: white;
 }
+.btn-cancel {
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  min-width: 84px;
+}
 .down-arrow {
   font-size: 10px;
+}
+time.icon {
+  font-size: 1em; /* change icon size */
+  display: block;
+  position: relative;
+  width: 7em;
+  height: 7em;
+  background-color: black;
+  border-radius: 0.6em;
+  overflow: hidden;
+  width: 7em;
+  height: 7em;
+  & * {
+    display: block;
+    width: 100%;
+    font-size: 1em;
+    font-weight: bold;
+    font-style: normal;
+    text-align: center;
+  }
+  .month {
+    position: absolute;
+    top: 0;
+    padding: 0.4em 0;
+    color: #fff;
+    background-color: #fd9f1b;
+    border-bottom: 1px dashed #f37302;
+    box-shadow: 0 2px 0 #fd9f1b;
+  }
+  .day-of-week {
+    position: absolute;
+    bottom: 0.3em;
+    color: #fd9f1b;
+  }
+  .day-of-month {
+    font-size: 2.8em;
+    letter-spacing: -0.05em;
+    padding-top: 0.8em;
+    color: #fd9f1b;
+  }
 }
 
 /* .subscribing-btn:hover,
