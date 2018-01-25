@@ -10,7 +10,7 @@
         <i class="material-icons pointer">event_note</i>
       </div>
       <mat-form-field class="hidden">
-        <input (dateInput)="addEvent($event)" ng-model="selectedDateModel" matInput [matDatepicker]="picker" placeholder="Choose a date"
+        <input (dateInput)="addEvent($event)" [ngModel]="selectedDate" matInput [matDatepicker]="picker" placeholder="Choose a date"
         />
         <mat-datepicker #picker></mat-datepicker>
         <mat-datepicker touchUi="true" #picker></mat-datepicker>
@@ -26,6 +26,4 @@
 
   </mat-card-content>
 
-
-  <div *ngFor="let e of selectedDateModel"> {{ e }}</div>
 </mat-card>
