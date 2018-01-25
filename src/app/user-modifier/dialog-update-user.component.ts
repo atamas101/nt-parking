@@ -5,9 +5,9 @@ import { UsersService } from '../users/users.service';
 import { pswdEquality } from '../shared/pswd-fields.validator';
 @Component({
   selector: 'dialog-content',
-  templateUrl: './dialog-wrapper.html'
+  templateUrl: './dialog-update-user.html'
 })
-export class DialogWrapper {
+export class UpdateUserComponent {
   userModifyForm: FormGroup;
   hireDate: FormControl;
   email: FormControl;
@@ -16,7 +16,7 @@ export class DialogWrapper {
   confirmPasswd: FormControl;
 
   constructor(
-    public dialogRef: MatDialogRef<DialogWrapper>,
+    public dialogRef: MatDialogRef<UpdateUserComponent>,
     @Inject(MAT_DIALOG_DATA)
     public data: any = { hireDate: '', email: '', name: '' },
     private _usersService: UsersService
@@ -30,9 +30,12 @@ export class DialogWrapper {
     ]);
     this.name = new FormControl(this.data.name, Validators.required);
     this.password = new FormControl(this.data.password, Validators.required);
+
+    let passwdField = this.password;
+
     this.confirmPasswd = new FormControl(this.data.confirmPasswd, [
       Validators.required,
-      pswdEquality(this.password)
+      pswdEquality(passwdField)
     ]);
 
     this.userModifyForm = new FormGroup({
@@ -40,7 +43,7 @@ export class DialogWrapper {
       email: this.email,
       name: this.name,
       password: this.password,
-      confirmPasswd: this.password
+      confirmPasswd: this.confirmPasswd
     });
   }
   getUsersFromServer() {

@@ -30,7 +30,7 @@
     </form>
 
     <div>
-        <button type="submit" [disabled]='userModifyForm.invalid' (click)="postToServer()" mat-button>Wrapper OK</button>
+        <button type="submit" [disabled]='userModifyForm.invalid' (click)="postToServer()" mat-button>Submit</button>
         <button mat-button (click)='onCancel()'>Wrapper Cancel</button>
         <button mat-button (click)='getUsersFromServer()'>GET USERS FROM SERVER</button>
     </div>

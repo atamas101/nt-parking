@@ -1,6 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { DialogWrapper } from './dialog-wrapper.component';
+import { UpdateUserComponent } from './dialog-update-user.component';
 import 'rxjs/add/operator/filter';
 import { EventEmitter } from '@angular/core';
 
@@ -16,7 +16,7 @@ export class UserCrudBtn {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(DialogWrapper, {
+    let dialogRef = this.dialog.open(UpdateUserComponent, {
       width: '50vw',
       data: this.selectedUser ? this.selectedUser : {}
     });
