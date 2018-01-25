@@ -10,4 +10,8 @@ h2 {
 }
 .size {
   font-size: 50px;
+  cursor: pointer;
+}
+.pointer {
+  cursor: pointer;
 }
