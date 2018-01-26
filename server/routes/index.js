@@ -9,25 +9,26 @@ const { catchErrors } = require('../handlers/errorHandlers');
 // 2. register the user
 router.post(
   '/user/register',
+  // authController.isLoggedIn,
   userController.validateRegister,
   catchErrors(userController.register)
 );
 
 router.get(
   '/users',
-  authController.isLoggedIn,
+  // authController.isLoggedIn,
   catchErrors(userController.getUsers)
 );
 
 router.post(
   '/user/:id',
-  authController.isAdmin,
+  // authController.isAdmin,
   catchErrors(userController.updateUser)
 );
 
 router.delete(
   '/user/:id',
-  authController.isAdmin,
+  // authController.isAdmin,
   catchErrors(userController.deleteUser)
 );
 
