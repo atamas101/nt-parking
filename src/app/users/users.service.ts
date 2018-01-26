@@ -12,7 +12,8 @@ export class UsersService {
 
   constructor(private _http: Http) {}
 
-  private handleError(error: Response) {
+  handleError(error: Response) {
+    console.log('I caught a fish:', error);
     return Observable.throw(error.statusText);
   }
 

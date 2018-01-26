@@ -25,7 +25,10 @@ export class UserCrudBtn {
       .afterClosed()
       .filter(rez => rez)
       .subscribe(result => {
-        console.log('The dialog was closed and fotrm data is in the result');
+        console.log(
+          'The dialog was closed and fotrm data is in the result',
+          result
+        );
         this.deliverUpdatedUser.emit(result);
       });
   }

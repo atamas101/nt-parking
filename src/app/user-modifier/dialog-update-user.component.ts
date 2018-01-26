@@ -16,7 +16,8 @@ export class UpdateUserComponent {
   name: FormControl;
   password: FormControl;
   confirmPasswd: FormControl;
-  public usersArr;
+  errors: any;
+
   constructor(
     public dialogRef: MatDialogRef<UpdateUserComponent>,
     @Inject(MAT_DIALOG_DATA)
@@ -25,12 +26,14 @@ export class UpdateUserComponent {
       _id: '',
       hireDate: '',
       email: '',
-      name: ''
+      name: '',
+      'password-confirm': ''
     },
     private _usersService: UsersService
   ) {}
 
   ngOnInit() {
+    // this.errors = this._usersService.handleError():
     this.hireDate = new FormControl(this.data.hireDate, Validators.required);
     this.email = new FormControl(this.data.email, [
       Validators.required,
@@ -41,7 +44,7 @@ export class UpdateUserComponent {
 
     let passwdField = this.password;
 
-    this.confirmPasswd = new FormControl(this.data.confirmPasswd, [
+    this['password-confirm'] = new FormControl('', [
       Validators.required,
       pswdEquality(passwdField)
     ]);
@@ -51,15 +54,16 @@ export class UpdateUserComponent {
       email: this.email,
       name: this.name,
       password: this.password,
-      confirmPasswd: this.confirmPasswd
+      'password-confirm': this['password-confirm']
     });
   }
 
   postToServer() {
     let newUser = Object.assign(this.data, this.userModifyForm.value);
-    console.log(newUser);
-    this.dialogRef.close(
-      this._usersService.addEditUser(newUser).subscribe(response => response)
+
+    this._usersService.addEditUser(newUser).subscribe(response =>
+      // console.log('response', response);
+      this.dialogRef.close(response)
     );
   }
 
