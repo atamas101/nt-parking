@@ -1,6 +1,5 @@
 <div mat-dialog-title>Add / Edit User</div>
 <div mat-dialog-content>
-    <div>ADD CUSTOM VALIDATOR TO CHECK PASWD === CONFIRMPASSWD</div>
 
     <form [formGroup]="userModifyForm" class='example-form' novalidate>
         <mat-form-field class='example-full-width'>
@@ -16,26 +15,20 @@
             <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>
-        <div>
-            <mat-form-field class='example-full-width'>
-                <input matInput formControlName="password" placeholder='Password' required>
-            </mat-form-field>
-        </div>
 
-        <div>
-            <mat-form-field class='example-full-width'>
-                <input matInput formControlName="confirmPasswd" placeholder='Please confirm password' required>
-            </mat-form-field>
-        </div>
+        <mat-form-field class='example-full-width'>
+            <input matInput formControlName="password" placeholder='Password' required>
+        </mat-form-field>
+
+
+        <mat-form-field class='example-full-width'>
+            <input matInput formControlName="confirmPasswd" placeholder='Please confirm password' required>
+        </mat-form-field>
+
     </form>
 
     <div>
         <button type="submit" [disabled]='userModifyForm.invalid' (click)="postToServer()" mat-button>Submit</button>
-        <button mat-button (click)='onCancel()'>Wrapper Cancel</button>
-        <button mat-button (click)='getUsersFromServer()'>GET USERS FROM SERVER</button>
+        <button mat-button (click)='onCancel()'>Cancel</button>
     </div>
 </div>
-
-
-<!-- <user-modifier-form (formValidator)='validateOkBtn($event)' (closeDialogConfirmation)="closeDialog($event)" [userToEdit]='data'
-        [parentOkBtn]='inputToChild'></user-modifier-form> -->

@@ -3,9 +3,11 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../users/users.service';
 import { pswdEquality } from '../shared/pswd-fields.validator';
+import { IUsers } from '../users/users.model';
 @Component({
   selector: 'dialog-content',
-  templateUrl: './dialog-update-user.html'
+  templateUrl: './dialog-update-user.html',
+  styles: ['mat-form-field {display: block}']
 })
 export class UpdateUserComponent {
   userModifyForm: FormGroup;
@@ -14,11 +16,17 @@ export class UpdateUserComponent {
   name: FormControl;
   password: FormControl;
   confirmPasswd: FormControl;
-
+  public usersArr;
   constructor(
     public dialogRef: MatDialogRef<UpdateUserComponent>,
     @Inject(MAT_DIALOG_DATA)
-    public data: any = { hireDate: '', email: '', name: '' },
+    public data: any = {
+      admin: '',
+      _id: '',
+      hireDate: '',
+      email: '',
+      name: ''
+    },
     private _usersService: UsersService
   ) {}
 
@@ -46,13 +54,13 @@ export class UpdateUserComponent {
       confirmPasswd: this.confirmPasswd
     });
   }
-  getUsersFromServer() {
-    let usersArr = this._usersService.getUsers().subscribe();
-    console.log('GET users server reponse : ', usersArr);
-  }
+
   postToServer() {
-    let newUser = this.userModifyForm.value;
-    this.dialogRef.close(this._usersService.editUser(newUser));
+    let newUser = Object.assign(this.data, this.userModifyForm.value);
+    console.log(newUser);
+    this.dialogRef.close(
+      this._usersService.addEditUser(newUser).subscribe(response => response)
+    );
   }
 
   onCancel() {

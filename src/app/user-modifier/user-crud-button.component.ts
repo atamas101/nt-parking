@@ -26,8 +26,6 @@ export class UserCrudBtn {
       .filter(rez => rez)
       .subscribe(result => {
         console.log('The dialog was closed and fotrm data is in the result');
-        // this.newUser = result;
-        // console.log(this.newUser);
         this.deliverUpdatedUser.emit(result);
       });
   }
