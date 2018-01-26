@@ -17,22 +17,15 @@ import {
 })
 export class UsersComponent implements OnInit {
   public usersList: any;
-  displayedColumns = ['name', 'email', 'hireDate', 'edit'];
+  displayedColumns = ['name', 'hireDate', 'email', 'edit'];
   errorMessage: String;
   @ViewChild(MatSort) sort: MatSort;
-
   constructor(private users: UsersService) {}
-  //constructor(private http: HttpClient) {}
 
-  // ngOnInit() {
-  //   this.usersList = new MatTableDataSource<IUsers>(
-  //     this.users.getHardcodedUsers()
-  //   );
-  // }
   ngOnInit() {
-    this.users.getUsers().subscribe(data => {
-      console.log(data);
-      this.usersList = data;
+    this.usersList = new MatTableDataSource<IUsers>();
+    this.users.getUsers().subscribe(user => {
+      this.usersList.data = user;
     });
   }
 
@@ -46,8 +39,9 @@ export class UsersComponent implements OnInit {
     this.usersList.sort = this.sort;
   }
 
-  /* what dis does */
   addEditHandler(newUser) {
-    console.log(newUser, 'guhdkghdkg');
+    this.users.getUsers().subscribe(user => {
+      this.usersList.data = user;
+    });
   }
 }

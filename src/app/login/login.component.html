@@ -1,5 +1,5 @@
 <mat-card>
-  <form class="login-form" fxLayout="column" fxFlex="grow" fxLayoutAlign="center">
+  <form (ngSubmit)="loginUser()"class="login-form" fxLayout="column" fxFlex="grow" fxLayoutAlign="center">
     <mat-form-field>
       <input matInput placeholder="Enter your email" [formControl]="email" type="email" required>
       <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>

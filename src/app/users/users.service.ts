@@ -17,6 +17,7 @@ export class UsersService {
   }
 
   getUsers(): Observable<IUsers[]> {
+    /* GET */
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
     let getURL = `${this._url}users`;
@@ -35,83 +36,10 @@ export class UsersService {
     } else {
       postUrl = `${this._url}user/register`;
     }
-
+    console.log(postUrl);
     return this._http
       .post(postUrl, newUser)
       .map((response: Response) => response.json())
       .catch(this.handleError);
   }
 }
-
-// users: IUsers[] = [
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   },
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   },
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   },
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   },
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   },
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   },
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   },
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   },
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   },
-//   {
-//     admin: false,
-//     _id: 1,
-//     name: 'Popovici',
-//     hireDate: new Date(2017, 12, 12),
-//     email: 'sebi@yahoo.com'
-//   }
-// ];
