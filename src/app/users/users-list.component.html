@@ -26,6 +26,7 @@
             <mat-cell *matCellDef="let user"> {{user.hireDate | date}} </mat-cell>
         </ng-container>
 
+        <!-- Edit User Column -->
         <ng-container matColumnDef="edit">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Edit User </mat-header-cell>
             <mat-cell *matCellDef="let user">

@@ -20,27 +20,28 @@ export class UsersComponent implements OnInit {
   displayedColumns = ['name', 'hireDate', 'email', 'edit'];
   errorMessage: String;
   @ViewChild(MatSort) sort: MatSort;
-  private usersArr;
   constructor(private users: UsersService) {}
-  //constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.users.getUsers();
-    console.log(this.usersArr, 'uytgyutyrdtr');
-    //this.usersList = new MatTableDataSource<IUsers>(usersArr);
+    this.usersList = new MatTableDataSource<IUsers>();
+    this.users.getUsers().subscribe(user => {
+      this.usersList.data = user;
+    });
   }
 
-  // applyFilter(filterValue: string) {
-  //   filterValue = filterValue.trim();
-  //   filterValue = filterValue.toLowerCase();
-  //   this.usersList.filter = filterValue;
-  // }
+  applyFilter(filterValue: string) {
+    filterValue = filterValue.trim();
+    filterValue = filterValue.toLowerCase();
+    this.usersList.filter = filterValue;
+  }
 
-  // ngAfterViewInit() {
-  //   this.usersList.sort = this.sort;
-  // }
+  ngAfterViewInit() {
+    this.usersList.sort = this.sort;
+  }
 
-  // addEditHandler(newUser) {
-  //   this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
-  // }
+  addEditHandler(newUser) {
+    this.users.getUsers().subscribe(user => {
+      this.usersList.data = user;
+    });
+  }
 }
