@@ -1,13 +1,21 @@
 $day-color: #19b798;
-$day-bg-color: black;
+$day-bg-color: #26353c;
 $border-radius: 3px;
 
 ul {
   list-style: none;
 }
+.day-card {
+  margin-bottom: 5px;
+}
+.card-lt-md {
+  margin-bottom: 10px;
+}
 .others {
   position: relative;
   ul.dropdown {
+    margin-top: -5px;
+    border: 1px #1d2129 solid;
     min-width: 150px;
     display: none;
     position: absolute;
@@ -23,27 +31,29 @@ ul {
     padding: 10px 0px 10px 10px;
   }
 }
-.btn:first-child {
-  border-top-left-radius: $border-radius;
-  border-bottom-left-radius: $border-radius;
-  font-size: 12px;
-  height: 30px;
-  width: 60px;
-  background-color: rgb(37, 26, 26);
-  border: 1px solid rgb(37, 26, 26);
-  color: $day-color;
-  font-weight: bold;
-}
-.btn:nth-child(2) {
-  border-top-right-radius: $border-radius;
-  border-bottom-right-radius: $border-radius;
-  margin-left: 0;
-  height: 30px;
-  max-width: 30px;
-  background-color: rgb(37, 26, 26);
-  border: 1px solid rgb(37, 26, 26);
-  color: $day-color;
-  font-weight: bold;
+.btn {
+  &:first-child {
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+    font-size: 12px;
+    height: 30px;
+    width: 60px;
+    background-color: $day-bg-color;
+    border: 1px solid $day-bg-color*0.7;
+    color: $day-color;
+    font-weight: bold;
+  }
+  &:nth-child(2) {
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
+    margin-left: 0;
+    height: 30px;
+    max-width: 30px;
+    background-color: $day-bg-color;
+    border: 1px solid $day-bg-color*0.7;
+    color: $day-color;
+    font-weight: bold;
+  }
 }
 .btn-cancel {
   border-top-right-radius: $border-radius;
@@ -59,7 +69,7 @@ time.date-widget {
   position: relative;
   width: 3em;
   height: 3em;
-  background-color: black;
+  background-color: $day-bg-color;
   border-radius: 0.6em;
   overflow: hidden;
   & * {
@@ -94,7 +104,7 @@ time.date-widget {
 }
 .extra-small {
   display: inline-block;
-  font-size: 1.5em;
+  font-size: 1em;
 
   .day-of-week {
     border-top-left-radius: 5px;
