@@ -15,9 +15,7 @@ export class WeekViewComponent {
     // console.log('Data from child: ', dataFromChild);
     // console.table(dataFromChild);
     // console.log(dataFromChild[0].isoWeek());
-    /*for (let i = 0; i < 6; i++) {
-      console.log(dataFromChild[i].isoWeekday());
-    }*/
+
     this.weekDays = dataFromChild;
   }
 }
