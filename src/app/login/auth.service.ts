@@ -6,12 +6,16 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/do';
 import { IUsers } from '../users/users.model';
+import { Router } from '@angular/router';
+
 @Injectable()
 export class AuthenticationService {
-  constructor(private _http: Http) {}
+  constructor(private _http: Http, private router: Router) {}
 
   _url = 'http://localhost:7777/api/login';
-  public currentUser: IUsers;
+  public currentUser: IUsers = !!localStorage.currentUser
+    ? JSON.parse(localStorage.currentUser)
+    : null;
 
   loginUser(email: string, password: string) {
     let headers = new Headers({ 'Content-Type': 'application/json' });
@@ -23,9 +27,8 @@ export class AuthenticationService {
       .do(resp => {
         if (resp) {
           this.currentUser = <IUsers>resp.json().user;
+          localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
         }
-
-        console.log(this.currentUser);
       })
       .catch(error => {
         return Observable.of(false);
@@ -35,7 +38,17 @@ export class AuthenticationService {
   isAuthenticated() {
     return !!this.currentUser;
   }
+
+  getCurrentUser() {
+    return this.currentUser;
+  }
+
   isAdmin() {
-    return !!this.isAdmin;
+    return this.isAuthenticated() && this.currentUser.admin;
+  }
+  logout() {
+    this.currentUser = undefined;
+    localStorage.removeItem('currentUser');
+    this.router.navigate(['/login']);
   }
 }

@@ -11,6 +11,7 @@ import { RouterModule } from '@angular/router';
 import { UsersModule } from './users/users.module';
 import { WeekModule } from './week/week.module';
 import { AuthenticationService } from './login/auth.service';
+import { AuthGuard } from './login/auth-guard.service';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
 
@@ -24,7 +25,7 @@ import { AuthenticationService } from './login/auth.service';
     WeekModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [AuthenticationService],
+  providers: [AuthenticationService, AuthGuard],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })

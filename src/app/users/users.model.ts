@@ -3,4 +3,5 @@ export interface IUsers {
   lastName: string;
   firstName: string;
   hireDate: Date;
+  admin: Boolean;
 }

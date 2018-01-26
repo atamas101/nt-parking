@@ -1,9 +1,10 @@
 <p [routerLink]="['login']" mat-button>
-  <button [hidden]="auth.isAuthenticated()" mat-button class="login-button">Login</button>
+  <button *ngIf="!auth.isAuthenticated()" mat-button class="login-button">Login</button>
+  <button *ngIf="auth.isAuthenticated()" (click)="auth.logout()" mat-button class="logout-button">Logout</button>
 </p>
 <mat-toolbar color="primary">
   <i class="material-icons" (click)="sidenav.toggle()">menu</i>
-  <p class="logo">NextTech</p>
+  <img class="logo" src=".\assets\img\nexttech_logo.png">
 </mat-toolbar>
 
 <mat-sidenav-container class="sidenav-container">
