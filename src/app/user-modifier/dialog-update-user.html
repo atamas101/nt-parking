@@ -1,0 +1,35 @@
+<div mat-dialog-title>Add / Edit User</div>
+<div mat-dialog-content>
+
+    <form [formGroup]="userModifyForm" class='example-form' novalidate>
+        <mat-form-field class='example-full-width'>
+            <input matInput type="email" formControlName="email" placeholder='Email' required>
+        </mat-form-field>
+
+        <mat-form-field class='example-full-width'>
+            <input matInput formControlName="name" placeholder='Full Name' required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input matInput formControlName="hireDate" [matDatepicker]='picker' placeholder='Hire Date' required>
+            <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field class='example-full-width'>
+            <input matInput formControlName="password" placeholder='Password' required>
+        </mat-form-field>
+
+
+        <mat-form-field class='example-full-width'>
+            <input matInput formControlName="password-confirm" placeholder='Please confirm password' required>
+        </mat-form-field>
+
+        <!-- {{errors | async }} -->
+    </form>
+
+    <div>
+        <button type="submit" [disabled]='userModifyForm.invalid' (click)="postToServer()" mat-button>Submit</button>
+        <button mat-button (click)='onCancel()'>Cancel</button>
+    </div>
+</div>

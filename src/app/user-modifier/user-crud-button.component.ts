@@ -1,6 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
 import { MatDialog } from '@angular/material';
-import { DialogWrapper } from './dialog-wrapper.component';
+import { UpdateUserComponent } from './dialog-update-user.component';
 import 'rxjs/add/operator/filter';
 import { EventEmitter } from '@angular/core';
 
@@ -16,7 +16,7 @@ export class UserCrudBtn {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(DialogWrapper, {
+    let dialogRef = this.dialog.open(UpdateUserComponent, {
       width: '50vw',
       data: this.selectedUser ? this.selectedUser : {}
     });
@@ -25,9 +25,10 @@ export class UserCrudBtn {
       .afterClosed()
       .filter(rez => rez)
       .subscribe(result => {
-        console.log('The dialog was closed and fotrm data is in the result');
-        // this.newUser = result;
-        // console.log(this.newUser);
+        console.log(
+          'The dialog was closed and fotrm data is in the result',
+          result
+        );
         this.deliverUpdatedUser.emit(result);
       });
   }
