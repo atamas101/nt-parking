@@ -1,5 +1,5 @@
-<mat-card class="day-card" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start" fxLayoutAlign.xs="space-evenly center"
-  class="container">
+<mat-card ngClass.md="day-card" ngClass.lt-md="card-lt-md" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start"
+  fxLayoutAlign.xs="space-evenly center">
 
   <mat-card-title>
     <time ngClass.gt-xs="date-widget" ngClass.xs="extra-small">
@@ -9,7 +9,7 @@
     </time>
   </mat-card-title>
 
-  <mat-card-content fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign="space-evenly center" fxLayoutAlign.lt-md="space-around center"
+  <mat-card-content fxLayout.md="row" fxLayout.lt-md="column" fxLayoutAlign.md="space-evenly center" fxLayoutAlign.lt-md="space-around center"
     fxLayoutWrap>
     <slot [user]="subscribers.alocated[0]"></slot>
     <slot [user]="subscribers.alocated[1]"></slot>
@@ -28,16 +28,16 @@
 
   <div class="parking-buttons">
     <div *ngIf="subscribeBtnState" fxLayout="row" fxLayoutAlign="center none" class="btn-group">
-      <button class="btn btn-text" (click)="subscribeBtn()">Park</button>
+      <button class="btn btn-text" (click)="subscribeBtnToggle()">Park</button>
       <button class="btn btn-select" [matMenuTriggerFor]="menu">
         <i class="material-icons down-arrow">arrow_drop_down</i>
       </button>
       <mat-menu #menu="matMenu">
-        <button mat-menu-item>Park Underground</button>
-        <button mat-menu-item>Park Outside</button>
+        <button mat-menu-item (click)="subscribeBtnToggle('jos')">Park Underground</button>
+        <button mat-menu-item (click)="subscribeBtnToggle('sus')">Park Outside</button>
       </mat-menu>
     </div>
-    <button *ngIf="unsubscribeBtnState" class="btn btn-text btn-cancel" (click)="unsubscribeBtn()">Cancel</button>
+    <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle()">Cancel</button>
 
   </div>
 </mat-card>
