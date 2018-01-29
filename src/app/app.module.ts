@@ -10,6 +10,8 @@ import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { UsersModule } from './users/users.module';
 import { WeekModule } from './week/week.module';
+import { AuthenticationService } from './login/auth.service';
+import { AuthGuard } from './login/auth-guard.service';
 @NgModule({
   declarations: [AppComponent, LoginComponent],
 
@@ -23,7 +25,7 @@ import { WeekModule } from './week/week.module';
     WeekModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [AuthenticationService, AuthGuard],
   bootstrap: [AppComponent],
   exports: [RouterModule]
 })

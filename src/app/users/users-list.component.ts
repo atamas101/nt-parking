@@ -17,22 +17,17 @@ import {
 })
 export class UsersComponent implements OnInit {
   public usersList: any;
-  displayedColumns = ['id', 'lastName', 'firstName', 'hireDate', 'edit'];
+  displayedColumns = ['name', 'hireDate', 'email', 'edit'];
   errorMessage: String;
   @ViewChild(MatSort) sort: MatSort;
-
   constructor(private users: UsersService) {}
-  //constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
+    this.usersList = new MatTableDataSource<IUsers>();
+    this.users.getUsers().subscribe(user => {
+      this.usersList.data = user;
+    });
   }
-  // ngOnInit() {
-  //   this.users.getUsers().subscribe((data) => {
-  //     console.log(data);
-  //     this.usersList = data;
-  //   });
-  // }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -45,6 +40,9 @@ export class UsersComponent implements OnInit {
   }
 
   addEditHandler(newUser) {
-    this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
+    console.log('From user list', newUser);
+    this.users.getUsers().subscribe(user => {
+      this.usersList.data = user;
+    });
   }
 }
