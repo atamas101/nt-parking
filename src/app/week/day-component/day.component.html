@@ -28,7 +28,7 @@
 
   <div class="parking-buttons">
     <div *ngIf="subscribeBtnState" fxLayout="row" fxLayoutAlign="center none" class="btn-group">
-      <button class="btn btn-text" (click)="subscribeBtnToggle()">Park</button>
+      <button class="btn btn-text" (click)="subscribeBtnToggle()" value="{{inputDay}}">Park</button>
       <button class="btn btn-select" [matMenuTriggerFor]="menu">
         <i class="material-icons down-arrow">arrow_drop_down</i>
       </button>
