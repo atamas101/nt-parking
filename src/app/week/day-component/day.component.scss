@@ -1,3 +1,5 @@
+@import '../../shared/styles/_variables.scss';
+
 $day-color: #19b798;
 $day-bg-color: #26353c;
 $border-radius: 3px;
@@ -7,6 +9,8 @@ ul {
 }
 .day-card {
   margin: 10px 0;
+
+  background: $ntGreen !important;
 }
 .card-lt-md {
   margin-bottom: 10px;

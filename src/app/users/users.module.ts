@@ -5,7 +5,7 @@ import { NtmaterialModule } from '../ntmaterial/ntmaterial.module';
 
 import { UsersComponent } from './users-list.component';
 import { UsersService } from './users.service';
-import { PaginationComponent } from '../shared/pagination.component';
+import { PaginationComponent } from '../shared/components/pagination/pagination.component';
 
 import { UserCrudBtn } from '../user-modifier/user-crud-button.component';
 import { UpdateUserComponent } from '../user-modifier/dialog-update-user.component';

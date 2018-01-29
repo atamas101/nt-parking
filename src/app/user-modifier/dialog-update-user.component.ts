@@ -2,7 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../users/users.service';
-import { pswdEquality } from '../shared/pswd-fields.validator';
+import { pswdEquality } from '../shared/validators/pswd-fields.validator';
 import { IUsers } from '../users/users.model';
 @Component({
   selector: 'dialog-content',
