@@ -8,7 +8,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const promisify = require('es6-promisify');
 const expressValidator = require('express-validator');
-const apiRoutes = require('./routes/index');
+const apiRoutes = require('./app.routes');
 const errorHandlers = require('./handlers/errorHandlers');
 require('./handlers/passport');
 
