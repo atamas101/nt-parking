@@ -9,25 +9,31 @@ import {
 } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { Moment } from 'moment';
+import * as moment from 'moment';
+import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 
 @Component({
   selector: 'day-comp',
   templateUrl: './day.component.html',
   styleUrls: ['./day.component.scss']
 })
-export class DayComponent {
-  constructor(private SubscribersService: SubscribersService) {}
-
+export class DayComponent implements OnInit {
+  constructor(private _subscribersService: SubscribersService) {}
   @Input() inputDay: Moment;
-  @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
+  // @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  public subscribers = this.SubscribersService.subscribers;
+  othersNumber: number;
+  subscribers;
   subscribeBtnState: boolean = true;
 
-  othersNumber = this.subscribers.others.length;
+  ngOnInit() {
+    this.subscribers = this._subscribersService.getSubscribers();
+    this.othersNumber = this.subscribers.others.length;
+  }
 
   subscribeBtnToggle(parkLocation) {
     this.subscribeBtnState = !this.subscribeBtnState;
     console.log('subscribe:', this.subscribeBtnState, 'location', parkLocation);
+    console.log(moment(this.inputDay).toDate());
   }
 }

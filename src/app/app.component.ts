@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
@@ -6,9 +6,9 @@ import { AuthenticationService } from './login/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnDestroy {
   public mode = 'side';
 
   watcher: Subscription;
@@ -23,11 +23,15 @@ export class AppComponent {
     });
   }
 
+  public isLoggedIn() {
+    return this.auth.isAuthenticated();
+  }
+
   ngOnDestroy() {
     this.watcher.unsubscribe();
   }
 
-  switchSideNavMode(mode) {
+  public switchSideNavMode(mode) {
     this.mode = mode;
   }
 }

@@ -46,6 +46,7 @@ export class AuthenticationService {
   isAdmin() {
     return this.isAuthenticated() && this.currentUser.admin;
   }
+
   logout() {
     this.currentUser = undefined;
     localStorage.removeItem('currentUser');
