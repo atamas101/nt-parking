@@ -7,11 +7,7 @@ import { IUsers } from '../users/users.model';
 @Component({
   selector: 'dialog-content',
   templateUrl: './dialog-update-user.html',
-  styles: [
-    'mat-form-field {display: block}',
-    '.dialogXs {width: 100vw}',
-    '.dialogDefault {width: 50vw}'
-  ]
+  styleUrls: ['./dialog-update-user.component.scss']
 })
 export class UpdateUserComponent {
   userModifyForm: FormGroup;

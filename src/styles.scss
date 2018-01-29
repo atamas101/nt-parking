@@ -1,4 +1,5 @@
 @import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+@import './app/shared/styles/_variables.scss';
 .logo {
   height: 60%;
 }
@@ -8,4 +9,8 @@
 }
 .mat-sidenav-content {
   padding: 15px;
+}
+.mat-dialog-container {
+  padding: 20px;
+  background-color: $lightGray;
 }
