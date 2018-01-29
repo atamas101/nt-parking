@@ -1,12 +1,14 @@
-import { Component, ViewChild, Input } from '@angular/core';
+import { Component, ViewChild, Input, AfterViewInit } from '@angular/core';
 import { MatPaginator } from '@angular/material';
-import { UsersComponent } from '../users/users-list.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+
+// import { UsersComponent } from '../../../users/users-list.component';
+
 @Component({
   selector: 'list-pagination',
   templateUrl: './pagination.component.html'
 })
-export class PaginationComponent {
+export class PaginationComponent implements AfterViewInit {
   @Input() incomingList;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 

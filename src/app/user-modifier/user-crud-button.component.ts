@@ -19,7 +19,7 @@ export class UserCrudBtn {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(UpdateUserComponent, { 
+    let dialogRef = this.dialog.open(UpdateUserComponent, {
       // // MediaQuery activation changes
       // width: `${this.dialogWidth}vw`,
       data: this.selectedUser ? this.selectedUser : {}
@@ -36,25 +36,25 @@ export class UserCrudBtn {
         this.deliverUpdatedUser.emit(result);
       });
   }
-//   // MediaQuery activation changes
+  //   // MediaQuery activation changes
 
-//   public dialogWidth: number;
-//   watcher: Subscription;
-//   constructor(media: ObservableMedia, public dialog: MatDialog) {
-//     this.watcher = media.subscribe((change: MediaChange) => {
-//       if (change.mqAlias === 'xs') {
-//         console.log('dimensiune noua:', change.mqAlias);
-//         this.switchDialogWidth(100);
-//       } else {
-//         console.log('dimensiune noua:', change.mqAlias);
-//         this.switchDialogWidth(50);
-//       }
-//     });
-//   }
-//   ngOnDestroy() {
-//     this.watcher.unsubscribe();
-//   }
-//   switchDialogWidth(width) {
-//     this.dialogWidth = width;
-//   }
-// }
+  //   public dialogWidth: number;
+  //   watcher: Subscription;
+  //   constructor(media: ObservableMedia, public dialog: MatDialog) {
+  //     this.watcher = media.subscribe((change: MediaChange) => {
+  //       if (change.mqAlias === 'xs') {
+  //         console.log('dimensiune noua:', change.mqAlias);
+  //         this.switchDialogWidth(100);
+  //       } else {
+  //         console.log('dimensiune noua:', change.mqAlias);
+  //         this.switchDialogWidth(50);
+  //       }
+  //     });
+  //   }
+  //   ngOnDestroy() {
+  //     this.watcher.unsubscribe();
+  //   }
+  //   switchDialogWidth(width) {
+  //     this.dialogWidth = width;
+  //   }
+}
