@@ -1,12 +1,17 @@
 <!-- Filter -->
-<div>
-    <i class="material-icons search-button">search</i>
-    <div class="filter-header">
-        <mat-form-field>
-            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-        </mat-form-field>
+<div class="search-header">
+    <span>USERS</span>
+    <div class="filter-container">
+        <i class="material-icons search-button">search</i>
+        <div class="filter-header">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
     </div>
 </div>
+
+
 <div class="list-container mat-elevation-z8">
 
 
@@ -44,7 +49,7 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <!-- Pagination Component -->
-    <div>
+    <div class="table-footer">
         <list-pagination class="mat-paginator" [incomingList]="usersList"></list-pagination>
         <div>
             <user-crud-button (deliverUpdatedUser)="addEditHandler($event)" btnText="add_circle" class="add-button"></user-crud-button>

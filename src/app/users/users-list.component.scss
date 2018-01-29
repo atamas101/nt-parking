@@ -8,6 +8,8 @@
 .mat-header-cell.mat-sort-header-sorted {
 }
 mat-header-cell {
+  display: flex;
+  justify-content: space-around;
   color: $ntGreen;
 }
 .mat-form-field {
@@ -36,20 +38,36 @@ mat-sort-header {
   cursor: pointer;
 }
 .search-button {
-  float: right;
   background-color: $ntDarkGray;
   color: white;
   border-radius: 60%;
   padding: 4px;
+  max-height: 24px;
 }
 .add-button {
   color: $ntPurple;
-  float: right;
-  font-size: 1em;
   margin: 11px 14px;
-  padding: 4px;
+  padding: 7px;
   cursor: pointer;
 }
 .mat-paginator {
   float: left;
 }
+.filter-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Roboto,"Helvetica Neue",sans-serif;
+  font-weight: bold;
+}
+.table-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+}
+
