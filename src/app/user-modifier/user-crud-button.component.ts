@@ -9,7 +9,7 @@ import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'user-crud-button',
-  template: `<button mat-raised-button (click)="openDialog()">{{btnText || "Please specify the btnText"}}</button>`
+  template: `<i class="material-icons" (click)="openDialog()">{{btnText}}</i>`
 })
 export class UserCrudBtn {
   @Input() selectedUser;

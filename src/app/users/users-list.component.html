@@ -1,11 +1,16 @@
 <!-- Filter -->
-<div class="filter-header">
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
+<div>
+    <i class="material-icons search-button">search</i>
+    <div class="filter-header">
+        <mat-form-field>
+            <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+        </mat-form-field>
+    </div>
 </div>
 <div class="list-container mat-elevation-z8">
-    <user-crud-button (deliverUpdatedUser)="addEditHandler($event)" btnText="Add User"></user-crud-button>
+
+
+
     <mat-table [dataSource]="usersList" matSort>
 
         <!-- Name Column -->
@@ -30,7 +35,8 @@
         <ng-container matColumnDef="edit">
             <mat-header-cell *matHeaderCellDef> Edit User </mat-header-cell>
             <mat-cell *matCellDef="let user">
-                <user-crud-button btnText="Edit User" [selectedUser]='user' (deliverUpdatedUser)="addEditHandler($event)"></user-crud-button>
+                <user-crud-button class="edit-button" btnText="mode_edit" [selectedUser]='user' (deliverUpdatedUser)="addEditHandler($event)"></user-crud-button>
+
             </mat-cell>
         </ng-container>
 
@@ -38,5 +44,10 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <!-- Pagination Component -->
-    <list-pagination [incomingList]="usersList"></list-pagination>
+    <div>
+        <list-pagination class="mat-paginator" [incomingList]="usersList"></list-pagination>
+        <div>
+            <user-crud-button (deliverUpdatedUser)="addEditHandler($event)" btnText="add_circle" class="add-button"></user-crud-button>
+        </div>
+    </div>
 </div>
