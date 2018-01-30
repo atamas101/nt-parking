@@ -10,7 +10,7 @@ import { OnChanges } from '@angular/core';
   templateUrl: './dialog-update-user.html',
   styleUrls: ['./dialog-update-user.component.scss']
 })
-export class UpdateUserComponent implements OnChanges {
+export class UpdateUserComponent {
   userModifyForm: FormGroup;
   hireDate: FormControl;
   email: FormControl;
@@ -18,7 +18,6 @@ export class UpdateUserComponent implements OnChanges {
   password: FormControl;
   confirmPasswd: FormControl;
   errors: any;
-  disableBtn: boolean;
 
   constructor(
     public dialogRef: MatDialogRef<UpdateUserComponent>,
@@ -43,12 +42,21 @@ export class UpdateUserComponent implements OnChanges {
       Validators.email
     ]);
     this.name = new FormControl(this.data.name, Validators.required);
-    this.password = new FormControl(this.data.password || '');
+
+    const requiredValidator = this.isEditMode ? null : Validators.required;
+
+    let passwordValidators = [];
+
+    if (!this.isEditMode()) {
+      passwordValidators.push(Validators.required);
+    }
+    this.password = new FormControl('', passwordValidators);
 
     let passwdField = this.password;
 
-    this['password-confirm'] = new FormControl('', [pswdEquality(passwdField)]);
-    this.disableBtn = true;
+    passwordValidators.push(pswdEquality(passwdField));
+
+    this['password-confirm'] = new FormControl('', passwordValidators);
 
     this.userModifyForm = new FormGroup({
       hireDate: this.hireDate,
@@ -57,30 +65,16 @@ export class UpdateUserComponent implements OnChanges {
       password: this.password,
       'password-confirm': this['password-confirm']
     });
-    // console.log(this.userModifyForm.controls.email.valid);
-    // if (this.data._id) {
-    //   this.disableBtn = !(
-    //     this.userModifyForm.controls.hireDate.valid &&
-    //     this.userModifyForm.controls.email.valid &&
-    //     this.userModifyForm.controls.name.valid
-    //   );
-    //   console.log('disableBtn', this.disableBtn);
-    // } else {
-    //   this.disableBtn = this.userModifyForm.invalid;
-    //   console.log('disableBtn', this.disableBtn);
-    // }
-
-    console.log(this.userModifyForm);
   }
   postToServer() {
     let newUser = Object.assign(this.data, this.userModifyForm.value);
-    console.log(this.userModifyForm);
-    this._usersService.addEditUser(newUser).subscribe(response =>
-      // console.log('response', response);
-      this.dialogRef.close(response)
-    );
+    this._usersService
+      .addEditUser(newUser)
+      .subscribe(response => this.dialogRef.close(response));
   }
-
+  isEditMode() {
+    return this.data._id;
+  }
   onCancel() {
     this.dialogRef.close();
   }
