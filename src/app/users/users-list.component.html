@@ -1,13 +1,22 @@
 <!-- Filter -->
-<div class="filter-header">
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
+<div class="search-header">
+    <span>USERS</span>
+    <div class="filter-container">
+        <i class="material-icons search-button">search</i>
+        <div class="filter-header">
+            <mat-form-field>
+                <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+            </mat-form-field>
+        </div>
+    </div>
 </div>
-<div class="list-container mat-elevation-z8">
-    <user-crud-button (deliverUpdatedUser)="addEditHandler($event)" btnText="Add User"></user-crud-button>
-    <mat-table [dataSource]="usersList" matSort>
 
+
+<div class="list-container mat-elevation-z8">
+
+
+
+    <mat-table [dataSource]="usersList" matSort>
         <!-- Name Column -->
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
@@ -30,7 +39,8 @@
         <ng-container matColumnDef="edit">
             <mat-header-cell *matHeaderCellDef> Edit User </mat-header-cell>
             <mat-cell *matCellDef="let user">
-                <user-crud-button btnText="Edit User" [selectedUser]='user' (deliverUpdatedUser)="addEditHandler($event)"></user-crud-button>
+                <user-crud-button class="edit-button" btnText="mode_edit" [selectedUser]='user' (deliverUpdatedUser)="addEditHandler($event)"></user-crud-button>
+
             </mat-cell>
         </ng-container>
 
@@ -38,5 +48,8 @@
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <!-- Pagination Component -->
-    <list-pagination [incomingList]="usersList"></list-pagination>
+    <div class="table-footer">
+        <list-pagination class="mat-paginator" [incomingList]="usersList"></list-pagination>
+        <user-crud-button (deliverUpdatedUser)="addEditHandler($event)" btnText="add_circle" class="add-button"></user-crud-button>
+    </div>
 </div>

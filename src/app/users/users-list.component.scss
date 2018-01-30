@@ -1,0 +1,61 @@
+@import '../shared/styles/_variables.scss';
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+.filter-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+}
+mat-header-cell {
+  display: flex;
+  justify-content: space-around;
+  color: $ntGreen;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+mat-cell {
+  text-align: center;
+}
+mat-sort-header {
+  text-align: center;
+}
+.edit-button {
+  text-align: center;
+  color: $ntDarkGray;
+  font-size: 1em;
+  cursor: pointer;
+}
+.search-button {
+  background-color: $ntDarkGray;
+  color: white;
+  border-radius: 60%;
+  padding: 4px;
+  max-height: 24px;
+  cursor: pointer;
+}
+.table-footer {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+}
+.mat-paginator {
+  float: left;
+}
+.add-button {
+  color: $ntPurple;
+  margin: 11px 14px;
+  padding: 7px;
+  cursor: pointer;
+}

@@ -9,14 +9,14 @@ import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'user-crud-button',
-  template: `<button mat-raised-button (click)="openDialog()">{{btnText || "Please specify the btnText"}}</button>`
+  template: `<i class="material-icons add-button" (click)="openDialog()">{{btnText}}</i>`
 })
 export class UserCrudBtn {
   @Input() selectedUser;
   @Input() btnText;
   @Output() deliverUpdatedUser: EventEmitter<any> = new EventEmitter();
   // newUser: {} = {};
-  constructor(public dialog: MatDialog) {}
+  constructor(public dialog: MatDialog) { }
 
   openDialog(): void {
     let dialogRef = this.dialog.open(UpdateUserComponent, {
