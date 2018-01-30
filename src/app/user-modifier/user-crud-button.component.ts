@@ -30,7 +30,7 @@ export class UserCrudBtn {
       .filter(rez => rez)
       .subscribe(result => {
         console.log(
-          'The dialog was closed and fotrm data is in the result',
+          'The dialog was closed and form data is in the result',
           result
         );
         this.deliverUpdatedUser.emit(result);

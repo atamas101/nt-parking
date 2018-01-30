@@ -39,7 +39,7 @@
         </form>
         <div class="buttons-wrapper">
             <button class="buttons cancel-button" (click)='onCancel()'>CANCEL</button>
-            <button type="submit" class="buttons {{ !userModifyForm.invalid ? 'submit-button':'submit-disabled' }}" [disabled]='userModifyForm.invalid'
+            <button type="submit" class="buttons {{ !userModifyForm.invalid  ? 'submit-button':'submit-disabled' }}" [disabled]='userModifyForm.invalid'
                 (click)="postToServer()" mat-button>SUBMIT</button>
 
         </div>
