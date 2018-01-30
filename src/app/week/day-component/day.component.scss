@@ -1,22 +1,16 @@
 @import '../../shared/styles/_variables.scss';
 
-#day-component-wrapper {
+.day-component-wrapper {
   height: 80px;
   margin-bottom: 6px;
   background-color: $lightGray;
   display: flex;
   justify-content: space-between;
-  border: 1px solid black;
-  font-family: Roboto 500;
-  & > div {
-    margin-right: 10px;
-  }
 }
 
-#week-day {
+.week-day {
   width: 90px;
   font-size: 1.33em;
-  // background-color: $gray;
   display: flex column;
   justify-content: space-between;
   div {
@@ -28,54 +22,73 @@
       padding-right: 0.1em;
     }
   }
-  div.month-info {
+  .month-info {
     background-color: $darkGray;
     color: white;
   }
-  div.day-info {
+  .day-info {
     background-color: $gray;
     color: $ntGreen;
   }
 }
 
-#parking-slots {
+.parking-slots {
   display: flex;
   flex-grow: 2;
   align-items: center;
   justify-content: space-around;
-}
-
-slot {
-  background-color: $ntGreen;
-  font-weight: 400;
-  padding: 10px 10px;
-  color: white;
-  font-size: 1.25em;
-  text-align: center;
-  width: 160px;
-  height: 40px;
-  padding: 10px 10px;
-  &.outside {
-    background: $ntPurple;
-  }
-}
-
-#others-and-dropdown {
-  font-size: 1.25em;
-  display: flex;
-  align-items: center;
-  color: $ntTextColor;
-  div {
-    display: inline-block;
-    &.parking-buttons {
-      width: 200px;
+  slot {
+    background-color: $ntGreen;
+    font-weight: 400;
+    padding: 10px 10px;
+    color: white;
+    font-size: 1.25em;
+    text-align: center;
+    width: 160px;
+    height: 40px;
+    padding: 10px 10px;
+    &.empty {
+      background-color: transparentize($ntGreen, 0.5);
+    }
+    &.outside {
+      background-color: $ntPurple;
+      &.empty {
+        background-color: transparentize($ntPurple, 0.5);
+      }
     }
   }
 }
 
-.outside {
-  .slot {
-    background-color: $ntPurple;
+.others-and-dropdown {
+  font-size: 1.25em;
+  display: flex;
+  flex-grow: 1.5;
+  justify-content: space-around;
+  align-items: center;
+  color: $ntTextColor;
+  div {
+    display: inline-block;
+  }
+  .parking-buttons {
+    width: 200px;
+    height: 40px;
+  }
+  .others {
+    // margin-right: 10px;
+    p {
+      margin-bottom: 0px;
+    }
+  }
+  button {
+    font-family: Roboto;
+    color: $ntGreen;
+    &.btn-text {
+      flex-grow: 3;
+    }
+    &.btn-cancel {
+      width: 200px;
+      height: 40px;
+    }
   }
 }
 

@@ -6,9 +6,9 @@ export class SubscribersService {
   getSubscribers() {
     return {
       alocated: [
-        { name: 'Bintintan Alexandru', slot: 's1' },
+        {},
         { name: 'Voicu Iulia', slot: 's2' },
-        { name: 'Popoviciu Sebastian', slot: 's3' }
+        { name: '', slot: 's3' }
       ],
       others: [
         { name: 'Bintintan Alexandru', slot: 's1' },

@@ -1,9 +1,9 @@
 <!-- <mat-card-content fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.md="space-evenly center" fxLayoutAlign.lt-md="space-around center"
   fxLayoutWrap> -->
 
-<div id='day-component-wrapper'>
+<div class='day-component-wrapper'>
 
-  <div id='week-day'>
+  <div class='week-day'>
     <div class='month-info'>
       <span class="month">{{inputDay |date:" MMM" |uppercase}}</span>
     </div>
@@ -13,13 +13,13 @@
     </div>
   </div>
 
-  <div id='parking-slots'>
-    <slot [user]="subscribers.alocated[0]"></slot>
-    <slot [user]="subscribers.alocated[1]"></slot>
-    <slot class='outside' [user]="subscribers.alocated[2]"></slot>
+  <div class='parking-slots'>
+    <slot [user]="subscribers.alocated[0]" [ngClass]="{'empty': !subscribers.alocated[0].name}"></slot>
+    <slot [user]="subscribers.alocated[1]" [ngClass]="{'empty': !subscribers.alocated[1].name}"></slot>
+    <slot class='outside' [user]="subscribers.alocated[2]" [ngClass]="{'empty': !subscribers.alocated[2].name}"></slot>
   </div>
 
-  <div id='others-and-dropdown'>
+  <div class='others-and-dropdown'>
     <div class="others">
       <p>...{{othersNumber}} more waiting</p>
       <ul [hidden]='true' class="dropdown">
@@ -43,6 +43,7 @@
       </div>
       <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle()">Cancel</button>
     </div>
+
   </div>
 
 
