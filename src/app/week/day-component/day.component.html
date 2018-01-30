@@ -1,23 +1,30 @@
 <!-- <mat-card-content fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.md="space-evenly center" fxLayoutAlign.lt-md="space-around center"
   fxLayoutWrap> -->
 
-<div class='day-component-wrapper'>
+<div class='day-component-wrapper' ngClass.xs="xsView" fxLayout="row" fxLayoutAlign="space-between" fxLayout.xs="column"
+  fxLayoutAlign.xs="center">
 
-  <div class='week-day'>
-    <div class='month-info'>
+  <div class='week-day' ngClass.xs='xsView' fxLayout="column">
+
+    <div class='month-info' fxLayoutAlign="center">
       <span class="month">{{inputDay |date:" MMM" |uppercase}}</span>
     </div>
-    <div class='day-info'>
+    <div class='day-info' fxLayoutAlign="center">
       <span class="day-of-month">{{inputDay |date:"dd" |uppercase}}</span>
       <span class="day-of-week">{{inputDay |date:"EEE " |uppercase}}</span>
     </div>
+
   </div>
 
-  <div class='parking-slots'>
+
+
+  <div class='parking-slots' ngClass.xs="xsView" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="space-around center">
     <slot [user]="subscribers.alocated[0]" [ngClass]="{'empty': !subscribers.alocated[0].name}"></slot>
     <slot [user]="subscribers.alocated[1]" [ngClass]="{'empty': !subscribers.alocated[1].name}"></slot>
     <slot class='outside' [user]="subscribers.alocated[2]" [ngClass]="{'empty': !subscribers.alocated[2].name}"></slot>
   </div>
+
+
 
   <div class='others-and-dropdown'>
     <div class="others">
@@ -31,7 +38,6 @@
 
     <div class="parking-buttons">
       <div *ngIf="subscribeBtnState" fxLayout="row" fxLayoutAlign="end none">
-        <!-- removed class="btn-group" from div -->
         <button class="btn btn-text" (click)="subscribeBtnToggle()" value="{{inputDay}}">I Want To Park</button>
         <button class="btn btn-select" [matMenuTriggerFor]="menu">
           <i class="material-icons down-arrow">arrow_drop_down</i>

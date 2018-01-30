@@ -4,22 +4,23 @@
   height: 80px;
   margin-bottom: 6px;
   background-color: $lightGray;
-  display: flex;
-  justify-content: space-between;
+  // display: flex;
+  // justify-content: space-between;
 }
 
 .week-day {
   width: 90px;
   font-size: 1.33em;
-  display: flex column;
-  justify-content: space-between;
+  // display: flex column;
+  // justify-content: space-between;
   div {
     height: 50%;
-    display: flex;
-    justify-content: center;
+    // display: flex;
+    // justify-content: center;
     span {
       align-self: center;
-      padding-right: 0.1em;
+      padding-right: 0.2em;
+      padding-left: 0.2em;
     }
   }
   .month-info {
@@ -33,10 +34,10 @@
 }
 
 .parking-slots {
-  display: flex;
+  // display: flex;
+  // align-items: center;
+  // justify-content: space-around;
   flex-grow: 2;
-  align-items: center;
-  justify-content: space-around;
   slot {
     background-color: $ntGreen;
     font-weight: 400;
@@ -89,145 +90,22 @@
       width: 200px;
       height: 40px;
     }
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+        0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    }
   }
 }
 
-// $day-color: #19b798;
-// $day-bg-color: #26353c;
-// $border-radius: 3px;
-
-// ul {
-//   list-style: none;
-// }
-// .day-card {
-//   margin: 10px 0;
-// }
-// .card-lt-md {
-//   margin-bottom: 10px;
-// }
-// .others {
-//   position: relative;
-//   ul.dropdown {
-//     margin-top: -5px;
-//     border: 1px #1d2129 solid;
-//     min-width: 150px;
-//     display: none;
-//     position: absolute;
-//     z-index: 999;
-//     text-align: center;
-//     border-radius: 10px;
-//     text-align: left;
-//   }
-//   &:hover ul.dropdown {
-//     display: block;
-//     background-color: $day-color;
-//     color: white;
-//     padding: 10px 0px 10px 10px;
-//   }
-// }
-// .btn {
-//   &:first-child {
-//     border-top-left-radius: $border-radius;
-//     border-bottom-left-radius: $border-radius;
-//     font-size: 12px;
-//     height: 30px;
-//     width: 60px;
-//     background-color: $day-bg-color;
-//     border: 1px solid $day-bg-color*0.7;
-//     color: $day-color;
-//     font-weight: bold;
-//   }
-//   &:nth-child(2) {
-//     border-top-right-radius: $border-radius;
-//     border-bottom-right-radius: $border-radius;
-//     margin-left: 0;
-//     height: 30px;
-//     max-width: 30px;
-//     background-color: $day-bg-color;
-//     border: 1px solid $day-bg-color*0.7;
-//     color: $day-color;
-//     font-weight: bold;
-//   }
-// }
-// .btn-cancel {
-//   border-top-right-radius: $border-radius;
-//   border-bottom-right-radius: $border-radius;
-//   min-width: 84px;
-// }
-// .down-arrow {
-//   font-size: 10px;
-// }
-// time.date-widget {
-//   font-size: 1em; /* change date-widget size */
-//   display: block;
-//   position: relative;
-//   width: 3em;
-//   height: 3em;
-//   background-color: $day-bg-color;
-//   border-radius: 0.6em;
-//   overflow: hidden;
-//   & * {
-//     display: block;
-//     width: 100%;
-//     font-size: 0.6em;
-//     font-weight: bold;
-//     font-style: normal;
-//     text-align: center;
-//   }
-//   .month {
-//     position: absolute;
-//     top: 0;
-//     padding: 0.4em 0;
-//     color: #fff;
-//     background-color: $day-color;
-//     box-shadow: 0 2px 0 $day-color;
-//     border-bottom: 1px dashed $day-color*0.5;
-//   }
-//   .day-of-week {
-//     position: absolute;
-//     bottom: 0.3em;
-//     color: $day-color;
-//   }
-//   .day-of-month {
-//     font-size: 0.7em;
-//     letter-spacing: -0.05em;
-//     padding-top: 20px;
-//     color: $day-color;
-//     margin-top: 15px;
-//   }
-// }
-// .extra-small {
-//   display: inline-block;
-//   font-size: 1em;
-
-//   .day-of-week {
-//     border-top-left-radius: 5px;
-//     border-bottom-left-radius: 5px;
-//     padding: 5px;
-//     color: $day-color;
-//     background-color: $day-bg-color;
-//     font-style: normal;
-//   }
-
-//   .month {
-//     background-color: $day-color;
-//     color: $day-bg-color;
-//     padding: 5px;
-//     margin-right: 0;
-//   }
-
-//   .day-of-month {
-//     background-color: $day-color;
-//     color: $day-bg-color;
-//     padding: 5px;
-//     border-top-right-radius: 5px;
-//     border-bottom-right-radius: 5px;
-//     margin-left: -12px;
-//   }
-// }
-
-/* .subscribing-btn:hover,
-.unsubscribing-btn:hover {
-  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-    0 17px 50px 0 rgba(0, 0, 0, 0.19);
-} */
+.xsView {
+  &.week-day {
+    width: 100%;
+  }
+  &.parking-slots {
+    height: auto;
+    border: 1px solid red;
+  }
+  &.parking-slots slot {
+  }
+}
