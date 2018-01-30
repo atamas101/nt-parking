@@ -6,14 +6,16 @@ width: 260px;
 background: $ntGray;
 }
 
-.login-button,
 .logout-button {
-  position: absolute;
-  right: 0;
-  width: 50px;
-  height: 50px;
-}
+  min-width: 34px;
+  width: 34px;
+  height: 34px;
+  //margin: 0px;
+  padding: 0px;
+  float: right;
+  margin: 0 auto;
 
+}
 .mat-button .mat-button-wrapper{
   border-radius: 50%;
   background: $ntGray;
@@ -31,14 +33,26 @@ background: $ntGray;
 .mat-toolbar {
   background: white;
   height: 64px;
+  margin: 0px;
+  padding: 0px;
+  // display: block;
 }
-.logo {
-  margin-left: 20px;
+.logo-container {
+  margin: 0;
+  padding: 0;
+  width: 64px;
+  height: 64px;
+  float: left;
+  background: $ntGrayLight url('../assets/img/nexttech_logo_final.png') 15px 50% no-repeat;
+
+  &.sidebar-open{
+    width: 260px;
+    height: 64px;
+  }
 }
 
 .side-nav-list{
   background: $ntGray;
-  
 }
 
 .mat-list-item {
@@ -54,10 +68,17 @@ background: $ntGray;
   background: $ntGray;
 }
 
-// .login-button.logout-button.mat-button-focus-overlay{
-//   background-color: rgba(0, 0, 0,0);
-// }
+.material-icons.shut-down{ 
+  background-color: $ntDarkGray;
+  border-radius: 50%;
+  padding: 0px;
+  float: right;
+  margin: 0 auto;
+ }
 
-// .i.material-icons{
-// background: red;
-// }
+.material-icons.toggle-sidebar{
+   color:$ntGray;
+   margin: 15px;
+ }
+
+

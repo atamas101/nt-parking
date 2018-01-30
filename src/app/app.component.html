@@ -1,31 +1,26 @@
-<!-- <p [routerLink]="['login']" mat-button>
-  <button *ngIf="!auth.isAuthenticated()" mat-button class="login-button">
-    <i class="material-icons">power_settings_new</i>
-  </button>
-  <button *ngIf="auth.isAuthenticated()" (click)="auth.logout()" mat-button class="logout-button">
-    <i class="material-icons">power_settings_new</i>
-  </button>
-</p> -->
-
-
-
 <app-login *ngIf="!isLoggedIn()"></app-login>
 
-<div *ngIf="isLoggedIn()">
+<ng-container *ngIf="isLoggedIn()">
 
   <mat-toolbar color="primary">
 
-    <i class="material-icons" (click)="sidenav.toggle()">menu</i>
-    <img class="logo" src=".\assets\img\nexttech_logo.png">
+    <div class="logo-container" [ngClass]="{'sidebar-open':sidenav.opened}">
+    </div>
+
+    <i class="material-icons toggle-sidebar" (click)="sidenav.toggle(); ">menu</i>
+
+    <!-- <button *ngIf="auth.isAuthenticated() " (click)="auth.logout() " mat-button class="logout-button"> -->
+    <i class="material-icons shut-dowm " (click)="auth.logout() ">power_settings_new</i>
+    <!-- </button> -->
 
   </mat-toolbar>
 
-  <mat-sidenav-container class="sidenav-container">
-    <mat-sidenav #sidenav [(opened)]="opened" [mode]="mode">
+  <mat-sidenav-container class="sidenav-container ">
+    <mat-sidenav #sidenav [(opened)]="opened " [mode]="mode ">
 
-      <mat-nav-list class="side-nav-list">
-        <a [routerLink]="['users']" mat-list-item>Users</a>
-        <a [routerLink]="['week']" mat-list-item>Week</a>
+      <mat-nav-list class="side-nav-list ">
+        <a [routerLink]="[ 'users'] " mat-list-item>Users</a>
+        <a [routerLink]="[ 'week'] " mat-list-item>Week</a>
       </mat-nav-list>
     </mat-sidenav>
 
@@ -34,4 +29,4 @@
     </mat-sidenav-content>
   </mat-sidenav-container>
 
-</div>
+</ng-container>
