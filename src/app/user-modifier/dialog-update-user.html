@@ -1,35 +1,49 @@
-<div mat-dialog-title>Add / Edit User</div>
-<div mat-dialog-content ngClass='dialogDefault' ngClass.xs='dialogXs'>
+<div class="wraper">
 
-    <form [formGroup]="userModifyForm" class='example-form' novalidate>
-        <mat-form-field class='example-full-width'>
-            <input matInput type="email" formControlName="email" placeholder='Email' required>
-        </mat-form-field>
+    <div mat-dialog-title fxLayout="row">
+        <i class="material-icons add-icon">add_circle</i>
+        <p class="add-text">ADD USER</p>
+    </div>
+    <div mat-dialog-content ngClass='dialog-container-xs' ngClass.sm='dialog-container-sm' ngClass.gt-sm="dialog-container-gt-sm">
 
-        <mat-form-field class='example-full-width'>
-            <input matInput formControlName="name" placeholder='Full Name' required>
-        </mat-form-field>
+        <form [formGroup]="userModifyForm" fxLayout="column" fxLayout.gt-xs="row" fxLayoutAlign="space-between " class='example-form'
+            novalidate>
+            <div class="form-column">
+                <mat-form-field class='example-full-width'>
+                    <input matInput type="email" formControlName="email" placeholder='Email'>
+                </mat-form-field>
 
-        <mat-form-field>
-            <input matInput formControlName="hireDate" [matDatepicker]='picker' placeholder='Hire Date' required>
-            <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+                <mat-form-field class='example-full-width'>
+                    <input matInput formControlName="name" placeholder='Full Name'>
+                </mat-form-field>
 
-        <mat-form-field class='example-full-width'>
-            <input matInput formControlName="password" placeholder='Password' required>
-        </mat-form-field>
+                <mat-form-field class='example-full-width'>
+                    <input matInput formControlName="hireDate" [matDatepicker]='picker' placeholder='Hire Date'>
+                    <mat-datepicker-toggle matSuffix [for]='picker'></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+
+            </div>
+            <div class="form-column">
+                <mat-form-field class='example-full-width'>
+                    <input matInput formControlName="password" placeholder='Password'>
+                </mat-form-field>
 
 
-        <mat-form-field class='example-full-width'>
-            <input matInput formControlName="password-confirm" placeholder='Please confirm password' required>
-        </mat-form-field>
+                <mat-form-field class='example-full-width'>
+                    <input matInput formControlName="password-confirm" placeholder='Re-type password'>
+                </mat-form-field>
+            </div>
 
-        <!-- {{errors | async }} -->
-    </form>
+            <!-- {{errors | async }} -->
+        </form>
+        <div class="buttons-wrapper">
+            <button class="buttons cancel-button" (click)='onCancel()'>CANCEL</button>
+            <button type="submit" class="buttons {{ userModifyForm.invalid ? 'submit-button':'' }}" [disabled]='userModifyForm.invalid'
+                (click)="postToServer()" mat-button>SUBMIT</button>
 
-    <div>
-        <button type="submit" [disabled]='userModifyForm.invalid' (click)="postToServer()" mat-button>Submit</button>
-        <button mat-button (click)='onCancel()'>Cancel</button>
+        </div>
+
+
     </div>
 </div>
