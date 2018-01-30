@@ -4,11 +4,15 @@
 @import './app/shared/styles/_normalize.scss';
 @import './app/shared/styles/_reboot.scss';
 @import './app/shared/styles/_fonts.scss';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html {
   font-family: $font-family-base;
   font-size: 12px;
   font-weight: 500;
+  body {
+    height: 100vh;
+  }
 }
 
 .logo {
