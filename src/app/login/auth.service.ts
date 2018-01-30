@@ -37,7 +37,7 @@ export class AuthenticationService {
   }
 
   isAdmin() {
-    return this.isAuthenticated() && this.currentUser.admin;
+    return this.isAuthenticated() && !!this.currentUser.admin;
   }
 
   logout() {

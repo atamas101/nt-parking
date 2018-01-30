@@ -6,17 +6,18 @@ import { EventEmitter } from '@angular/core';
 
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthenticationService } from '../login/auth.service';
 
 @Component({
   selector: 'user-crud-button',
-  template: `<i class="material-icons add-button" (click)="openDialog()">{{btnText}}</i>`
+  template: `<i class="material-icons button-icon"(click)="openDialog()">{{btnText}}</i>`
 })
 export class UserCrudBtn {
   @Input() selectedUser;
   @Input() btnText;
   @Output() deliverUpdatedUser: EventEmitter<any> = new EventEmitter();
   // newUser: {} = {};
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     let dialogRef = this.dialog.open(UpdateUserComponent, {
