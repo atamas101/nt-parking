@@ -59,7 +59,6 @@ exports.deleteUser = async (req, res, next) => {
 };
 
 exports.updateUser = async (req, res) => {
-  console.log(req.user);
   const updates = {
     name: req.body.name,
     email: req.body.email,

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 
 import { UsersService } from './users.service';
-import { IUsers } from './users.model';
+import { IUser } from './users.model';
 import {
   MatTableDataSource,
   MatPaginator,
@@ -23,7 +23,7 @@ export class UsersComponent implements OnInit {
   constructor(private users: UsersService) {}
 
   ngOnInit() {
-    this.usersList = new MatTableDataSource<IUsers>();
+    this.usersList = new MatTableDataSource<IUser>();
     this.users.getUsers().subscribe(user => {
       this.usersList.data = user;
     });

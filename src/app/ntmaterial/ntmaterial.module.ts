@@ -19,7 +19,8 @@ import {
   MatToolbarModule,
   MatSidenavModule,
   MatListModule,
-  MatFormFieldModule
+  MatFormFieldModule,
+  MatSnackBarModule
 } from '@angular/material';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -46,6 +47,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     FormsModule
   ],
   exports: [
@@ -69,6 +71,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatListModule,
     MatFormFieldModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     FormsModule
   ],
   declarations: [],
