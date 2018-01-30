@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
-
+import { Http } from '@angular/http';
 @Injectable()
 export class SubscribersService {
-  constructor() {}
+  constructor(private _http: Http) {}
   getSubscribers() {
     return {
       alocated: [
@@ -16,5 +16,8 @@ export class SubscribersService {
         { name: 'Popoviciu Sebastian', slot: 's3' }
       ]
     };
+  }
+  addUserRequest() {
+    //POST
   }
 }
