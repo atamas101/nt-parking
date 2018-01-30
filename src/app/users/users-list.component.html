@@ -17,7 +17,6 @@
 
 
     <mat-table [dataSource]="usersList" matSort>
-
         <!-- Name Column -->
         <ng-container matColumnDef="name">
             <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
@@ -51,8 +50,6 @@
     <!-- Pagination Component -->
     <div class="table-footer">
         <list-pagination class="mat-paginator" [incomingList]="usersList"></list-pagination>
-        <div>
-            <user-crud-button (deliverUpdatedUser)="addEditHandler($event)" btnText="add_circle" class="add-button"></user-crud-button>
-        </div>
+        <user-crud-button (deliverUpdatedUser)="addEditHandler($event)" btnText="add_circle" class="add-button"></user-crud-button>
     </div>
 </div>
