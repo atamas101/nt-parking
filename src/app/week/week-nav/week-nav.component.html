@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-content fxLayout="row" fxLayoutAlign="space-evenly center" fxLayoutWrap>
+  <mat-card-content fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
     <i (click)="previousWeek()" class="material-icons size pointer">keyboard_arrow_left</i>
     <div (click)="picker.open()" class="wrap">
       <div fxLayout="row" fxLayoutAlign="center center">
@@ -13,7 +13,7 @@
         <mat-datepicker touchUi="true" #picker></mat-datepicker>
       </mat-form-field>
       <div fxLayout="row" fxLayoutAlign="center center">
-        <h2 class="pointer"> {{firstDay | date:"MMM dd" }} - {{lastDay | date:"MMM dd" }}</h2>
+        <h2 class="pointer-2"> {{firstDay | date:"MMM dd" }} - {{lastDay | date:"MMM dd" }}</h2>
       </div>
     </div>
     <i (click)="nextWeek()" class="material-icons size pointer">keyboard_arrow_right</i>

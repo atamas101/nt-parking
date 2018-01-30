@@ -7,7 +7,7 @@ import { Moment } from 'moment';
 @Component({
   selector: 'nav-component',
   templateUrl: './week-nav.component.html',
-  styleUrls: ['week-nav.component.css']
+  styleUrls: ['week-nav.component.scss']
 })
 export class WeekNavComponent implements OnInit {
   public datePicker: string;
