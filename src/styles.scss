@@ -1,8 +1,12 @@
 @import '../node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css';
+
 @import './app/shared/styles/_variables.scss';
+@import './app/shared/styles/_normalize.scss';
+@import './app/shared/styles/_reboot.scss';
+@import './app/shared/styles/_fonts.scss';
 
 html {
-  font-family: Roboto, sans-serif;
+  font-family: $font-family-base;
   font-size: 12px;
   font-weight: 500;
 }
