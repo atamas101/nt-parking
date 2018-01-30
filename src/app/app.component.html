@@ -1,11 +1,13 @@
-<p [routerLink]="['login']" mat-button>
+<!-- <p [routerLink]="['login']" mat-button>
   <button *ngIf="!auth.isAuthenticated()" mat-button class="login-button">
     <i class="material-icons">power_settings_new</i>
   </button>
   <button *ngIf="auth.isAuthenticated()" (click)="auth.logout()" mat-button class="logout-button">
     <i class="material-icons">power_settings_new</i>
   </button>
-</p>
+</p> -->
+
+
 
 <app-login *ngIf="!isLoggedIn()"></app-login>
 
