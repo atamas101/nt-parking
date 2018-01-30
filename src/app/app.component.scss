@@ -5,7 +5,7 @@ mat-sidenav {
 width: 260px;
 background: $ntGray;
 }
-login-logout-btn
+
 .login-button,
 .logout-button {
   position: absolute;
@@ -18,7 +18,6 @@ login-logout-btn
   border-radius: 50%;
   background: $ntGray;
 }
-
 
 .mat-drawer-container {
   min-height: 500px;
@@ -46,9 +45,19 @@ login-logout-btn
   color:white;
   font-size: 18px;
 }
+
 .mat-list-item.mat-list-item-focus{
-  background:olive;
+  background:$ntDarkGray;
 }
+
 .mat-drawer.mat-drawer-push{
   background: $ntGray;
 }
+
+// .login-button.logout-button.mat-button-focus-overlay{
+//   background-color: rgba(0, 0, 0,0);
+// }
+
+// .i.material-icons{
+// background: red;
+// }

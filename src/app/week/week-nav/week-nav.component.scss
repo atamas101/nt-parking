@@ -8,7 +8,7 @@
 }
 h2 {
   text-align: center;
-  color: $ntGreen;
+  font-size: 24px;
 }
 .size {
   font-size: 50px;
@@ -16,4 +16,10 @@ h2 {
 }
 .pointer {
   cursor: pointer;
+  color:$ntGreen;
 }
+.pointer-2{
+  cursor: pointer;
+  color:$ntPurple;
+}
+
