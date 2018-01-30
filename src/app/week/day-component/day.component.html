@@ -1,43 +1,50 @@
-<mat-card ngClass="day-card" ngClass.lt-md="card-lt-md" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start"
-  fxLayoutAlign.xs="space-evenly center">
+<!-- <mat-card-content fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.md="space-evenly center" fxLayoutAlign.lt-md="space-around center"
+  fxLayoutWrap> -->
 
-  <mat-card-title>
-    <time ngClass.gt-xs="date-widget" ngClass.xs="extra-small">
-      <span class="day-of-week">{{inputDay |date:"EEE "}}</span>
-      <span class="month">{{inputDay |date:" MMM"}}</span>
-      <span class="day-of-month">{{inputDay |date:"dd"}}</span>
-    </time>
-  </mat-card-title>
+<div id='day-component-wrapper'>
 
-  <mat-card-content fxLayout.md="row" fxLayout.lt-md="column" fxLayoutAlign.md="space-evenly center" fxLayoutAlign.lt-md="space-around center"
-    fxLayoutWrap>
+  <div id='week-day'>
+    <div class='month-info'>
+      <span class="month">{{inputDay |date:" MMM" |uppercase}}</span>
+    </div>
+    <div class='day-info'>
+      <span class="day-of-month">{{inputDay |date:"dd" |uppercase}}</span>
+      <span class="day-of-week">{{inputDay |date:"EEE " |uppercase}}</span>
+    </div>
+  </div>
+
+  <div id='parking-slots'>
     <slot [user]="subscribers.alocated[0]"></slot>
     <slot [user]="subscribers.alocated[1]"></slot>
-    <slot [user]="subscribers.alocated[2]"></slot>
+    <slot class='outside' [user]="subscribers.alocated[2]"></slot>
+  </div>
+
+  <div id='others-and-dropdown'>
     <div class="others">
-      <p>And {{othersNumber}} others...</p>
-      <ul class="dropdown">
+      <p>...{{othersNumber}} more waiting</p>
+      <ul [hidden]='true' class="dropdown">
         <li *ngFor='let other of subscribers.others'>
           {{other.name}}
         </li>
-
       </ul>
     </div>
 
-  </mat-card-content>
-
-  <div class="parking-buttons">
-    <div *ngIf="subscribeBtnState" fxLayout="row" fxLayoutAlign="center none" class="btn-group">
-      <button class="btn btn-text" (click)="subscribeBtnToggle()" value="{{inputDay}}">Park</button>
-      <button class="btn btn-select" [matMenuTriggerFor]="menu">
-        <i class="material-icons down-arrow">arrow_drop_down</i>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item (click)="subscribeBtnToggle('jos')">Park Underground</button>
-        <button mat-menu-item (click)="subscribeBtnToggle('sus')">Park Outside</button>
-      </mat-menu>
+    <div class="parking-buttons">
+      <div *ngIf="subscribeBtnState" fxLayout="row" fxLayoutAlign="end none">
+        <!-- removed class="btn-group" from div -->
+        <button class="btn btn-text" (click)="subscribeBtnToggle()" value="{{inputDay}}">I Want To Park</button>
+        <button class="btn btn-select" [matMenuTriggerFor]="menu">
+          <i class="material-icons down-arrow">arrow_drop_down</i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="subscribeBtnToggle('jos')">Park Underground</button>
+          <button mat-menu-item (click)="subscribeBtnToggle('sus')">Park Outside</button>
+        </mat-menu>
+      </div>
+      <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle()">Cancel</button>
     </div>
-    <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle()">Cancel</button>
-
   </div>
-</mat-card>
+
+
+</div>
+<!-- </mat-card-content> -->

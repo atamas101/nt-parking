@@ -5,7 +5,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.scss']
 })
 export class LoginComponent {
   public hide = true;
@@ -22,27 +22,11 @@ export class LoginComponent {
       : this.email.hasError('email') ? 'Not a valid email' : '';
   }
 
-  // ngOnInit(){
-  //   // reset login status
-  //   this.authenticationService.logout();
-  // }
-  loading = false;
-
   loginUser() {
-    console.log(this.email);
-    console.log(this.password);
-    this.loading = true;
     this.authenticationService
       .loginUser(this.email.value, this.password.value)
-      .subscribe(
-        data => {
-          console.log(data);
-          this.router.navigate(['/week']);
-        },
-        error => {
-          console.log(error);
-          this.loading = false;
-        }
-      );
+      .subscribe(() => {
+        this.router.navigate(['/week']);
+      });
   }
 }

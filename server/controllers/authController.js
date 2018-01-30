@@ -8,10 +8,12 @@ const promisify = require('es6-promisify');
 exports.login = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
-      return next(err);
+      // return next(err);
+      return res.status(401).send(err);
     }
     if (!user) {
-      return next(err);
+      return res.status(401).send('Invalid user or password.');
+      // return next(err);
     }
     req.logIn(user, err => {
       if (err) {
@@ -40,13 +42,13 @@ exports.isLoggedIn = (req, res, next) => {
     next(); // carry on! They are logged in!
     return;
   }
-  res.status(401).json({ error: 'Must be authenticated.' });
+  res.status(401).send('Must be authenticated.');
 };
 
 exports.isAdmin = (req, res, next) => {
   // Check for admin rights
   if (!req.user && !req.user.admin) {
-    res.status(401).json({ error: 'Insuficient rights.' });
+    res.status(401).send('Insuficient rights.');
     return;
   }
   // Hand over control to passport

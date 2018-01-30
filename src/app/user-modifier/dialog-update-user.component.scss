@@ -1,0 +1,56 @@
+@import '../shared/styles/_variables.scss';
+
+mat-form-field {
+  display: block;
+}
+mat-dialog-title {
+  //   width: 100%;
+}
+
+.dialog-container-xs {
+  width: 70vw;
+}
+.dialog-container-sm {
+  width: 65vw;
+}
+.dialog-container-gt-sm {
+  width: 50vw;
+}
+.add-icon {
+  font-size: 35px;
+  margin-right: 5px;
+  font-weight: 100;
+  color: $ntPurple;
+}
+.add-text {
+  margin-top: 1px;
+  color: $ntPurple;
+}
+
+.form-column {
+  width: 45%;
+}
+
+.dialog-container-xs {
+  .form-column {
+    width: 100%;
+  }
+}
+
+.buttons-wrapper {
+  margin-top: 50px;
+  float: right;
+  .buttons {
+    font-size: 13px;
+    border-radius: 0;
+    border: none;
+  }
+  .submit-button {
+    background-color: $ntGreen;
+    color: white;
+    padding: 5px 20px;
+  }
+  .cancel-button {
+    color: $ntLogoBg;
+  }
+}

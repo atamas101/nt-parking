@@ -1,28 +1,63 @@
 @import './shared/styles/_variables.scss';
 
+//side nav
 mat-sidenav {
-  min-width: 150px;
+width: 260px;
+background: $ntGray;
 }
+
 .login-button,
 .logout-button {
   position: absolute;
   right: 0;
-  margin-right: 20px;
-  color: white;
-  margin-top: 13px;
+  width: 50px;
+  height: 50px;
 }
+
+.mat-button .mat-button-wrapper{
+  border-radius: 50%;
+  background: $ntGray;
+}
+
 .mat-drawer-container {
   min-height: 500px;
 }
 .material-icons {
   cursor: pointer;
+  color: $ntGreen;
 }
+
+//toolbar
 .mat-toolbar {
-  background: #26353c;
+  background: white;
+  height: 64px;
 }
 .logo {
   margin-left: 20px;
 }
-.whatever {
-  color: red;
+
+.side-nav-list{
+  background: $ntGray;
+  
 }
+
+.mat-list-item {
+  color:white;
+  font-size: 18px;
+}
+
+.mat-list-item.mat-list-item-focus{
+  background:$ntDarkGray;
+}
+
+.mat-drawer.mat-drawer-push{
+  background: $ntGray;
+}
+
+// .login-button.logout-button.mat-button-focus-overlay{
+//   background-color: rgba(0, 0, 0,0);
+// }
+
+// .i.material-icons{
+// background: red;
+// }
