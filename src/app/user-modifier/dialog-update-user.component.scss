@@ -64,6 +64,7 @@ mat-form-field {
   .submit-disabled {
     background-color: $ntGreen;
     opacity: 0.5;
+    cursor: not-allowed;
   }
   .cancel-button {
     color: $ntLogoBg;
