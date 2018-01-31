@@ -10,7 +10,7 @@ import { Moment } from 'moment';
   styleUrls: ['week-nav.component.scss']
 })
 export class WeekNavComponent implements OnInit {
-  public datePicker: string;
+  public weekNumber: Number;
   public selectedDate: Date;
   public firstDay: Moment;
   public lastDay: Moment;
@@ -39,7 +39,7 @@ export class WeekNavComponent implements OnInit {
   }
 
   refreshDate(newDate: Date) {
-    this.datePicker = 'Week ' + moment(newDate).isoWeek();
+    this.weekNumber = moment(newDate).isoWeek();
     this.firstDay = moment(newDate).isoWeekday(1);
     this.lastDay = moment(newDate).isoWeekday(5);
 

@@ -6,16 +6,6 @@ width: 260px;
 background: $ntGray;
 }
 
-.logout-button {
-  min-width: 34px;
-  width: 34px;
-  height: 34px;
-  //margin: 0px;
-  padding: 0px;
-  float: right;
-  margin: 0 auto;
-
-}
 .mat-button .mat-button-wrapper{
   border-radius: 50%;
   background: $ntGray;
@@ -27,6 +17,7 @@ background: $ntGray;
 .material-icons {
   cursor: pointer;
   color: $ntGreen;
+  margin: 15px;
 }
 
 //toolbar
@@ -35,7 +26,6 @@ background: $ntGray;
   height: 64px;
   margin: 0px;
   padding: 0px;
-  // display: block;
 }
 .logo-container {
   margin: 0;
@@ -68,17 +58,15 @@ background: $ntGray;
   background: $ntGray;
 }
 
-.material-icons.shut-down{ 
+.material-icons.shut-down-btn{ 
   background-color: $ntDarkGray;
   border-radius: 50%;
-  padding: 0px;
-  float: right;
-  margin: 0 auto;
  }
 
 .material-icons.toggle-sidebar{
    color:$ntGray;
-   margin: 15px;
  }
 
-
+ .toolbar-spacer {
+  flex: 1 1 auto;
+}
