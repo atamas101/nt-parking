@@ -20,12 +20,10 @@ exports.login = (req, res, next) => {
         return next(err);
       }
       return res.json({
-        user: {
-          name: user.name,
-          email: user.email,
-          admin: user.admin,
-          _id: user._id
-        }
+        name: user.name,
+        email: user.email,
+        admin: user.admin,
+        _id: user._id
       });
     });
   })(req, res, next);
