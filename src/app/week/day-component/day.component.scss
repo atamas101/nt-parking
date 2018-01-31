@@ -116,6 +116,7 @@
 .mediumView {
   &.day-component-wrapper {
     height: 280px;
+    padding: 40px 40px 40px 40px;
     flex-wrap: wrap;
   }
   .week-day {
@@ -123,15 +124,20 @@
   }
   .others-and-dropdown {
     order: 2;
-    height: 80px;
     .others {
-      order: 1;
+      order: 2;
     }
     .parking-buttons {
-      order: 2;
+      order: 1;
     }
   }
   .parking-slots {
+    margin-top: 10px;
+    width: 100%;
     order: 3;
+    slot {
+      width: auto;
+      margin-top: 10px;
+    }
   }
 }

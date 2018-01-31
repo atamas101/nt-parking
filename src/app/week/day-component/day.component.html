@@ -2,7 +2,7 @@
   fxLayoutWrap> -->
 
 <div class='day-component-wrapper' ngClass.xs="xsView" ngClass.sm='mediumView' fxLayout="row" fxLayoutAlign="space-between"
-  fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
+  fxLayoutAlign.sm="space-evenly center" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
 
   <div class='week-day' fxLayout="column">
 
@@ -18,7 +18,8 @@
 
 
 
-  <div class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.xs="space-between stretch">
+  <div class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.sm="space-between stretch"
+    fxLayoutAlign.xs="space-between stretch">
     <slot [user]="subscribers.alocated[0]" [ngClass]="{'empty': !subscribers.alocated[0].name}"></slot>
     <slot [user]="subscribers.alocated[1]" [ngClass]="{'empty': !subscribers.alocated[1].name}"></slot>
     <slot class='outside' [user]="subscribers.alocated[2]" [ngClass]="{'empty': !subscribers.alocated[2].name}"></slot>
@@ -27,7 +28,7 @@
 
 
   <div class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column"
-    fxLayoutAlign.xs="space-around stretch">
+    fxLayoutAlign.sm="space-between end" fxLayoutAlign.xs="space-around stretch">
 
     <div class="others" fxLayout="row" fxLayoutAlign=" center">
       <p>...{{othersNumber}} more waiting</p>
