@@ -12,13 +12,13 @@
           <form (ngSubmit)="loginUser()">
             <div class="flex-item">
               <mat-form-field>
-                <input class="inputs" matInput placeholder="USERNAME" [formControl]="email" type="email" class="sign-in-text">
+                <input matInput placeholder="USERNAME" [formControl]="email" type="email" class="sign-in-text">
                 <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
               </mat-form-field>
             </div>
             <div class="flex-item">
               <mat-form-field>
-                <input class="inputs" matInput placeholder="PASSWORD" [formControl]="password" [type]="hide ? 'password' : 'text'" class="sign-in-text">
+                <input matInput placeholder="PASSWORD" [formControl]="password" [type]="hide ? 'password' : 'text'" class="sign-in-text">
                 <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
                 <mat-error *ngIf="password.invalid">You must enter a password</mat-error>
               </mat-form-field>
