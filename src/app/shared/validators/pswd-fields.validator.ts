@@ -1,10 +1,11 @@
 import { FormControl } from '@angular/forms';
 
-export function pswdEquality(pswd) {
-  return (control: FormControl): { [key: string]: any } => {
-    if (!pswd) return null;
-    return control.value !== pswd.value
-      ? { passwordMatch: 'Passwrds dont match' }
+export function pswdEquality(passwordField) {
+  return (targetField: FormControl): { [key: string]: any } => {
+    console.log(passwordField, targetField);
+    if (!passwordField) return null;
+    return targetField.value !== passwordField.value
+      ? { passwordMatch: 'Passwords dont match' }
       : null;
   };
 }

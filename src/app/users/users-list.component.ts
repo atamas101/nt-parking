@@ -9,18 +9,22 @@ import {
   MatSort,
   MatInputModule
 } from '@angular/material';
+import { AuthenticationService } from '../login/auth.service';
 
 @Component({
   selector: 'users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.scss']
 })
 export class UsersComponent implements OnInit {
   public usersList: any;
   displayedColumns = ['name', 'hireDate', 'email', 'edit'];
   errorMessage: String;
   @ViewChild(MatSort) sort: MatSort;
-  constructor(private users: UsersService) {}
+  constructor(
+    private users: UsersService,
+    private auth: AuthenticationService
+  ) {}
 
   ngOnInit() {
     this.usersList = new MatTableDataSource<IUser>();

@@ -31,6 +31,9 @@ export class AppComponent implements OnDestroy {
     this.watcher.unsubscribe();
   }
 
+  toggleSidebar() {
+    console.log('togeling');
+  }
   public switchSideNavMode(mode) {
     this.mode = mode;
   }

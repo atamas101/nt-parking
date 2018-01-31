@@ -26,7 +26,7 @@ export class LoginComponent {
     this.authenticationService
       .loginUser(this.email.value, this.password.value)
       .subscribe(() => {
-        this.router.navigate(['/week']);
+        this.router.navigate(['/dashboard']);
       });
   }
 }

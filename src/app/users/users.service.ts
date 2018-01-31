@@ -23,4 +23,8 @@ export class UsersService {
     const postUrl = newUser._id ? `user/${newUser._id}` : 'user/register';
     return this.$http.post<IUser>(postUrl, newUser);
   }
+  deleteUser(newUser: IUser): Observable<IUser> {
+    const postUrl = newUser._id ? `user/${newUser._id}` : 'user/register';
+    return this.$http.delete<IUser>(postUrl);
+  }
 }

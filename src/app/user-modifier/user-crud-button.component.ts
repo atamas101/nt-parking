@@ -6,10 +6,11 @@ import { EventEmitter } from '@angular/core';
 
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
+import { AuthenticationService } from '../login/auth.service';
 
 @Component({
   selector: 'user-crud-button',
-  template: `<button mat-raised-button (click)="openDialog()">{{btnText || "Please specify the btnText"}}</button>`
+  template: `<i class="material-icons button-icon"(click)="openDialog()">{{btnText}}</i>`
 })
 export class UserCrudBtn {
   @Input() selectedUser;
@@ -30,7 +31,7 @@ export class UserCrudBtn {
       .filter(rez => rez)
       .subscribe(result => {
         console.log(
-          'The dialog was closed and fotrm data is in the result',
+          'The dialog was closed and form data is in the result',
           result
         );
         this.deliverUpdatedUser.emit(result);
