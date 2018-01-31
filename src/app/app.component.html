@@ -6,20 +6,18 @@
 
   <mat-toolbar color="primary">
 
-    <div class="logo-container" [ngClass]="{'sidebar-open':sidenav.opened}">
-    </div>
+    <div class="logo-container" [ngClass]="{'sidebar-open':sidenav.opened}"></div>
 
     <i class="material-icons toggle-sidebar" (click)="sidenav.toggle(); ">menu</i>
 
-    <!-- <button *ngIf="auth.isAuthenticated() " (click)="auth.logout() " mat-button class="logout-button"> -->
-    <i class="material-icons shut-dowm " (click)="auth.logout() ">power_settings_new</i>
-    <!-- </button> -->
+    <span class="toolbar-spacer"></span>
+
+    <i class="material-icons shut-down-btn " *ngIf="auth.isAuthenticated()" (click)="auth.logout() ">power_settings_new</i>
 
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container ">
     <mat-sidenav #sidenav [(opened)]="opened " [mode]="mode ">
-
       <mat-nav-list class="side-nav-list ">
         <a [routerLink]="[ 'users'] " mat-list-item>Users</a>
         <a [routerLink]="[ 'week'] " mat-list-item>Week</a>
