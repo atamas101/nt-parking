@@ -29,3 +29,16 @@ html {
   padding: 20px;
   background-color: $lightGray;
 }
+
+.btn {
+  border: 1px solid;
+}
+.btn-group {
+  .btn {
+    margin: 0;
+    border-left-width: 0px;
+    &:first-child {
+      border-left-width: 1px;
+    }
+  }
+}

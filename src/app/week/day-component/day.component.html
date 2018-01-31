@@ -1,10 +1,10 @@
 <!-- <mat-card-content fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.md="space-evenly center" fxLayoutAlign.lt-md="space-around center"
   fxLayoutWrap> -->
 
-<div class='day-component-wrapper' ngClass.xs="xsView" fxLayout="row" fxLayoutAlign="space-between" fxLayout.xs="column"
-  fxLayoutAlign.xs="center">
+<div class='day-component-wrapper' ngClass.xs="xsView" ngClass.sm='mediumView' fxLayout="row" fxLayoutAlign="space-between"
+  fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
 
-  <div class='week-day' ngClass.xs='xsView' fxLayout="column">
+  <div class='week-day' fxLayout="column">
 
     <div class='month-info' fxLayoutAlign="center">
       <span class="month">{{inputDay |date:" MMM" |uppercase}}</span>
@@ -18,7 +18,7 @@
 
 
 
-  <div class='parking-slots' ngClass.xs="xsView" fxLayout="row" fxLayoutAlign="space-around center" fxLayout.xs="column" fxLayoutAlign.xs="space-around center">
+  <div class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.xs="space-between stretch">
     <slot [user]="subscribers.alocated[0]" [ngClass]="{'empty': !subscribers.alocated[0].name}"></slot>
     <slot [user]="subscribers.alocated[1]" [ngClass]="{'empty': !subscribers.alocated[1].name}"></slot>
     <slot class='outside' [user]="subscribers.alocated[2]" [ngClass]="{'empty': !subscribers.alocated[2].name}"></slot>
@@ -26,8 +26,10 @@
 
 
 
-  <div class='others-and-dropdown'>
-    <div class="others">
+  <div class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column"
+    fxLayoutAlign.xs="space-around stretch">
+
+    <div class="others" fxLayout="row" fxLayoutAlign=" center">
       <p>...{{othersNumber}} more waiting</p>
       <ul [hidden]='true' class="dropdown">
         <li *ngFor='let other of subscribers.others'>
@@ -37,7 +39,7 @@
     </div>
 
     <div class="parking-buttons">
-      <div *ngIf="subscribeBtnState" fxLayout="row" fxLayoutAlign="end none">
+      <div *ngIf="subscribeBtnState" class="btn-group" fxLayout="row" fxLayoutAlign="end none" fxLayoutAlign.xs="none stretch">
         <button class="btn btn-text" (click)="subscribeBtnToggle()" value="{{inputDay}}">I Want To Park</button>
         <button class="btn btn-select" [matMenuTriggerFor]="menu">
           <i class="material-icons down-arrow">arrow_drop_down</i>

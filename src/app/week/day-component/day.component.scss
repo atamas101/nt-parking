@@ -4,19 +4,14 @@
   height: 80px;
   margin-bottom: 6px;
   background-color: $lightGray;
-  // display: flex;
-  // justify-content: space-between;
 }
 
 .week-day {
+  flex: 0 1 auto;
   width: 90px;
   font-size: 1.33em;
-  // display: flex column;
-  // justify-content: space-between;
   div {
-    height: 50%;
-    // display: flex;
-    // justify-content: center;
+    height: 40px;
     span {
       align-self: center;
       padding-right: 0.2em;
@@ -25,7 +20,7 @@
   }
   .month-info {
     background-color: $darkGray;
-    color: white;
+    color: $white;
   }
   .day-info {
     background-color: $gray;
@@ -34,22 +29,19 @@
 }
 
 .parking-slots {
-  // display: flex;
-  // align-items: center;
-  // justify-content: space-around;
-  flex-grow: 2;
+  flex-grow: 1;
   slot {
     background-color: $ntGreen;
     font-weight: 400;
-    padding: 10px 10px;
-    color: white;
+    padding-top: 10px;
+    color: $white;
     font-size: 1.25em;
     text-align: center;
     width: 160px;
     height: 40px;
-    padding: 10px 10px;
     &.empty {
       background-color: transparentize($ntGreen, 0.5);
+      opacity: 0.7;
     }
     &.outside {
       background-color: $ntPurple;
@@ -62,50 +54,84 @@
 
 .others-and-dropdown {
   font-size: 1.25em;
-  display: flex;
-  flex-grow: 1.5;
-  justify-content: space-around;
-  align-items: center;
+  flex-grow: 1;
   color: $ntTextColor;
   div {
     display: inline-block;
   }
   .parking-buttons {
     width: 200px;
-    height: 40px;
   }
   .others {
-    // margin-right: 10px;
+    height: 40px;
     p {
+      text-align: center;
       margin-bottom: 0px;
     }
   }
   button {
-    font-family: Roboto;
+    font-family: $font-family-base;
     color: $ntGreen;
+    background-color: $white;
+    border-color: $gray;
+    height: 40px;
     &.btn-text {
       flex-grow: 3;
     }
     &.btn-cancel {
       width: 200px;
-      height: 40px;
     }
     &:hover {
       cursor: pointer;
-      box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
-        0 17px 50px 0 rgba(0, 0, 0, 0.19);
     }
   }
 }
 
 .xsView {
-  &.week-day {
+  &.day-component-wrapper {
+    height: 320px;
+    margin-bottom: 30px;
+  }
+  .week-day {
+    height: 80px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .parking-slots {
+    height: 140px;
+    padding: 0 15px;
+    flex-grow: 1;
+    slot {
+      width: auto;
+    }
+  }
+  .others-and-dropdown {
+    padding: 0 15px;
+  }
+  .parking-buttons {
     width: 100%;
   }
-  &.parking-slots {
-    height: auto;
-    border: 1px solid red;
+}
+
+.mediumView {
+  &.day-component-wrapper {
+    height: 280px;
+    flex-wrap: wrap;
   }
-  &.parking-slots slot {
+  .week-day {
+    order: 1;
+  }
+  .others-and-dropdown {
+    order: 2;
+    height: 80px;
+    .others {
+      order: 1;
+    }
+    .parking-buttons {
+      order: 2;
+    }
+  }
+  .parking-slots {
+    order: 3;
   }
 }
