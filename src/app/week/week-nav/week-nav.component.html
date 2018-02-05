@@ -1,20 +1,21 @@
-<mat-card>
-  <mat-card-content>
-    <div class="flex">
-      <mat-card-actions>
-        <button (click)="previousWeek()" mat-button>PREVIOUS</button>
-        <button (click)="nextWeek()" mat-button>NEXT</button>
-      </mat-card-actions>
+<div class="week-nav-wrapper" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
+  <i (click)="previousWeek()" class="material-icons size pointer">keyboard_arrow_left</i>
+  <div (click)="picker.open()" class="wrap">
+    <div fxLayout="row" fxLayoutAlign="center ">
+      <h2 class="first-row-text">Week {{weekNumber}} / {{ lastDay | date:"y" }} </h2>
+      <div class="calendar-icon">
+        <i class="material-icons icon-center ">event_note</i>
+      </div>
     </div>
-    <h1 (click)="picker.open()"> {{ datePicker }} - {{ lastDay | date:"y" }}
-      <mat-form-field class="hidden">
-        <input (dateInput)="addEvent($event)" ng-model="selectedDateModel" matInput [matDatepicker]="picker" placeholder="Choose a date">
-        <mat-datepicker #picker></mat-datepicker>
-      </mat-form-field>
-    </h1>
-    <p> {{firstDay | date:"MMM dd" }} - {{lastDay | date:"MMM dd" }}</p>
-  </mat-card-content>
-
-
-  <div *ngFor="let e of selectedDateModel"> {{ e }}</div>
-</mat-card>
+    <mat-form-field class="hidden">
+      <input (dateInput)="addEvent($event)" [ngModel]="selectedDate" matInput [matDatepicker]="picker" placeholder="Choose a date"
+      />
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker touchUi="true" #picker></mat-datepicker>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <h2 class="second-row-text"> {{firstDay | date:"MMM dd" }} - {{lastDay | date:"MMM dd" }}</h2>
+    </div>
+  </div>
+  <i (click)="nextWeek()" class="material-icons size pointer">keyboard_arrow_right</i>
+</div>

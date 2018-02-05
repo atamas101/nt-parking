@@ -1,0 +1,78 @@
+@import '../shared/styles/_variables.scss';
+
+mat-form-field {
+  display: block;
+}
+.wrapper input {
+  font-size: 14px;
+  cursor: pointer;
+}
+.mat-dialog-title {
+  margin-bottom: -5px;
+}
+.dialog-container-xs {
+  width: 70vw;
+}
+.dialog-container-sm {
+  width: 65vw;
+}
+.dialog-container-gt-sm {
+  width: 50vw;
+}
+.add-icon {
+  font-size: 35px;
+  margin-right: 5px;
+  color: $ntPurple;
+}
+.add-text {
+  margin-top: 1px;
+  color: $ntPurple;
+}
+
+.form-column {
+  width: 45%;
+}
+
+.dialog-container-xs {
+  .form-column {
+    width: 100%;
+  }
+}
+
+.buttons-wrapper {
+  margin-top: 50px;
+  float: right;
+  cursor: pointer;
+  .buttons {
+    font-size: 13px;
+    border-radius: 0;
+    border: none;
+    padding: 5px 20px;
+    cursor: pointer;
+  }
+  .submit-button {
+    transition: all 1s ease;
+    background-color: $ntGreen;
+    border-radius: 2px;
+    color: white;
+    &:hover {
+      transition: all 0.5s ease;
+      background-color: $ntGreen * 0.7;
+      border-radius: 2px;
+    }
+  }
+  .submit-disabled {
+    background-color: $ntGreen;
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .cancel-button {
+    color: $ntLogoBg;
+    &:hover {
+      transition: all 0.5s ease;
+      background-color: $lightGray * 0.8;
+      border-radius: 2px;
+      color: white;
+    }
+  }
+}

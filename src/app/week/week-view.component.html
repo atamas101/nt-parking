@@ -1,14 +1,8 @@
 <div>
   <nav-component (notify)="myMethod($event)"></nav-component>
-
   <li *ngFor="let day of weekDays">
     <day-comp [inputDay]="day">
     </day-comp>
   </li>
-
 </div>
 <div>
-
-  <!-- <div>
-  <day-comp *ngFor="let x of weekDays"> {{ x }} </day-comp>
-</div> -->

@@ -2,37 +2,36 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 
 import { UsersService } from './users.service';
-import { IUsers } from './users.model';
+import { IUser } from './users.model';
 import {
   MatTableDataSource,
   MatPaginator,
   MatSort,
   MatInputModule
 } from '@angular/material';
+import { AuthenticationService } from '../login/auth.service';
 
 @Component({
   selector: 'users-list',
   templateUrl: './users-list.component.html',
-  styleUrls: ['./users-list.component.css']
+  styleUrls: ['./users-list.component.scss']
 })
 export class UsersComponent implements OnInit {
   public usersList: any;
-  displayedColumns = ['id', 'lastName', 'firstName', 'hireDate', 'edit'];
+  displayedColumns = ['name', 'hireDate', 'email', 'edit'];
   errorMessage: String;
   @ViewChild(MatSort) sort: MatSort;
-
-  constructor(private users: UsersService) {}
-  //constructor(private http: HttpClient) {}
+  constructor(
+    private users: UsersService,
+    private auth: AuthenticationService
+  ) {}
 
   ngOnInit() {
-    this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
+    this.usersList = new MatTableDataSource<IUser>();
+    this.users.getUsers().subscribe(user => {
+      this.usersList.data = user;
+    });
   }
-  // ngOnInit() {
-  //   this.users.getUsers().subscribe((data) => {
-  //     console.log(data);
-  //     this.usersList = data;
-  //   });
-  // }
 
   applyFilter(filterValue: string) {
     filterValue = filterValue.trim();
@@ -45,6 +44,9 @@ export class UsersComponent implements OnInit {
   }
 
   addEditHandler(newUser) {
-    this.usersList = new MatTableDataSource<IUsers>(this.users.getUsers());
+    console.log('From user list', newUser);
+    this.users.getUsers().subscribe(user => {
+      this.usersList.data = user;
+    });
   }
 }

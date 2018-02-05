@@ -1,40 +1,60 @@
-{{title}}
-<mat-card class="container">
+<!-- <mat-card-content fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.md="space-evenly center" fxLayoutAlign.lt-md="space-around center"
+  fxLayoutWrap> -->
 
-  <mat-card-title class="inline">
-    <span class="week-day">{{inputDay |date:"EEEE "}}</span>
-    <br>
-    <span class="month-day">{{inputDay |date:"dd MMM"}}</span>
-  </mat-card-title>
+<div class='day-component-wrapper' ngClass.xs="xsView" ngClass.sm='mediumView' fxLayout="row" fxLayoutAlign="space-between"
+  fxLayoutAlign.sm="space-evenly center" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
 
-  <mat-card-content class="inline">
-    <slot [user]="subscribers.alocated[0]"></slot>
-    <slot [user]="subscribers.alocated[1]"></slot>
-    <slot [user]="subscribers.alocated[2]"></slot>
+  <div class='week-day' fxLayout="column">
 
-    <ul class="others">
-      <li>And {{othersNumber}} others..
-        <ul class="dropdown">
-          <li *ngFor='let other of subscribers.others'>
-            {{other.name}}
-          </li>
-
-        </ul>
-      </li>
-    </ul>
-  </mat-card-content>
-  <mat-card-actions class="parking-buttons">
-    <div *ngIf="subscribeBtnState">
-      <button mat-raised-button color="primary" class="btn-group" (click)="subscribeBtn()">Park</button>
-      <button mat-raised-button color="primary" class="btn-group" [matMenuTriggerFor]="menu">
-        <i class="material-icons">arrow_drop_down</i>
-      </button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Park Underground</button>
-        <button mat-menu-item>Park Outside</button>
-      </mat-menu>
+    <div class='month-info' fxLayoutAlign="center">
+      <span class="month">{{inputDay |date:" MMM" |uppercase}}</span>
     </div>
-    <button *ngIf="unsubscribeBtnState" mat-raised-button color="warn" class="unsubscribing-btn" (click)="unsubscribeBtn()">Cancel</button>
+    <div class='day-info' fxLayoutAlign="center">
+      <span class="day-of-month">{{inputDay |date:"dd" |uppercase}}</span>
+      <span class="day-of-week">{{inputDay |date:"EEE " |uppercase}}</span>
+    </div>
 
-  </mat-card-actions>
-</mat-card>
+  </div>
+
+
+
+  <div class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.sm="space-between stretch"
+    fxLayoutAlign.xs="space-between stretch">
+    <slot [user]="subscribers.alocated[0]" [ngClass]="{'empty': !subscribers.alocated[0].name}"></slot>
+    <slot [user]="subscribers.alocated[1]" [ngClass]="{'empty': !subscribers.alocated[1].name}"></slot>
+    <slot class='outside' [user]="subscribers.alocated[2]" [ngClass]="{'empty': !subscribers.alocated[2].name}"></slot>
+  </div>
+
+
+
+  <div class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column"
+    fxLayoutAlign.sm="space-between end" fxLayoutAlign.xs="space-around stretch">
+
+    <div class="others" fxLayout="row" fxLayoutAlign=" center">
+      <p>...{{othersNumber}} more waiting</p>
+      <ul [hidden]='true' class="dropdown">
+        <li *ngFor='let other of subscribers.others'>
+          {{other.name}}
+        </li>
+      </ul>
+    </div>
+
+    <div class="parking-buttons">
+      <div *ngIf="subscribeBtnState" class="btn-group" fxLayout="row" fxLayoutAlign="end none" fxLayoutAlign.xs="none stretch">
+        <button class="btn btn-text" (click)="subscribeBtnToggle()" value="{{inputDay}}">I Want To Park</button>
+        <button class="btn btn-select" [matMenuTriggerFor]="menu">
+          <i class="material-icons down-arrow">arrow_drop_down</i>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="subscribeBtnToggle('jos')">Park Underground</button>
+          <button mat-menu-item (click)="subscribeBtnToggle('sus')">Park Outside</button>
+        </mat-menu>
+      </div>
+      <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle()">Cancel</button>
+    </div>
+
+  </div>
+
+
+</div>
+<!-- </mat-card-content> -->

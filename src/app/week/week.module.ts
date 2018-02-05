@@ -6,6 +6,7 @@ import { WeekNavComponent } from './week-nav/week-nav.component';
 import { NgModule } from '@angular/core';
 
 import { NtmaterialModule } from '../ntmaterial/ntmaterial.module';
+import { SubscribersService } from './subscribers.service';
 
 @NgModule({
   declarations: [
@@ -15,6 +16,7 @@ import { NtmaterialModule } from '../ntmaterial/ntmaterial.module';
     SlotComponent
   ],
 
-  imports: [NtmaterialModule]
+  imports: [NtmaterialModule],
+  providers: [SubscribersService]
 })
 export class WeekModule {}

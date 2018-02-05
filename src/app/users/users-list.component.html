@@ -1,28 +1,29 @@
 <!-- Filter -->
-<div class="filter-header">
-    <mat-form-field>
-        <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
-    </mat-form-field>
-</div>
+
+
 <div class="list-container mat-elevation-z8">
-    <user-crud-button (deliverUpdatedUser)="addEditHandler($event)" btnText="Add User"></user-crud-button>
+    <div class="search-header">
+        <span style="margin: auto 1.5em">USERS</span>
+        <div class="filter-container">
+            <i class="material-icons search-button">search</i>
+            <div class="filter-header">
+                <mat-form-field>
+                    <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
+                </mat-form-field>
+            </div>
+        </div>
+    </div>
     <mat-table [dataSource]="usersList" matSort>
-        <!-- Id Column -->
-        <ng-container matColumnDef="id">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Id </mat-header-cell>
-            <mat-cell *matCellDef="let user"> {{user.id}} </mat-cell>
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
         </ng-container>
 
-        <!-- First Name Column -->
-        <ng-container matColumnDef="firstName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> First Name </mat-header-cell>
-            <mat-cell *matCellDef="let user"> {{user.firstName}} </mat-cell>
-        </ng-container>
-
-        <!-- Last Name Column -->
-        <ng-container matColumnDef="lastName">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Last Name </mat-header-cell>
-            <mat-cell *matCellDef="let user"> {{user.lastName}} </mat-cell>
+        <!-- Email Column -->
+        <ng-container matColumnDef="email">
+            <mat-header-cell *matHeaderCellDef mat-sort-header> Email </mat-header-cell>
+            <mat-cell *matCellDef="let user"> {{user.email}} </mat-cell>
         </ng-container>
 
         <!-- Hire Date Column -->
@@ -31,17 +32,21 @@
             <mat-cell *matCellDef="let user"> {{user.hireDate | date}} </mat-cell>
         </ng-container>
 
+        <!-- Edit User Column -->
         <ng-container matColumnDef="edit">
-            <mat-header-cell *matHeaderCellDef mat-sort-header> Edit User </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
             <mat-cell *matCellDef="let user">
-                <user-crud-button btnText="Edit User" [selectedUser]='user' (deliverUpdatedUser)="addEditHandler($event)"></user-crud-button>
-            </mat-cell>
+                <user-crud-button class="edit-button" btnText="mode_edit" [selectedUser]='user' (deliverUpdatedUser)="addEditHandler($event)"></user-crud-button>
 
+            </mat-cell>
         </ng-container>
 
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
     </mat-table>
     <!-- Pagination Component -->
-    <list-pagination [incomingList]="usersList"></list-pagination>
+    <div class="table-footer">
+        <list-pagination class="mat-paginator" [incomingList]="usersList"></list-pagination>
+        <user-crud-button class="add-button" *ngIf="auth.isAdmin()" (deliverUpdatedUser)="addEditHandler($event)" btnText="add_circle"></user-crud-button>
+    </div>
 </div>

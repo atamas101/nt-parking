@@ -7,10 +7,10 @@ import { Moment } from 'moment';
 @Component({
   selector: 'nav-component',
   templateUrl: './week-nav.component.html',
-  styleUrls: ['week-nav.component.css']
+  styleUrls: ['week-nav.component.scss']
 })
 export class WeekNavComponent implements OnInit {
-  public datePicker: string;
+  public weekNumber: Number;
   public selectedDate: Date;
   public firstDay: Moment;
   public lastDay: Moment;
@@ -39,7 +39,7 @@ export class WeekNavComponent implements OnInit {
   }
 
   refreshDate(newDate: Date) {
-    this.datePicker = 'Week ' + moment(newDate).isoWeek();
+    this.weekNumber = moment(newDate).isoWeek();
     this.firstDay = moment(newDate).isoWeekday(1);
     this.lastDay = moment(newDate).isoWeekday(5);
 
@@ -55,17 +55,6 @@ export class WeekNavComponent implements OnInit {
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
     const date = event.value;
-
-    // console.log('selected date', date);
-    // console.log('selected week', moment(date).isoWeek());
-    // console.log('this week', moment().isoWeek());
-
-    // console.log('selected Monday', moment(date).isoWeekday(1));
-    // console.log('selected Tuesday', moment(date).isoWeekday(2));
-    // console.log('selected wed', moment(date).isoWeekday(3));
-    // console.log('selected thur', moment(date).isoWeekday(4));
-    // console.log('selected fri', moment(date).isoWeekday(4));
-
     this.selectedDate = date;
     this.refreshDate(date);
   }
