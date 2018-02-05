@@ -14,7 +14,7 @@
       <mat-datepicker touchUi="true" #picker></mat-datepicker>
     </mat-form-field>
     <div fxLayout="row" fxLayoutAlign="center center">
-      <h2 class="second-row-text"> {{firstDay | date:"MMM dd" }} - {{lastDay | date:"MMM dd" }}</h2>
+      <h2 class="second-row-text"> {{firstDay | date:"MMMM dd" }} - {{lastDay | date:"MMMM dd" }}</h2>
     </div>
   </div>
   <i (click)="nextWeek()" class="material-icons size pointer">keyboard_arrow_right</i>
