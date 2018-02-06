@@ -3,24 +3,26 @@ import { FormControl } from '@angular/forms';
 import { Subscription } from 'rxjs/Subscription';
 import { MediaChange, ObservableMedia } from '@angular/flex-layout';
 import { AuthenticationService } from './login/auth.service';
+import { log } from 'util';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnDestroy {
-  public mode = 'side';
-
-  watcher: Subscription;
+  public sideNavMode: String = 'side';
+  private watcher: Subscription;
 
   constructor(media: ObservableMedia, private auth: AuthenticationService) {
     this.watcher = media.subscribe((change: MediaChange) => {
-      if (change.mqAlias === 'xs') {
-        this.switchSideNavMode('push');
-      } else {
-        this.switchSideNavMode('side');
-      }
+      const sideNaveMode = ['xs', 'sm'].includes(change.mqAlias)
+        ? 'push'
+        : 'side';
+      this.switchSideNavMode(sideNaveMode);
     });
+  }
+  public logout() {
+    return this.auth.logout();
   }
 
   public isLoggedIn() {
@@ -31,10 +33,7 @@ export class AppComponent implements OnDestroy {
     this.watcher.unsubscribe();
   }
 
-  toggleSidebar() {
-    console.log('togeling');
-  }
   public switchSideNavMode(mode) {
-    this.mode = mode;
+    this.sideNavMode = mode;
   }
 }

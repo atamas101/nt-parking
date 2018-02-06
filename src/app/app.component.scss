@@ -2,22 +2,40 @@
 
 //side nav
 mat-sidenav {
-width: 260px;
-background: $ntGray;
+  width: 260px;
+  background: $ntGray;
 }
 
-.mat-button .mat-button-wrapper{
+.side-nav-list {
+  background: $ntGray;
+}
+
+.mat-button .mat-button-wrapper {
   border-radius: 50%;
   background: $ntGray;
 }
 
 .mat-drawer-container {
-  min-height: 500px;
+  min-height: 100%;
 }
+
+.mat-drawer.mat-drawer-push {
+  background: $ntGray;
+}
+
 .material-icons {
   cursor: pointer;
   color: $ntGreen;
   margin: 15px;
+
+  &.shut-down-btn {
+    background-color: $ntDarkGray;
+    border-radius: 50%;
+  }
+
+  &.toggle-sidebar {
+    color: $ntGray;
+  }
 }
 
 //toolbar
@@ -33,40 +51,24 @@ background: $ntGray;
   width: 64px;
   height: 64px;
   float: left;
-  background: $ntGrayLight url('../assets/img/nexttech_logo_final.png') 15px 50% no-repeat;
+  background: $ntGrayLight url('../assets/img/nexttech_logo_final.png') 15px 50%
+    no-repeat;
 
-  &.sidebar-open{
+  &.sidebar-open {
     width: 260px;
     height: 64px;
   }
 }
 
-.side-nav-list{
-  background: $ntGray;
-}
-
 .mat-list-item {
-  color:white;
+  color: white;
   font-size: 18px;
+
+  &.mat-list-item-focus {
+    background: $ntDarkGray;
+  }
 }
 
-.mat-list-item.mat-list-item-focus{
-  background:$ntDarkGray;
-}
-
-.mat-drawer.mat-drawer-push{
-  background: $ntGray;
-}
-
-.material-icons.shut-down-btn{ 
-  background-color: $ntDarkGray;
-  border-radius: 50%;
- }
-
-.material-icons.toggle-sidebar{
-   color:$ntGray;
- }
-
- .toolbar-spacer {
+.toolbar-spacer {
   flex: 1 1 auto;
 }
