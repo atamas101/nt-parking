@@ -7,16 +7,23 @@ import { NgModule } from '@angular/core';
 
 import { NtmaterialModule } from '../ntmaterial/ntmaterial.module';
 import { SubscribersService } from './subscribers.service';
+import { WaitingListDialogComponent } from './day-component/waiting-list-dialog.component';
+import { WaitingListContentComponent } from './day-component/waiting-list-content.component';
+import { WaitingListTooltip } from './day-component/waiting-list-tooltip.component';
+import { MatTooltipModule } from '@angular/material';
 
 @NgModule({
   declarations: [
     WeekViewComponent,
     WeekNavComponent,
     DayComponent,
-    SlotComponent
+    SlotComponent,
+    WaitingListDialogComponent,
+    WaitingListContentComponent,
+    WaitingListTooltip
   ],
-
-  imports: [NtmaterialModule],
+  entryComponents: [WaitingListDialogComponent, WaitingListContentComponent],
+  imports: [NtmaterialModule, MatTooltipModule],
   providers: [SubscribersService]
 })
 export class WeekModule {}

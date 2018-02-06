@@ -25,10 +25,13 @@ export class DayComponent implements OnInit {
   othersNumber: number;
   subscribers;
   subscribeBtnState: boolean = true;
+  // tooltipList;
 
   ngOnInit() {
     this.subscribers = this._subscribersService.getSubscribers();
     this.othersNumber = this.subscribers.others.length;
+    // this.tooltipList = this.subscribers.others.map(personObj => personObj.name);
+    // console.log(this.tooltipList);
   }
 
   subscribeBtnToggle(parkLocation) {
