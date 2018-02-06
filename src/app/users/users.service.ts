@@ -8,7 +8,7 @@ import 'rxjs/add/observable/throw';
 
 @Injectable()
 export class UsersService {
-  constructor(private $http: HttpClient) {}
+  constructor(private $http: HttpClient) { }
 
   handleError(error: Response) {
     console.log('I caught a fish:', error);
@@ -23,8 +23,8 @@ export class UsersService {
     const postUrl = newUser._id ? `user/${newUser._id}` : 'user/register';
     return this.$http.post<IUser>(postUrl, newUser);
   }
-  deleteUser(newUser: IUser): Observable<IUser> {
-    const postUrl = newUser._id ? `user/${newUser._id}` : 'user/register';
-    return this.$http.delete<IUser>(postUrl);
+  deleteUser(deleteUser: IUser): Observable<IUser> {
+    const deleteUrl = deleteUser._id ? `user/${deleteUser._id}` : 'user/register';
+    return this.$http.delete<IUser>(deleteUrl);
   }
 }
