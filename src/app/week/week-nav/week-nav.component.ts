@@ -18,22 +18,14 @@ export class WeekNavComponent implements OnInit {
   @Output() notify = new EventEmitter();
 
   ngOnInit() {
-    this.selectedDate = new Date();
+    this.selectedDate = moment(new Date()).toDate();
     this.refreshDate(this.selectedDate);
   }
 
-  nextWeek() {
+  changeWeek(increment) {
     const selectedWeek = moment(this.selectedDate).isoWeek();
     this.selectedDate = moment(this.selectedDate)
-      .isoWeek(selectedWeek + 1)
-      .toDate();
-    this.refreshDate(this.selectedDate);
-  }
-
-  previousWeek() {
-    const selectedWeek = moment(this.selectedDate).isoWeek();
-    this.selectedDate = moment(this.selectedDate)
-      .isoWeek(selectedWeek - 1)
+      .isoWeek(selectedWeek + increment)
       .toDate();
     this.refreshDate(this.selectedDate);
   }
@@ -43,19 +35,15 @@ export class WeekNavComponent implements OnInit {
     this.firstDay = moment(newDate).isoWeekday(1);
     this.lastDay = moment(newDate).isoWeekday(5);
 
-    const weekDaysSelected = [
-      moment(newDate).isoWeekday(1),
-      moment(newDate).isoWeekday(2),
-      moment(newDate).isoWeekday(3),
-      moment(newDate).isoWeekday(4),
-      moment(newDate).isoWeekday(5)
-    ];
+    const weekDaysSelected = [1, 2, 3, 4, 5].map(day =>
+      moment(newDate).isoWeekday(day)
+    );
+
     this.notify.emit(weekDaysSelected);
   }
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
-    const date = event.value;
-    this.selectedDate = date;
-    this.refreshDate(date);
+    this.selectedDate = event.value;
+    this.refreshDate(event.value);
   }
 }
