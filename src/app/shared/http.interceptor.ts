@@ -1,4 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   HttpEvent,
   HttpInterceptor,
@@ -13,7 +14,7 @@ import { MatSnackBar } from '@angular/material';
 
 @Injectable()
 export class NtHttpInterceptor implements HttpInterceptor {
-  constructor(private snackBar: MatSnackBar) {}
+  constructor(private snackBar: MatSnackBar, private router: Router) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -32,6 +33,10 @@ export class NtHttpInterceptor implements HttpInterceptor {
       this.openSnackBar(err.error);
       if (err.errror && err.errror.stackHighlighted) {
         console.error(err.error.stackHighlighted);
+      }
+      if (err.error === 'Must be authenticated.') {
+        localStorage.removeItem('currentUser');
+        this.router.navigate(['/login']);
       }
       // return the error to the method that called it
       return Observable.throw(err);
