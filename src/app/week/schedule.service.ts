@@ -27,7 +27,11 @@ export class SubscribersService {
       ]
     };
   }
-  addUserRequest() {
-    //POST
+  subscribe(data) {
+    return this._http.get('subscribe', data);
+  }
+
+  unsubscribe(data) {
+    return this._http.get('unsubscribe', data);
   }
 }
