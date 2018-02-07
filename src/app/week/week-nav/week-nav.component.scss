@@ -17,27 +17,35 @@ h2 {
 }
 .pointer {
   cursor: pointer;
-  color:$ntGreen;
+  color: $ntGreen;
   font-size: 3rem;
 }
-.second-row-text{
+.second-row-text {
   cursor: pointer;
-  color:$ntPurple;
+  color: $ntPurple;
+  font-size: 2rem;
+  margin: none;
+}
+.first-row-text {
+  cursor: pointer;
+  color: $ntGreen;
   font-size: 2rem;
 }
-.first-row-text{
-  cursor: pointer;
-  color:$ntGreen;
-  font-size: 2rem;
-}
-.calendar-icon{
+.calendar-icon {
   cursor: pointer;
   background-color: $ntGreen;
   border-radius: 50%;
   margin-left: 10px;
-  color:white;
+  color: white;
   width: 30px;
   height: 30px;
   padding-top: 3px;
   text-align: center;
+}
+.current-week {
+  display: flex;
+  cursor: pointer;
+  color: $ntGreen;
+  margin-top: 25px auto;
+  justify-content: center;
 }
