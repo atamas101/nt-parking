@@ -6,4 +6,5 @@
 
 <mat-list dense>
     <mat-list-item *ngFor='let person of data'> {{person.name}} </mat-list-item>
+    <button (click)='onCancel()'>Cancel</button>
 </mat-list>

@@ -5,7 +5,7 @@ import { WaitingListContentComponent } from './waiting-list-content.component';
 @Component({
   selector: 'waiting-list-display',
   template:
-    '<button (mouseenter)="openDialog()">...{{othersCount}} more waiting</button>',
+    '<button (click)="openDialog()">...{{othersCount}} more waiting</button>',
   styles: [
     `button {
       background:none;
