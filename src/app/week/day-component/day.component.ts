@@ -21,13 +21,33 @@ export class DayComponent implements OnInit {
   constructor(private schedule: ScheduleService) {}
   @Input() inputDay: Moment;
 
-  othersNumber: number;
-  subscribers;
-  subscribeBtnState = true;
+  public subscribers;
+  public othersNumber: number;
+  private alocatedNumber: number;
+  public subscribeBtnState = true;
+  public subscribeBtnDisabled = false;
+  private now = moment();
+  private deadLine: Moment;
+
+  // private hourToCompare = moment().set({ hour: 22, minute: 0, second: 0 });
 
   ngOnInit() {
+    this.inputDay.set({ hour: 0, minute: 0, second: 0 });
     this.subscribers = this.schedule.getSubscribers();
     this.othersNumber = this.subscribers.others.length;
+    this.alocatedNumber = this.subscribers.alocated.length;
+
+    this.deadLine = this.inputDay.clone().add(-2, 'hour');
+    this.computeInitialDate();
+  }
+
+  computeInitialDate() {
+    if (
+      this.now.isAfter(this.deadLine, 'minute') &&
+      this.subscribers.alocated.length > 2
+    ) {
+      this.subscribeBtnDisabled = true;
+    }
   }
 
   subscribeBtnToggle(parkLocation) {
