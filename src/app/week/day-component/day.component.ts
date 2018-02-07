@@ -23,14 +23,14 @@ export class DayComponent implements OnInit {
   // @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   private subscribers;
-  othersNumber: number;
-  alocatedNumber: number;
+  private othersNumber: number;
+  private alocatedNumber: number;
   public subscribeBtnState = true;
   public subscribeBtnDisabled = false;
-  private now = Observable.of(moment());
+  private now = moment();
   private deadLine: Moment;
 
-  private hourToCompare = moment().set({ hour: 22, minute: 0, second: 0 });
+  // private hourToCompare = moment().set({ hour: 22, minute: 0, second: 0 });
 
   ngOnInit() {
     this.inputDay.set({ hour: 0, minute: 0, second: 0 });
@@ -39,16 +39,16 @@ export class DayComponent implements OnInit {
     this.alocatedNumber = this.subscribers.alocated.length;
 
     this.deadLine = this.inputDay.clone().add(-2, 'hour');
+    this.computeInitialDate();
+  }
 
-    this.now.subscribe(data => {
-      console.log('lol', data);
-      if (
-        data.isAfter(this.deadLine, 'minute') &&
-        this.subscribers.alocated.length > 2
-      ) {
-        this.subscribeBtnDisabled = true;
-      }
-    });
+  computeInitialDate() {
+    if (
+      this.now.isAfter(this.deadLine, 'minute') &&
+      this.subscribers.alocated.length > 2
+    ) {
+      this.subscribeBtnDisabled = true;
+    }
   }
 
   subscribeBtnToggle(parkLocation) {
