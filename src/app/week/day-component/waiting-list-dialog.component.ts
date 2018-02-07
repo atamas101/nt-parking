@@ -9,14 +9,15 @@ import { WaitingListContentComponent } from './waiting-list-content.component';
   styleUrls: ['./waiting-list-dialog.scss']
 })
 export class WaitingListDialogComponent {
-  @Input() othersCount;
+  @Input() selectedDay;
   @Input() waitingList;
+  @Input() othersCount;
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     console.log(this.waitingList);
     let dialogRef = this.dialog.open(WaitingListContentComponent, {
-      data: this.waitingList
+      data: { selectedDay: this.selectedDay, people: this.waitingList }
     });
 
     dialogRef.afterClosed().subscribe(() => {
