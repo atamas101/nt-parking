@@ -14,5 +14,5 @@ export const routes: Routes = [
     canActivate: [AuthGuard]
   },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },
-  { path: '', pathMatch: 'full', redirectTo: 'login' }
+  { path: '', pathMatch: 'full', redirectTo: 'dashboard' }
 ];

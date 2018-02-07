@@ -5,12 +5,12 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 
 @Injectable()
-export class SubscribersService {
+export class ScheduleService {
   constructor(private _http: HttpClient) {}
 
   private subscibersUrl = '';
   getSubscribers() {
-    // :Observable<ISubscribers>
+    // :Observable<ISchedule>
     // return this._http.get(this.subscribersUrl)
     // .map((res:Response) => res.json())
     // .catch((error: any) => Observable.throw(error.json().error || 'Server Error'));
@@ -27,7 +27,7 @@ export class SubscribersService {
       ]
     };
   }
-  addUserRequest() {
-    //POST
+  parkToggle(data) {
+    return this._http.post('subscribe', data);
   }
 }

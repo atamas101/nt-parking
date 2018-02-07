@@ -37,7 +37,6 @@ export class AuthenticationService {
   }
 
   isAdmin() {
-    console.log(this.isAuthenticated() && this.currentUser.admin);
     return this.isAuthenticated() && this.currentUser.admin;
   }
 

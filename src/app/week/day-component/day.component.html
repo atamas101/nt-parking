@@ -31,7 +31,9 @@
     fxLayoutAlign.sm="space-between end" fxLayoutAlign.xs="space-around stretch">
 
     <div class="others" fxLayout="row" fxLayoutAlign=" center">
-      <p>...{{othersNumber}} more waiting</p>
+      <waiting-list-display [waitingList]='subscribers.others' [othersCount]='othersNumber'></waiting-list-display>
+      <!-- <p>...{{othersNumber}} more waiting</p> -->
+
       <ul [hidden]='true' class="dropdown">
         <li *ngFor='let other of subscribers.others'>
           {{other.name}}
@@ -41,16 +43,16 @@
 
     <div class="parking-buttons">
       <div *ngIf="subscribeBtnState" class="btn-group" fxLayout="row" fxLayoutAlign="end none" fxLayoutAlign.xs="none stretch">
-        <button class="btn btn-text" (click)="subscribeBtnToggle()" value="{{inputDay}}">I Want To Park</button>
+        <button class="btn btn-text" (click)="subscribeBtnToggle(0)" value="{{inputDay}}">I Want To Park</button>
         <button class="btn btn-select" [matMenuTriggerFor]="menu">
           <i class="material-icons down-arrow">arrow_drop_down</i>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="subscribeBtnToggle('jos')">Park Underground</button>
-          <button mat-menu-item (click)="subscribeBtnToggle('sus')">Park Outside</button>
+          <button mat-menu-item (click)="subscribeBtnToggle(1)">Park Underground</button>
+          <button mat-menu-item (click)="subscribeBtnToggle(2)">Park Outside</button>
         </mat-menu>
       </div>
-      <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle()">Cancel</button>
+      <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle(-1)">Cancel</button>
     </div>
 
   </div>

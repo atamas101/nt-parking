@@ -3,14 +3,14 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../users/users.service';
 import { pswdEquality } from '../shared/validators/pswd-fields.validator';
-import { OnChanges } from '@angular/core';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'dialog-content',
   templateUrl: './dialog-update-user.html',
   styleUrls: ['./dialog-update-user.component.scss']
 })
-export class UpdateUserComponent {
+export class UpdateUserComponent implements OnInit {
   userModifyForm: FormGroup;
   hireDate: FormControl;
   email: FormControl;
@@ -45,14 +45,14 @@ export class UpdateUserComponent {
 
     const requiredValidator = this.isEditMode ? null : Validators.required;
 
-    let passwordValidators = [];
+    const passwordValidators = [];
 
     if (!this.isEditMode()) {
       passwordValidators.push(Validators.required);
     }
     this.password = new FormControl('', passwordValidators);
 
-    let passwdField = this.password;
+    const passwdField = this.password;
 
     passwordValidators.push(pswdEquality(passwdField));
 
@@ -67,7 +67,7 @@ export class UpdateUserComponent {
     });
   }
   postToServer() {
-    let newUser = Object.assign(this.data, this.userModifyForm.value);
+    const newUser = Object.assign(this.data, this.userModifyForm.value);
     this._usersService
       .addEditUser(newUser)
       .subscribe(response => this.dialogRef.close(response));

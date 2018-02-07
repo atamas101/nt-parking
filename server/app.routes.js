@@ -3,7 +3,21 @@ const router = express.Router();
 
 const userController = require('./controllers/userController');
 const authController = require('./controllers/authController');
+const scheduleController = require('./controllers/scheduleController');
 const { catchErrors } = require('./handlers/errorHandlers');
+
+router.post(
+  '/subscribe',
+  authController.isLoggedIn,
+  // catchErrors(scheduleController.park)
+  scheduleController.park
+);
+
+router.post(
+  '/unsubscribe',
+  authController.isLoggedIn,
+  catchErrors(scheduleController.cancel)
+);
 
 // 1. Validate the registration data
 // 2. register the user

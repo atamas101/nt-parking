@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 const md5 = require('md5');
+const moment = require('moment');
 const validator = require('validator');
 const mongodbErrorHandler = require('mongoose-mongodb-errors');
 const passportLocalMongoose = require('passport-local-mongoose');
@@ -13,7 +14,7 @@ const userSchema = new Schema({
     lowercase: true,
     trim: true,
     validate: [validator.isEmail, 'Invalid Email Address'],
-    required: 'Please Supply an email address'
+    required: 'Please supply an email address'
   },
   name: {
     type: String,
@@ -26,7 +27,10 @@ const userSchema = new Schema({
   },
   hireDate: {
     type: Date,
-    default: new Date()
+    default: moment(new Date())
+      .utc()
+      .startOf('day')
+      .toDate()
   },
   resetPasswordToken: String,
   resetPasswordExpires: Date
