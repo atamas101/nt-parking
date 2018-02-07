@@ -6,16 +6,7 @@ import { WaitingListContentComponent } from './waiting-list-content.component';
   selector: 'waiting-list-display',
   template:
     '<button (click)="openDialog()">...{{othersCount}} more waiting</button>',
-  styles: [
-    `button {
-      background:none;
-      color:inherit;
-      border:none; 
-      padding:0;
-      font: inherit;
-      cursor: pointer;
- }`
-  ]
+  styleUrls: ['./waiting-list-dialog.scss']
 })
 export class WaitingListDialogComponent {
   @Input() othersCount;
@@ -25,7 +16,6 @@ export class WaitingListDialogComponent {
   openDialog(): void {
     console.log(this.waitingList);
     let dialogRef = this.dialog.open(WaitingListContentComponent, {
-      width: '200px',
       data: this.waitingList
     });
 

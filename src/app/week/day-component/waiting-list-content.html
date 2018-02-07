@@ -1,10 +1,7 @@
-<!-- <ul>
-    <li *ngFor='let person of data'>
-        {{person.name}}
-    </li>
-</ul> -->
-
-<mat-list dense>
-    <mat-list-item *ngFor='let person of data'> {{person.name}} </mat-list-item>
+<mat-list dense fxLayout='column' fxLayoutAlign=' center'>
+    <mat-list-item *ngFor='let person of data'>
+        <p matLine> {{person.name}} </p>
+        <span matLine>Hire Date: {{person.hireDate}}</span>
+    </mat-list-item>
     <button (click)='onCancel()'>Cancel</button>
 </mat-list>

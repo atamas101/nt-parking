@@ -1,0 +1,12 @@
+@import '../../shared/styles/_variables.scss';
+
+button {
+  font-family: $font-family-base;
+  color: $ntGreen;
+  background-color: $white;
+  border: 1px solid;
+  border-color: $gray;
+  &:hover {
+    cursor: pointer;
+  }
+}
