@@ -18,6 +18,7 @@ export class UpdateUserComponent implements OnInit {
   password: FormControl;
   confirmPasswd: FormControl;
   errors: any;
+  public titleText: string;
 
   constructor(
     public dialogRef: MatDialogRef<UpdateUserComponent>,
@@ -49,6 +50,9 @@ export class UpdateUserComponent implements OnInit {
 
     if (!this.isEditMode()) {
       passwordValidators.push(Validators.required);
+      this.titleText = 'ADD';
+    } else {
+      this.titleText = 'EDIT';
     }
     this.password = new FormControl('', passwordValidators);
 
