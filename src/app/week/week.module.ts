@@ -9,7 +9,6 @@ import { NtmaterialModule } from '../ntmaterial/ntmaterial.module';
 import { SubscribersService } from './subscribers.service';
 import { WaitingListDialogComponent } from './day-component/waiting-list-dialog.component';
 import { WaitingListContentComponent } from './day-component/waiting-list-content.component';
-import { WaitingListTooltip } from './day-component/waiting-list-tooltip.component';
 import { MatTooltipModule } from '@angular/material';
 
 @NgModule({
@@ -19,8 +18,7 @@ import { MatTooltipModule } from '@angular/material';
     DayComponent,
     SlotComponent,
     WaitingListDialogComponent,
-    WaitingListContentComponent,
-    WaitingListTooltip
+    WaitingListContentComponent
   ],
   entryComponents: [WaitingListDialogComponent, WaitingListContentComponent],
   imports: [NtmaterialModule, MatTooltipModule],
