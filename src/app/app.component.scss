@@ -59,7 +59,7 @@ mat-sidenav {
 .mat-list-item {
   color: white;
   font-size: 18px;
-  width: 50%;
+  padding-left: 50px;
 
   &.mat-list-item-focus {
     background: $ntDarkGray;
