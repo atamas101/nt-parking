@@ -42,6 +42,7 @@ mat-sidenav {
   padding: 0px;
 }
 .logo-container {
+  transition: width 0.31s;
   margin: 0;
   padding: 0;
   width: 64px;
@@ -49,6 +50,7 @@ mat-sidenav {
   float: left;
   background: $ntGrayLight url('../assets/img/nexttech_logo_final.png') 15px 50%
     no-repeat;
+    
 
   &.sidebar-open {
     width: 260px;
@@ -59,12 +61,19 @@ mat-sidenav {
 .mat-list-item {
   color: white;
   font-size: 18px;
-
-  &.mat-list-item-focus {
-    background: $ntDarkGray;
-  }
+  
 }
 
 .toolbar-spacer {
   flex: 1 1 auto;
 }
+
+
+.active-link{
+  color: $ntGreen;
+   background: $link-active;
+   border-left: 3px solid $ntGreen;
+  
+    
+}
+
