@@ -9,7 +9,6 @@ import { NtmaterialModule } from '../ntmaterial/ntmaterial.module';
 import { SubscribersService } from './subscribers.service';
 import { WaitingListDialogComponent } from './day-component/waiting-list-dialog.component';
 import { WaitingListContentComponent } from './day-component/waiting-list-content.component';
-import { MatTooltipModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -21,7 +20,7 @@ import { MatTooltipModule } from '@angular/material';
     WaitingListContentComponent
   ],
   entryComponents: [WaitingListDialogComponent, WaitingListContentComponent],
-  imports: [NtmaterialModule, MatTooltipModule],
+  imports: [NtmaterialModule],
   providers: [SubscribersService]
 })
 export class WeekModule {}
