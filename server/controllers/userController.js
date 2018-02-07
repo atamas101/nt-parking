@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const User = mongoose.model('User');
 const promisify = require('es6-promisify');
+const moment = require('moment');
 
 exports.validateRegister = (req, res, next) => {
   req.sanitizeBody('name');
@@ -63,7 +64,10 @@ exports.updateUser = async (req, res) => {
     name: req.body.name,
     email: req.body.email,
     admin: req.body.admin,
-    hireDate: req.body.hireDate
+    hireDate: moment(req.body.hireDate)
+      .utc()
+      .startOf('day')
+      .toDate()
   };
 
   const user = await User.findOneAndUpdate(

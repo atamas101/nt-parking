@@ -1,4 +1,4 @@
-import { SubscribersService } from './../subscribers.service';
+import { ScheduleService } from './../schedule.service';
 import { Observable } from 'rxjs/Observable';
 import {
   Component,
@@ -18,22 +18,34 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
   styleUrls: ['./day.component.scss']
 })
 export class DayComponent implements OnInit {
-  constructor(private _subscribersService: SubscribersService) {}
+  constructor(private schedule: ScheduleService) {}
   @Input() inputDay: Moment;
   // @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   othersNumber: number;
   subscribers;
-  subscribeBtnState: boolean = true;
+  subscribeBtnState = true;
 
   ngOnInit() {
-    this.subscribers = this._subscribersService.getSubscribers();
+    this.subscribers = this.schedule.getSubscribers();
     this.othersNumber = this.subscribers.others.length;
   }
 
   subscribeBtnToggle(parkLocation) {
-    this.subscribeBtnState = !this.subscribeBtnState;
-    console.log('subscribe:', this.subscribeBtnState, 'location', parkLocation);
-    console.log(moment(this.inputDay).toDate());
+    const date = moment(this.inputDay)
+      .utc()
+      .startOf('day')
+      .toISOString();
+    console.log(date);
+    this.schedule
+      .parkToggle({
+        operation: parkLocation >= 0 ? 'park' : 'cancel',
+        date: date,
+        preference: parkLocation
+      })
+      .subscribe(data => {
+        console.log(data);
+        this.subscribeBtnState = !this.subscribeBtnState;
+      });
   }
 }

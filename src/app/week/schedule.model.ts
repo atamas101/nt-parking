@@ -1,4 +1,4 @@
-export interface ISubscribers {
+export interface ISchedule {
   alocated: [
     {
       name: string;
