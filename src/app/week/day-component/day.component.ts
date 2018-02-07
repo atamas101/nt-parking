@@ -29,6 +29,8 @@ export class DayComponent implements OnInit {
   ngOnInit() {
     this.subscribers = this.schedule.getSubscribers();
     this.othersNumber = this.subscribers.others.length;
+    // this.tooltipList = this.subscribers.others.map(personObj => personObj.name);
+    // console.log(this.tooltipList);
   }
 
   subscribeBtnToggle(parkLocation) {

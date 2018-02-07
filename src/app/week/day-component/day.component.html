@@ -31,7 +31,9 @@
     fxLayoutAlign.sm="space-between end" fxLayoutAlign.xs="space-around stretch">
 
     <div class="others" fxLayout="row" fxLayoutAlign=" center">
-      <p>...{{othersNumber}} more waiting</p>
+      <waiting-list-display [waitingList]='subscribers.others' [othersCount]='othersNumber'></waiting-list-display>
+      <!-- <p>...{{othersNumber}} more waiting</p> -->
+
       <ul [hidden]='true' class="dropdown">
         <li *ngFor='let other of subscribers.others'>
           {{other.name}}
