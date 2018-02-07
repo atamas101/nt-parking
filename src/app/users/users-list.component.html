@@ -5,7 +5,7 @@
     <div class="search-header">
         <span style="margin: auto 1.5em">USERS</span>
         <div class="filter-container">
-            <i class="material-icons search-button">search</i>
+            <i matTooltip="Search" class="material-icons search-button">search</i>
             <div class="filter-header">
                 <mat-form-field>
                     <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
@@ -36,7 +36,7 @@
         <ng-container matColumnDef="edit">
             <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
             <mat-cell *matCellDef="let user">
-                <user-crud-button class="edit-button" btnText="mode_edit" [selectedUser]='user' (deliverUpdatedUser)="addEditHandler($event)"></user-crud-button>
+                <user-crud-button matTooltip="Edit User" class="edit-button" btnText="mode_edit" [selectedUser]='user' (deliverUpdatedUser)="addEditHandler($event)"></user-crud-button>
 
             </mat-cell>
         </ng-container>
@@ -47,6 +47,7 @@
     <!-- Pagination Component -->
     <div class="table-footer">
         <list-pagination class="mat-paginator" [incomingList]="usersList"></list-pagination>
-        <user-crud-button class="add-button" *ngIf="auth.isAdmin()" (deliverUpdatedUser)="addEditHandler($event)" btnText="add_circle"></user-crud-button>
+        <user-crud-button matTooltip="Add User" class="add-button" *ngIf="auth.isAdmin()" (deliverUpdatedUser)="addEditHandler($event)"
+            btnText="add_circle"></user-crud-button>
     </div>
 </div>

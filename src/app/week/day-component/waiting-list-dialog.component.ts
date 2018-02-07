@@ -20,8 +20,6 @@ export class WaitingListDialogComponent {
       data: { selectedDay: this.selectedDay, people: this.waitingList }
     });
 
-    dialogRef.afterClosed().subscribe(() => {
-      console.log('The waiting list dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe(() => {});
   }
 }

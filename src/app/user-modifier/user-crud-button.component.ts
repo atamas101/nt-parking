@@ -16,13 +16,10 @@ export class UserCrudBtn {
   @Input() selectedUser;
   @Input() btnText;
   @Output() deliverUpdatedUser: EventEmitter<any> = new EventEmitter();
-  // newUser: {} = {};
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
     let dialogRef = this.dialog.open(UpdateUserComponent, {
-      // // MediaQuery activation changes
-      // width: `${this.dialogWidth}vw`,
       data: this.selectedUser ? this.selectedUser : {}
     });
 

@@ -44,7 +44,6 @@ export class UsersComponent implements OnInit {
   }
 
   addEditHandler(newUser) {
-    console.log('From user list', newUser);
     this.users.getUsers().subscribe(user => {
       this.usersList.data = user;
     });

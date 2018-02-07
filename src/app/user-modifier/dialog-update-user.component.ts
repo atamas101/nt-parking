@@ -34,7 +34,6 @@ export class UpdateUserComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.errors = this._usersService.handleError():
     this.hireDate = new FormControl(this.data.hireDate, Validators.required);
 
     this.email = new FormControl(this.data.email, [

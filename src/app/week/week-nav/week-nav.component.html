@@ -1,10 +1,10 @@
 <div class="week-nav-wrapper" fxLayout="row" fxLayoutAlign="space-between center" fxLayoutWrap>
-  <i (click)="changeWeek(-1)" class="material-icons size pointer">keyboard_arrow_left</i>
+  <i matTooltip="Previous Week" (click)="changeWeek(-1)" class="material-icons size pointer">keyboard_arrow_left</i>
   <div (click)="picker.open()" class="wrap">
     <div fxLayout="row" fxLayoutAlign="center ">
       <h2 class="first-row-text">Week {{weekNumber}} / {{ lastDay | date:"y" }} </h2>
       <div class="calendar-icon">
-        <i class="material-icons icon-center ">event_note</i>
+        <i matTooltip="Select Date" class="material-icons icon-center ">event_note</i>
       </div>
     </div>
     <mat-form-field class="hidden">
@@ -17,5 +17,5 @@
       <h2 class="second-row-text"> {{firstDay | date:"MMMM dd" }} - {{lastDay | date:"MMMM dd" }}</h2>
     </div>
   </div>
-  <i (click)="changeWeek(1)" class="material-icons size pointer">keyboard_arrow_right</i>
+  <i matTooltip="Next Week" (click)="changeWeek(1)" class="material-icons size pointer">keyboard_arrow_right</i>
 </div>

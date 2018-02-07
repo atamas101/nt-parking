@@ -20,7 +20,6 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 export class DayComponent implements OnInit {
   constructor(private schedule: ScheduleService) {}
   @Input() inputDay: Moment;
-  // @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>();
 
   othersNumber: number;
   subscribers;
@@ -29,8 +28,6 @@ export class DayComponent implements OnInit {
   ngOnInit() {
     this.subscribers = this.schedule.getSubscribers();
     this.othersNumber = this.subscribers.others.length;
-    // this.tooltipList = this.subscribers.others.map(personObj => personObj.name);
-    // console.log(this.tooltipList);
   }
 
   subscribeBtnToggle(parkLocation) {

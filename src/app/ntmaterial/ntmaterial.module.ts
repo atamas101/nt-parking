@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 import {
   MatButtonModule,
@@ -48,7 +49,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   exports: [
     CommonModule,
@@ -72,7 +74,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatFormFieldModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    FormsModule
+    FormsModule,
+    MatTooltipModule
   ],
   declarations: [],
   providers: []
