@@ -81,6 +81,9 @@
     &.btn-cancel {
       width: 200px;
     }
+    &.btn-disabled {
+      opacity: 0.5;
+    }
     &:hover {
       cursor: pointer;
     }
