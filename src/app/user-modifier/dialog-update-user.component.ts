@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../users/users.service';
 import { pswdEquality } from '../shared/validators/pswd-fields.validator';
 import { OnInit } from '@angular/core';
-
 @Component({
   selector: 'dialog-content',
   templateUrl: './dialog-update-user.html',

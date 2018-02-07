@@ -15,11 +15,8 @@ export class WaitingListDialogComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    console.log(this.waitingList);
     let dialogRef = this.dialog.open(WaitingListContentComponent, {
       data: { selectedDay: this.selectedDay, people: this.waitingList }
     });
-
-    dialogRef.afterClosed().subscribe(() => {});
   }
 }

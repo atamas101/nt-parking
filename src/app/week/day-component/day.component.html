@@ -2,7 +2,6 @@
   fxLayoutAlign.sm="space-evenly center" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
 
   <div class='week-day' fxLayout="column">
-
     <div class='month-info' fxLayoutAlign="center">
       <span class="month">{{inputDay |date:" MMM" |uppercase}}</span>
     </div>
@@ -10,10 +9,7 @@
       <span class="day-of-month">{{inputDay |date:"dd" |uppercase}}</span>
       <span class="day-of-week">{{inputDay |date:"EEE " |uppercase}}</span>
     </div>
-
   </div>
-
-
 
   <div class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.sm="space-between stretch"
     fxLayoutAlign.xs="space-between stretch">
@@ -22,15 +18,11 @@
     <slot class='outside' [user]="subscribers.alocated[2]" [ngClass]="{'empty': !subscribers.alocated[2].name}"></slot>
   </div>
 
-
-
   <div class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column"
     fxLayoutAlign.sm="space-between end" fxLayoutAlign.xs="space-around stretch">
-
     <div class="others" fxLayout="row" fxLayoutAlign=" center">
       <waiting-list-display matTooltip="Waiting List" [selectedDay]='inputDay' [waitingList]='subscribers.others' [othersCount]='othersNumber'></waiting-list-display>
     </div>
-
     <div class="parking-buttons">
       <div *ngIf="subscribeBtnState" class="btn-group" fxLayout="row" fxLayoutAlign="end none" fxLayoutAlign.xs="none stretch">
         <button matTooltip="Select" class="btn btn-text" (click)="subscribeBtnToggle(0)" value="{{inputDay}}">I Want To Park</button>
@@ -44,8 +36,6 @@
       </div>
       <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle(-1)">Cancel</button>
     </div>
-
   </div>
-
 
 </div>

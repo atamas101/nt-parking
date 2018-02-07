@@ -12,7 +12,7 @@ export class WaitingListContentComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  onCancel(): void {
+  onClose(): void {
     this.dialogRef.close();
   }
 }

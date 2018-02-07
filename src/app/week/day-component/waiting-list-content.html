@@ -1,10 +1,8 @@
 <h3>Selected day : {{data.selectedDay |date}}</h3>
 <mat-list dense fxLayout='column' fxLayoutAlign=' center'>
     <mat-list-item class='info-row' *ngFor='let person of data.people'>
-
         <span class='name'> {{person.name}} </span>
         <span class='hiredOn'>Hire Date: {{person.hireDate}}</span>
-
     </mat-list-item>
-    <button (click)='onCancel()'>Close</button>
+    <button (click)='onClose()'>Close</button>
 </mat-list>
