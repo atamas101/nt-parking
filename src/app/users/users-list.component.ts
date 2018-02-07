@@ -24,7 +24,7 @@ export class UsersComponent implements OnInit {
   constructor(
     private users: UsersService,
     private auth: AuthenticationService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.usersList = new MatTableDataSource<IUser>();
@@ -43,17 +43,9 @@ export class UsersComponent implements OnInit {
     this.usersList.sort = this.sort;
   }
 
-  addEditHandler(newUser) {
-    console.log('From user list', newUser);
+  refreshUser(newUser) {
     this.users.getUsers().subscribe(user => {
       this.usersList.data = user;
     });
-  }
-
-  deleteUser(deleteUser) {
-    this.users.deleteUser(deleteUser)
-      .subscribe(user => {
-        this.usersList.data = user;
-      })
   }
 }

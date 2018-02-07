@@ -7,22 +7,32 @@ import { EventEmitter } from '@angular/core';
 import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthenticationService } from '../login/auth.service';
+import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'user-crud-button',
-  template: `<i class="material-icons button-icon"(click)="openDialog()">{{btnText}}</i>`
+  template: `<i class="material-icons button-icon" (click)="openDialog()" >{{btnText}}</i>
+  <i *ngIf="btnText ==='mode_edit'" class="material-icons button-icon" (click)="doDelete(selectedUser)">delete</i>`
 })
 export class UserCrudBtn {
   @Input() selectedUser;
   @Input() btnText;
-  @Output() deliverUpdatedUser: EventEmitter<any> = new EventEmitter();
+  @Output() changedList: EventEmitter<any> = new EventEmitter();
   // newUser: {} = {};
-  constructor(public dialog: MatDialog) {}
 
-  openDialog(): void {
+  constructor(public dialog: MatDialog, private _usersService: UsersService) {}
+
+  doDelete(selectedUser) {
+    console.log(this.selectedUser);
+    this._usersService.deleteUser(selectedUser).subscribe(result => {
+      console.log(result, 'user deleted');
+      this.changedList.emit(null);
+    });
+  }
+
+  openDialog() {
+    // console.log(this.btnText, 'Button text');
     let dialogRef = this.dialog.open(UpdateUserComponent, {
-      // // MediaQuery activation changes
-      // width: `${this.dialogWidth}vw`,
       data: this.selectedUser ? this.selectedUser : {}
     });
 
@@ -34,7 +44,7 @@ export class UserCrudBtn {
           'The dialog was closed and form data is in the result',
           result
         );
-        this.deliverUpdatedUser.emit(result);
+        this.changedList.emit(result);
       });
   }
   //   // MediaQuery activation changes
