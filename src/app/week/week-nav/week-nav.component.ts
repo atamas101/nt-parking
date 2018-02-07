@@ -14,12 +14,14 @@ export class WeekNavComponent implements OnInit {
   public selectedDate: Date;
   public firstDay: Moment;
   public lastDay: Moment;
+  public weekNow: number;
 
   @Output() notify = new EventEmitter();
 
   ngOnInit() {
     this.selectedDate = moment(new Date()).toDate();
     this.refreshDate(this.selectedDate);
+    this.weekNow = moment().isoWeek();
   }
 
   changeWeek(increment) {

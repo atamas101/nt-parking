@@ -42,6 +42,7 @@ mat-sidenav {
   padding: 0px;
 }
 .logo-container {
+  transition: width 0.31s;
   margin: 0;
   padding: 0;
   width: 64px;
@@ -59,13 +60,14 @@ mat-sidenav {
 .mat-list-item {
   color: white;
   font-size: 18px;
-  padding-left: 50px;
-
-  &.mat-list-item-focus {
-    background: $ntDarkGray;
-  }
 }
 
 .toolbar-spacer {
   flex: 1 1 auto;
+}
+
+.active-link {
+  color: $ntGreen;
+  background: $link-active;
+  border-left: 3px solid $ntGreen;
 }

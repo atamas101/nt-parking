@@ -9,8 +9,9 @@ import {
   MatSort,
   MatInputModule
 } from '@angular/material';
-import { AuthenticationService } from '../login/auth.service';
 
+import { AuthenticationService } from '../login/auth.service';
+import {MatTooltipModule} from '@angular/material/tooltip';
 @Component({
   selector: 'users-list',
   templateUrl: './users-list.component.html',
@@ -20,17 +21,26 @@ export class UsersComponent implements OnInit, AfterViewInit {
   public usersList: any;
   displayedColumns = ['name', 'hireDate', 'email', 'edit'];
   errorMessage: String;
+
+  public verifyAdmin: string;
+
   @ViewChild(MatSort) sort: MatSort;
   constructor(
     private users: UsersService,
     private auth: AuthenticationService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.usersList = new MatTableDataSource<IUser>();
     this.users.getUsers().subscribe(user => {
       this.usersList.data = user;
     });
+    if (!this.auth.isAdmin()) {
+      this.verifyAdmin = "none";
+    }
+    else {
+      this.verifyAdmin = "";
+    }
   }
 
   applyFilter(filterValue: string) {
@@ -48,4 +58,6 @@ export class UsersComponent implements OnInit, AfterViewInit {
       this.usersList.data = user;
     });
   }
+
 }
+
