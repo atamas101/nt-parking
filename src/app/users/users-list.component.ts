@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { MatTableModule } from '@angular/material/table';
 
 import { UsersService } from './users.service';
@@ -16,7 +16,7 @@ import { AuthenticationService } from '../login/auth.service';
   templateUrl: './users-list.component.html',
   styleUrls: ['./users-list.component.scss']
 })
-export class UsersComponent implements OnInit {
+export class UsersComponent implements OnInit, AfterViewInit {
   public usersList: any;
   displayedColumns = ['name', 'hireDate', 'email', 'edit'];
   errorMessage: String;
@@ -43,7 +43,7 @@ export class UsersComponent implements OnInit {
     this.usersList.sort = this.sort;
   }
 
-  addEditHandler(newUser) {
+  refreshUser(newUser) {
     this.users.getUsers().subscribe(user => {
       this.usersList.data = user;
     });

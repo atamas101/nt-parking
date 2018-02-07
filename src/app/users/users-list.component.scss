@@ -36,7 +36,8 @@ mat-sort-header,
 mat-cell {
   text-align: center;
 }
-.edit-button {
+.edit-button,
+.delete-button {
   text-align: center;
   color: $ntDarkGray;
   font-size: 2em;
