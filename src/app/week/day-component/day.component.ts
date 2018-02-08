@@ -19,8 +19,9 @@ import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 })
 export class DayComponent implements OnInit {
   constructor(private schedule: ScheduleService) {}
-  @Input() inputDay: Moment;
+  @Input() inputData;
 
+  public inputDay: Moment;
   public subscribers;
   public othersNumber: number;
   private alocatedNumber: number;
@@ -29,16 +30,24 @@ export class DayComponent implements OnInit {
   private now = moment();
   private deadLine: Moment;
 
-  // private hourToCompare = moment().set({ hour: 22, minute: 0, second: 0 });
-
   ngOnInit() {
+    this.inputDay = this.inputData.day;
+    // these 4 variables will come from the week-view.component
     this.inputDay.set({ hour: 0, minute: 0, second: 0 });
-    this.subscribers = this.schedule.getSubscribers();
+    this.subscribers = this.inputData;
     this.othersNumber = this.subscribers.others.length;
     this.alocatedNumber = this.subscribers.alocated.length;
+    // end of new content from weekdays-view.component
 
     this.deadLine = this.inputDay.clone().add(-2, 'hour');
     this.computeInitialDate();
+
+    for (let i = 0; i < 3; i += 1) {
+      this.subscribers.alocated[i]
+        ? this.subscribers.alocated[i]
+        : (this.subscribers.alocated[i] = {});
+    }
+    console.log(this.subscribers.alocated, 'sdjkfhsdkjfhj');
   }
 
   computeInitialDate() {

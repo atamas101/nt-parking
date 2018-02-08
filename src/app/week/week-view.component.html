@@ -1,7 +1,9 @@
 <div>
   <nav-component (notify)="showWeek($event)"></nav-component>
+  <!-- weekDays will be maped with the result info (alocated ppl) -->
   <li *ngFor="let day of weekDays">
-    <day-comp [inputDay]="day">
+    <!-- inputDay becomes smarter, containing alocated ppl, if any -->
+    <day-comp [inputData]="day">
     </day-comp>
   </li>
 </div>
