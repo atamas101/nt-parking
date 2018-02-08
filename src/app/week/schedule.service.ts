@@ -21,9 +21,9 @@ export class ScheduleService {
         { name: '', slot: 's3' }
       ],
       others: [
-        { name: 'Bintintan Alexandru', slot: 's1' },
-        { name: 'Voicu Iulia', slot: 's2' },
-        { name: 'Popoviciu Sebastian', slot: 's3' }
+        { name: 'Iacob Rares', hireDate: 'Jan 7th 17', slot: 's1' },
+        { name: 'Voicu Iulia', hireDate: 'Feb 7th 18', slot: 's2' },
+        { name: 'Popoviciu Sebastian', hireDate: 'Nov 7th 18', slot: 's3' }
       ]
     };
   }

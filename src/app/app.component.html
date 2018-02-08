@@ -6,19 +6,19 @@
 
     <div class="logo-container" [ngClass]="{'sidebar-open':sidenav.opened}"></div>
 
-    <i class="material-icons toggle-sidebar" (click)="sidenav.toggle(); ">menu</i>
+    <i matTooltip="Menu" class="material-icons toggle-sidebar" (click)="sidenav.toggle(); ">menu</i>
 
     <span class="toolbar-spacer"></span>
 
-    <i class="material-icons shut-down-btn " *ngIf="isLoggedIn()" (click)="logout() ">power_settings_new</i>
+    <i matTooltip="Logout" class="material-icons shut-down-btn " *ngIf="isLoggedIn()" (click)="logout() ">power_settings_new</i>
 
   </mat-toolbar>
 
   <mat-sidenav-container class="sidenav-container ">
     <mat-sidenav #sidenav [(opened)]="opened" [mode]="sideNavMode">
-      <mat-nav-list class="side-nav-list ">
-        <a [routerLink]="[ 'dashboard'] " mat-list-item>Dashboard</a>
-        <a [routerLink]="[ 'users'] " mat-list-item>Users</a>
+      <mat-nav-list class="side-nav-list">
+        <a matTooltip="Weekly Status" matTooltipPosition='right' routerLink="/dashboard" routerLinkActive="active-link" mat-list-item>Dashboard</a>
+        <a matTooltip="Users List" matTooltipPosition='right' routerLink="/users" routerLinkActive="active-link" mat-list-item>Users</a>
       </mat-nav-list>
     </mat-sidenav>
 

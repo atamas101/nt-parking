@@ -1,11 +1,7 @@
-<!-- <mat-card-content fxLayout="row" fxLayout.lt-md="column" fxLayoutAlign.md="space-evenly center" fxLayoutAlign.lt-md="space-around center"
-  fxLayoutWrap> -->
-
-<div class='day-component-wrapper' ngClass.xs="xsView" ngClass.sm='mediumView' fxLayout="row" fxLayoutAlign="space-between"
+<div class='day-component-wrapper' fxLayoutWrap ngClass.xs="xsView" ngClass.sm='mediumView' fxLayout="row" fxLayoutAlign="space-between"
   fxLayoutAlign.sm="space-evenly center" fxLayout.xs="column" fxLayoutAlign.xs="start stretch">
 
   <div class='week-day' fxLayout="column">
-
     <div class='month-info' fxLayoutAlign="center">
       <span class="month">{{inputDay |date:" MMM" |uppercase}}</span>
     </div>
@@ -13,10 +9,7 @@
       <span class="day-of-month">{{inputDay |date:"dd" |uppercase}}</span>
       <span class="day-of-week">{{inputDay |date:"EEE " |uppercase}}</span>
     </div>
-
   </div>
-
-
 
   <div class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.sm="space-between stretch"
     fxLayoutAlign.xs="space-between stretch">
@@ -25,26 +18,17 @@
     <slot class='outside' [user]="subscribers.alocated[2]" [ngClass]="{'empty': !subscribers.alocated[2].name}"></slot>
   </div>
 
-
-
   <div class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column"
     fxLayoutAlign.sm="space-between end" fxLayoutAlign.xs="space-around stretch">
-
     <div class="others" fxLayout="row" fxLayoutAlign=" center">
-      <waiting-list-display [waitingList]='subscribers.others' [othersCount]='othersNumber'></waiting-list-display>
-      <!-- <p>...{{othersNumber}} more waiting</p> -->
-
-      <ul [hidden]='true' class="dropdown">
-        <li *ngFor='let other of subscribers.others'>
-          {{other.name}}
-        </li>
-      </ul>
+      <waiting-list-display matTooltip="Waiting List" [selectedDay]='inputDay' [waitingList]='subscribers.others' [othersCount]='othersNumber'></waiting-list-display>
     </div>
-
     <div class="parking-buttons">
       <div *ngIf="subscribeBtnState" class="btn-group" fxLayout="row" fxLayoutAlign="end none" fxLayoutAlign.xs="none stretch">
-        <button class="btn btn-text" (click)="subscribeBtnToggle(0)" value="{{inputDay}}">I Want To Park</button>
-        <button class="btn btn-select" [matMenuTriggerFor]="menu">
+        <button class="btn btn-text" [ngClass]="{'btn-disabled': subscribeBtnDisabled }" [disabled]='subscribeBtnDisabled' (click)="subscribeBtnToggle(0)"
+          value="{{inputDay}}">I Want To Park</button>
+        <button matTooltip="Choose parking spot" class="btn btn-select" [ngClass]="{'btn-disabled': subscribeBtnDisabled }" [disabled]='subscribeBtnDisabled'
+          [matMenuTriggerFor]="menu">
           <i class="material-icons down-arrow">arrow_drop_down</i>
         </button>
         <mat-menu #menu="matMenu">
@@ -54,9 +38,6 @@
       </div>
       <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle(-1)">Cancel</button>
     </div>
-
   </div>
 
-
 </div>
-<!-- </mat-card-content> -->

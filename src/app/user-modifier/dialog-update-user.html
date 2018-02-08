@@ -2,7 +2,7 @@
 
     <div mat-dialog-title fxLayout="row">
         <i class="material-icons add-icon">add_circle</i>
-        <p class="add-text">ADD USER</p>
+        <p class="add-text">{{titleText}} USER</p>
     </div>
     <div mat-dialog-content ngClass='dialog-container-xs' ngClass.sm='dialog-container-sm' ngClass.gt-sm="dialog-container-gt-sm">
 
@@ -35,7 +35,6 @@
                 </mat-form-field>
             </div>
 
-            <!-- {{errors | async }} -->
         </form>
         <div class="buttons-wrapper">
             <button class="buttons cancel-button" (click)='onCancel()'>CANCEL</button>

@@ -3,7 +3,8 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
   selector: 'waiting-list-content',
-  templateUrl: 'waiting-list-content.html'
+  templateUrl: 'waiting-list-content.html',
+  styleUrls: ['./waiting-list-content.scss']
 })
 export class WaitingListContentComponent {
   constructor(
@@ -11,7 +12,7 @@ export class WaitingListContentComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  onCancel(): void {
+  onClose(): void {
     this.dialogRef.close();
   }
 }

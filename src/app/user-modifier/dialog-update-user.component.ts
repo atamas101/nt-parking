@@ -4,7 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsersService } from '../users/users.service';
 import { pswdEquality } from '../shared/validators/pswd-fields.validator';
 import { OnInit } from '@angular/core';
-
 @Component({
   selector: 'dialog-content',
   templateUrl: './dialog-update-user.html',
@@ -18,6 +17,7 @@ export class UpdateUserComponent implements OnInit {
   password: FormControl;
   confirmPasswd: FormControl;
   errors: any;
+  public titleText: string;
 
   constructor(
     public dialogRef: MatDialogRef<UpdateUserComponent>,
@@ -34,7 +34,6 @@ export class UpdateUserComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // this.errors = this._usersService.handleError():
     this.hireDate = new FormControl(this.data.hireDate, Validators.required);
 
     this.email = new FormControl(this.data.email, [
@@ -49,6 +48,9 @@ export class UpdateUserComponent implements OnInit {
 
     if (!this.isEditMode()) {
       passwordValidators.push(Validators.required);
+      this.titleText = 'ADD';
+    } else {
+      this.titleText = 'EDIT';
     }
     this.password = new FormControl('', passwordValidators);
 

@@ -18,7 +18,6 @@ export class UserCrudBtn {
   @Input() selectedUser;
   @Input() btnText;
   @Output() changedList: EventEmitter<any> = new EventEmitter();
-  // newUser: {} = {};
 
   constructor(public dialog: MatDialog, private _usersService: UsersService) {}
 
@@ -31,41 +30,13 @@ export class UserCrudBtn {
   }
 
   openDialog() {
-    // console.log(this.btnText, 'Button text');
-    let dialogRef = this.dialog.open(UpdateUserComponent, {
+    const dialogRef = this.dialog.open(UpdateUserComponent, {
       data: this.selectedUser ? this.selectedUser : {}
     });
 
     dialogRef
       .afterClosed()
       .filter(rez => rez)
-      .subscribe(result => {
-        console.log(
-          'The dialog was closed and form data is in the result',
-          result
-        );
-        this.changedList.emit(result);
-      });
+      .subscribe(result => this.changedList.emit(result));
   }
-  //   // MediaQuery activation changes
-
-  //   public dialogWidth: number;
-  //   watcher: Subscription;
-  //   constructor(media: ObservableMedia, public dialog: MatDialog) {
-  //     this.watcher = media.subscribe((change: MediaChange) => {
-  //       if (change.mqAlias === 'xs') {
-  //         console.log('dimensiune noua:', change.mqAlias);
-  //         this.switchDialogWidth(100);
-  //       } else {
-  //         console.log('dimensiune noua:', change.mqAlias);
-  //         this.switchDialogWidth(50);
-  //       }
-  //     });
-  //   }
-  //   ngOnDestroy() {
-  //     this.watcher.unsubscribe();
-  //   }
-  //   switchDialogWidth(width) {
-  //     this.dialogWidth = width;
-  //   }
 }

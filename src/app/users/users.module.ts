@@ -9,6 +9,7 @@ import { PaginationComponent } from '../shared/components/pagination/pagination.
 
 import { UserCrudBtn } from '../user-modifier/user-crud-button.component';
 import { UpdateUserComponent } from '../user-modifier/dialog-update-user.component';
+import { ShowColumn } from './show-column.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -17,7 +18,8 @@ import { HttpModule } from '@angular/http';
     UsersComponent,
     UserCrudBtn,
     UpdateUserComponent,
-    PaginationComponent
+    PaginationComponent,
+    ShowColumn
   ],
   exports: [
     UsersComponent,
