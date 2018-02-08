@@ -25,8 +25,8 @@
     </div>
     <div class="parking-buttons">
       <div *ngIf="subscribeBtnState" class="btn-group" fxLayout="row" fxLayoutAlign="end none" fxLayoutAlign.xs="none stretch">
-        <button matTooltip="Select" class="btn btn-text" [ngClass]="{'btn-disabled': subscribeBtnDisabled }" [disabled]='subscribeBtnDisabled'
-          (click)="subscribeBtnToggle()" value="{{inputDay}}">I Want To Park</button>
+        <button class="btn btn-text" [ngClass]="{'btn-disabled': subscribeBtnDisabled }" [disabled]='subscribeBtnDisabled' (click)="subscribeBtnToggle(0)"
+          value="{{inputDay}}">I Want To Park</button>
         <button matTooltip="Choose parking spot" class="btn btn-select" [ngClass]="{'btn-disabled': subscribeBtnDisabled }" [disabled]='subscribeBtnDisabled'
           [matMenuTriggerFor]="menu">
           <i class="material-icons down-arrow">arrow_drop_down</i>

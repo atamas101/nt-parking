@@ -18,7 +18,7 @@ exports.park = async (req, res, next) => {
       $pull: { subscribers: { user: data.user } }
     },
     options
-  );
+  ).populate('subscribers.user');
   // Add back new subscriptionrs
   if (data.operation === 'park') {
     daySchedule = await Schedule.findOneAndUpdate(
@@ -27,7 +27,7 @@ exports.park = async (req, res, next) => {
         $push: { subscribers: { user: data.user, slotType: data.slotType } }
       },
       options
-    );
+    ).populate('subscribers.user');
   }
 
   console.log(daySchedule);
