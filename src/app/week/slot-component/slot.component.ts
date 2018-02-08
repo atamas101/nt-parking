@@ -6,7 +6,4 @@ import { Input } from '@angular/core';
 })
 export class SlotComponent {
   @Input() user;
-  ngOnInit() {
-    console.log('user in slot: ', this.user.user);
-  }
 }

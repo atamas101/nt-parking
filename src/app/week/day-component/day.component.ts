@@ -45,16 +45,13 @@ export class DayComponent implements OnInit {
     for (let i = 0; i < 3; i += 1) {
       this.subscribers.alocated[i]
         ? this.subscribers.alocated[i]
-        : (this.subscribers.alocated[i] = {});
+        : (this.subscribers.alocated[i] = { user: {} });
     }
-    console.log(this.subscribers.alocated, 'sdjkfhsdkjfhj');
   }
 
   computeInitialDate() {
-    if (
-      this.now.isAfter(this.deadLine, 'minute') &&
-      this.subscribers.alocated.length > 2
-    ) {
+    if (this.now.isAfter(this.deadLine, 'minute')) {
+      // && this.subscribers.alocated.length > 2
       this.subscribeBtnDisabled = true;
     }
   }
@@ -72,7 +69,6 @@ export class DayComponent implements OnInit {
         preference: parkLocation
       })
       .subscribe(data => {
-        console.log(data);
         this.subscribeBtnState = !this.subscribeBtnState;
       });
   }

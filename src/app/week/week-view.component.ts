@@ -15,7 +15,6 @@ export class WeekViewComponent {
 
   showWeek(dataFromChild: any) {
     this.weekNumber = dataFromChild.weekNumber;
-    // this.weekDays = dataFromChild.weekDays;
 
     console.log(this.weekNumber);
 
@@ -26,7 +25,7 @@ export class WeekViewComponent {
         let myResultDay = result.filter(rez => {
           return moment(rez.date).isSame(day, 'day');
         });
-        // console.log('each result', myResultDay);
+
         const output = {
           day: day,
           alocated: myResultDay[0] ? myResultDay[0].alocated : [],
@@ -35,19 +34,6 @@ export class WeekViewComponent {
 
         return output;
       });
-      // console.log('weekdays', this.weekDays);
-      // TODO add results to weekDays array
-      // this.weekDays.map((day, index) => {
-      //   // add the related result info to that day, day becomes a smarter obj with {date + alocated + subscribers}
-      //   /* general case, where weeks wouldnt match for some reson */
-      //   //  let myResultDay = result.filter(result.date =>  result.date.isSame(day, 'day');)
-      //   /* use index instead of filter, given that IT IS the same week */
-      //   // return smarterDay{
-      //   //   day: day,
-      //   //   alocatedFromResult: myResultDay.something1 || result[index].soemthing1
-      //   //   others: result[index].something2
-      //   // }
-      // });
     });
   }
 }
