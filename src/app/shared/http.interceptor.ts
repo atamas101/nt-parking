@@ -22,7 +22,7 @@ export class NtHttpInterceptor implements HttpInterceptor {
   ): Observable<HttpEvent<any>> {
     // Clone the request to add the new header.
     const request = req.clone({
-      url: `http://localhost:7777/api/${req.url}`,
+      url: `http://localhost:7778/api/${req.url}`,
       headers: req.headers.set('Content-Type', 'application/json'),
       withCredentials: true
     });

@@ -67,7 +67,7 @@ exports.getWeek = async (req, res, next) => {
     {
       $and: [{ date: { $lte: endDate } }, { date: { $gte: startDate } }]
     },
-    ['date, subscribers'],
+    ['date', 'subscribers'],
     {
       sort: {
         date: 1
@@ -77,6 +77,7 @@ exports.getWeek = async (req, res, next) => {
 
   const output = schedules.map(day => {
     let sortedSubs = day.subscribers ? sortByHireDate(day.subscribers) : [];
+    console.log(day);
     return {
       date: day.date,
       alocated: sortedSubs.slice(0, 3),

@@ -15,9 +15,12 @@ export class WeekViewComponent {
   showWeek(dataFromChild: any) {
     this.weekNumber = dataFromChild.weekNumber;
     this.weekDays = dataFromChild.weekDays;
+
     console.log(this.weekNumber);
+
     this.schedule.getWeekSchedule(this.weekNumber).subscribe(result => {
       console.log(result);
+      // TODO add results to weekDays array
     });
   }
 }
