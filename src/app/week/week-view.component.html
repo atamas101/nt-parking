@@ -1,5 +1,5 @@
 <div>
-  <nav-component (notify)="myMethod($event)"></nav-component>
+  <nav-component (notify)="showWeek($event)"></nav-component>
   <li *ngFor="let day of weekDays">
     <day-comp [inputDay]="day">
     </day-comp>

@@ -6,12 +6,12 @@ import 'rxjs/add/operator/catch';
 
 @Injectable()
 export class ScheduleService {
-  constructor(private _http: HttpClient) {}
+  constructor(private $http: HttpClient) {}
 
   private subscibersUrl = '';
   getSubscribers() {
     // :Observable<ISchedule>
-    // return this._http.get(this.subscribersUrl)
+    // return this.$http.get(this.subscribersUrl)
     // .map((res:Response) => res.json())
     // .catch((error: any) => Observable.throw(error.json().error || 'Server Error'));
     return {
@@ -27,7 +27,10 @@ export class ScheduleService {
       ]
     };
   }
+  getWeekSchedule(weekNumber: Number) {
+    return this.$http.get('schedule/' + weekNumber);
+  }
   parkToggle(data) {
-    return this._http.post('subscribe', data);
+    return this.$http.post('subscribe', data);
   }
 }
