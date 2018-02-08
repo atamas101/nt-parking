@@ -10,6 +10,7 @@ h2 {
   text-align: center;
   font-size: 2rem;
   font-weight: normal;
+  margin-bottom: 0.1rem;
 }
 .size {
   font-size: 50px;
@@ -23,13 +24,14 @@ h2 {
 .second-row-text {
   cursor: pointer;
   color: $ntPurple;
-  font-size: 2rem;
-  margin: none;
+  font-size: 1.7rem;
+  display: block;
 }
 .first-row-text {
   cursor: pointer;
   color: $ntGreen;
   font-size: 2rem;
+  display: block;
 }
 .calendar-icon {
   cursor: pointer;
@@ -44,8 +46,8 @@ h2 {
 }
 .current-week {
   display: flex;
-  cursor: pointer;
-  color: $ntGreen;
-  margin-top: 25px auto;
   justify-content: center;
+  margin-bottom: 10px;
+  cursor: pointer;
+  color: $ntGreen !important;
 }
