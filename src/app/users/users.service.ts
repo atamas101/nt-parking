@@ -20,15 +20,13 @@ export class UsersService {
     } else {
       // Back-end returned an unsuccesfull response code
       // Check the response body for info on what went wrong
-      console.error(
-        `Backend returned code ${error.status}, ` + `body was : ${error}`
+      alert(
+        `Error code ${error.status}, ` +
+          `error message : ${error.error['message']}`
       );
     }
     // return an ErrorObservable with a UI error message
     return new ErrorObservable('Something went wrong; please try again later');
-
-    // console.log('I caught a fish:', error);
-    // return Observable.throw(error.message);
   }
 
   getUsers(): Observable<IUser[]> {
