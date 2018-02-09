@@ -1,14 +1,29 @@
 export interface ISchedule {
+  date: string;
   alocated: [
     {
-      name: string;
-      slot: string;
+      slotType: number;
+      user: {
+        admin: boolean;
+        email: string;
+        hireDate: string;
+        name: string;
+        __v: number;
+        _id: string;
+      };
     }
   ];
   others: [
     {
-      name: string;
-      slot: string;
+      slotType: number;
+      user: {
+        admin: boolean;
+        email: string;
+        hireDate: string;
+        name: string;
+        __v: number;
+        _id: string;
+      };
     }
   ];
 }
