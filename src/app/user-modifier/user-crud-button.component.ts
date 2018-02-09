@@ -8,6 +8,7 @@ import { ObservableMedia, MediaChange } from '@angular/flex-layout';
 import { Subscription } from 'rxjs/Subscription';
 import { AuthenticationService } from '../login/auth.service';
 import { UsersService } from '../users/users.service';
+import { DeleteDialog } from './delete-dialog.component';
 
 @Component({
   selector: 'user-crud-button',
@@ -35,10 +36,19 @@ export class UserCrudBtn {
 
   doDelete(selectedUser) {
     console.log(this.selectedUser);
-    this._usersService.deleteUser(selectedUser).subscribe(result => {
-      console.log(result, 'user deleted');
-      this.changedList.emit(null);
-    });
+    const deleteDialog = this.dialog
+      .open(DeleteDialog, { data: this.selectedUser })
+      .afterClosed()
+      .subscribe(result => {
+        if (result === 'yes') {
+          this._usersService.deleteUser(selectedUser).subscribe(result => {
+            console.log(result, 'user deleted');
+            this.changedList.emit(null);
+          });
+        } else if (result === 'no') {
+          return;
+        }
+      });
   }
 
   openDialog() {
