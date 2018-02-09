@@ -13,21 +13,24 @@ import { ShowColumn } from './show-column.component';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
+import { DeleteDialog } from '../user-modifier/delete-dialog.component';
 @NgModule({
   declarations: [
     UsersComponent,
     UserCrudBtn,
     UpdateUserComponent,
     PaginationComponent,
-    ShowColumn
+    ShowColumn,
+    DeleteDialog
   ],
   exports: [
     UsersComponent,
     UserCrudBtn,
     UpdateUserComponent,
-    PaginationComponent
+    PaginationComponent,
+    DeleteDialog
   ],
-  entryComponents: [UpdateUserComponent],
+  entryComponents: [UpdateUserComponent, DeleteDialog],
   imports: [NtmaterialModule, BrowserModule, HttpModule],
   providers: [UsersService]
 })
