@@ -35,7 +35,7 @@
     <ng-container *ngIf="auth.isAdmin()" matColumnDef="edit">
       <mat-header-cell *matHeaderCellDef> Actions </mat-header-cell>
       <mat-cell *matCellDef="let user">
-        <user-crud-button matTooltip="Edit User" class="edit-button" btnText="mode_edit" [selectedUser]='user' (changedList)="refreshUser($event)"></user-crud-button>
+        <user-crud-button class="edit-button" btnType="edit" [selectedUser]="user" (changedList)="refreshUser($event)"></user-crud-button>
       </mat-cell>
     </ng-container>
 
@@ -45,6 +45,6 @@
   <!-- Pagination Component -->
   <div class="table-footer">
     <list-pagination class="mat-paginator" [incomingList]="usersList"></list-pagination>
-    <user-crud-button matTooltip="Add User" class="add-button" *ngIf="auth.isAdmin()" (changedList)="refreshUser($event)" btnText="add_circle"></user-crud-button>
+    <user-crud-button class="add-button" *ngIf="auth.isAdmin()" (changedList)="refreshUser($event)" btnType="add"></user-crud-button>
   </div>
 </div>

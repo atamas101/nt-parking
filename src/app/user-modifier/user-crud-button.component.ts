@@ -11,19 +11,27 @@ import { UsersService } from '../users/users.service';
 
 @Component({
   selector: 'user-crud-button',
-  template: `<i class="material-icons button-icon" (click)="openDialog()" >{{btnText}}</i>
-  <i *ngIf="btnText ==='mode_edit'" class="material-icons button-icon" matTooltip="Delete User"  (click)="doDelete(selectedUser)">delete</i>`
+  template: `<i class="material-icons button-icon" matTooltip="{{buttonTitle}}" (click)="openDialog()" >{{buttonIcon}}</i>
+  <i *ngIf="btnType ==='edit'" class="material-icons button-icon" matTooltip="Delete User"  (click)="doDelete(selectedUser)">delete</i>`
 })
 export class UserCrudBtn {
   @Input() selectedUser;
-  @Input() btnText;
+  @Input() btnType;
   @Output() changedList: EventEmitter<any> = new EventEmitter();
 
+  public buttonTitle: String = 'Edit User';
+  public buttonIcon: String = 'mode_edit';
   constructor(
     public dialog: MatDialog,
     private _usersService: UsersService,
     public snackBar: MatSnackBar
   ) {}
+  ngOnInit() {
+    if (this.btnType === 'add') {
+      this.buttonIcon = 'add_circle';
+      this.buttonTitle = 'Add User';
+    }
+  }
 
   doDelete(selectedUser) {
     console.log(this.selectedUser);
