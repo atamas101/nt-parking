@@ -61,12 +61,18 @@
   .parking-buttons {
     width: 200px;
   }
+
   .others {
+    display: none;
     height: 40px;
+
     p {
       text-align: center;
       margin-bottom: 0px;
     }
+  }
+  .others-hide {
+    z-index: -1;
   }
   button {
     font-family: $font-family-base;
