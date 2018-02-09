@@ -29,15 +29,16 @@ export class DayComponent implements OnInit {
   public subscribeBtnDisabled = false;
   private now = moment();
   private deadLine: Moment;
+  private parkLimit: Moment;
 
   ngOnInit() {
     this.inputDay = this.inputData.day;
-    // these 4 variables will come from the week-view.component
+
     this.inputDay.set({ hour: 0, minute: 0, second: 0 });
     this.subscribers = this.inputData;
     this.othersNumber = this.subscribers.others.length;
     this.alocatedNumber = this.subscribers.alocated.length;
-    // end of new content from weekdays-view.component
+    this.parkLimit = this.now.clone().add(14, 'days');
 
     this.deadLine = this.inputDay.clone().add(-2, 'hour');
     this.computeInitialDate();
@@ -50,18 +51,18 @@ export class DayComponent implements OnInit {
   }
 
   computeInitialDate() {
-    if (this.now.isAfter(this.deadLine, 'minute')) {
-      // && this.subscribers.alocated.length > 2
+    if (
+      this.now.isAfter(this.deadLine, 'minute') ||
+      this.inputDay.isAfter(this.parkLimit, 'day')
+    ) {
       this.subscribeBtnDisabled = true;
     }
   }
-
   subscribeBtnToggle(parkLocation) {
     const date = moment(this.inputDay)
       .utc()
       .startOf('day')
       .toISOString();
-    console.log(date);
     this.schedule
       .parkToggle({
         operation: parkLocation >= 0 ? 'park' : 'cancel',
