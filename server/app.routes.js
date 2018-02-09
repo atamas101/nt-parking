@@ -9,14 +9,14 @@ const { catchErrors } = require('./handlers/errorHandlers');
 router.post(
   '/subscribe',
   authController.isLoggedIn,
-  // catchErrors(scheduleController.park)
-  scheduleController.park
+  catchErrors(scheduleController.subscribe)
+  // scheduleController.park
 );
 
-router.post(
-  '/unsubscribe',
+router.get(
+  '/schedule/:weekNo',
   authController.isLoggedIn,
-  catchErrors(scheduleController.cancel)
+  catchErrors(scheduleController.getWeek)
 );
 
 // 1. Validate the registration data

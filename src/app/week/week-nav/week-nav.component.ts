@@ -41,7 +41,10 @@ export class WeekNavComponent implements OnInit {
       moment(newDate).isoWeekday(day)
     );
 
-    this.notify.emit(weekDaysSelected);
+    this.notify.emit({
+      weekNumber: this.weekNumber,
+      weekDays: weekDaysSelected
+    });
   }
 
   addEvent(event: MatDatepickerInputEvent<Date>) {
