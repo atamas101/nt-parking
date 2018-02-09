@@ -32,7 +32,7 @@
     </ng-container>
 
     <!-- Edit User Column -->
-    <ng-container *ngIf="auth.isAdmin()" matColumnDef="edit">
+    <ng-container matColumnDef="edit">
       <mat-header-cell showCoulmn showInput={{verifyAdmin}} *matHeaderCellDef> Actions </mat-header-cell>
       <mat-cell showCoulmn showInput={{verifyAdmin}} *matCellDef="let user">
         <user-crud-button class="edit-button" btnType="edit" [selectedUser]="user" (changedList)="refreshUser($event)"></user-crud-button>
