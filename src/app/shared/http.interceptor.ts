@@ -30,10 +30,16 @@ export class NtHttpInterceptor implements HttpInterceptor {
     // send the newly created request
     return next.handle(request).catch((err, caught) => {
       // intercept the respons error and displace it to the console
-      this.openSnackBar(err.error);
-      if (err.errror && err.errror.stackHighlighted) {
-        console.error(err.error.stackHighlighted);
+      console.log(err.error);
+      if (err.error.message) {
+        this.openSnackBar(err.error.message);
+      } else {
+        this.openSnackBar(err.error);
       }
+
+      // if (err.error && err.error.stackHighlighted) {
+      //   console.error(err.error.stackHighlighted);
+      // }
       if (err.error === 'Must be authenticated.') {
         localStorage.removeItem('currentUser');
         this.router.navigate(['/login']);
