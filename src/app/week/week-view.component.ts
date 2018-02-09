@@ -16,11 +16,7 @@ export class WeekViewComponent {
   showWeek(dataFromChild: any) {
     this.weekNumber = dataFromChild.weekNumber;
 
-    console.log(this.weekNumber);
-
     this.schedule.getWeekSchedule(this.weekNumber).subscribe(result => {
-      console.log(result, 'backend result');
-
       this.weekDays = dataFromChild.weekDays.map((day, index) => {
         let myResultDay = result.filter(rez => {
           return moment(rez.date).isSame(day, 'day');

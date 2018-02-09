@@ -40,7 +40,6 @@ export class UsersService {
       .pipe(catchError(this.handleError));
   }
   deleteUser(user: IUser): Observable<IUser> {
-    console.log('from Service:', user);
     const deleteUrl = user._id ? `user/${user._id}` : 'user/register';
     return this.$http.delete<IUser>(deleteUrl);
   }

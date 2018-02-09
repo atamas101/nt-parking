@@ -22,9 +22,7 @@ export class UserCrudBtn {
   constructor(public dialog: MatDialog, private _usersService: UsersService) {}
 
   doDelete(selectedUser) {
-    console.log(this.selectedUser);
     this._usersService.deleteUser(selectedUser).subscribe(result => {
-      console.log(result, 'user deleted');
       this.changedList.emit(null);
     });
   }
