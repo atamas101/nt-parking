@@ -63,7 +63,6 @@
   }
 
   .others {
-    display: none;
     height: 40px;
 
     p {
@@ -72,7 +71,7 @@
     }
   }
   .others-hide {
-    z-index: -1;
+    visibility: hidden;
   }
   button {
     font-family: $font-family-base;
