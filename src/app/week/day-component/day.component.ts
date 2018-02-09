@@ -24,6 +24,7 @@ export class DayComponent implements OnInit {
   public inputDay: Moment;
   public subscribers;
   public othersNumber: number;
+  public othersToggle: boolean;
   private alocatedNumber: number;
   public subscribeBtnState = true;
   public subscribeBtnDisabled = false;
@@ -40,6 +41,7 @@ export class DayComponent implements OnInit {
     // end of new content from weekdays-view.component
 
     this.deadLine = this.inputDay.clone().add(-2, 'hour');
+    this.isOtherListPopulated();
     this.computeInitialDate();
 
     for (let i = 0; i < 3; i += 1) {
@@ -71,5 +73,12 @@ export class DayComponent implements OnInit {
       .subscribe(data => {
         this.subscribeBtnState = !this.subscribeBtnState;
       });
+  }
+  isOtherListPopulated() {
+    if (this.othersNumber < 1) {
+      this.othersToggle = true;
+    } else {
+      this.othersToggle = false;
+    }
   }
 }
