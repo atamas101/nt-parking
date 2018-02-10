@@ -16,6 +16,7 @@ export class WeekNavComponent implements OnInit {
   public lastDay: Moment;
   public weekNow: number;
 
+
   @Output() notify = new EventEmitter();
 
   ngOnInit() {
@@ -51,12 +52,12 @@ export class WeekNavComponent implements OnInit {
     this.selectedDate = event.value;
     this.refreshDate(event.value);
   }
+
   getCurrentWeek(newDate: Date) {
-    let currentWeekNr = moment(newDate).isoWeek();
-    this.weekNumber = currentWeekNr;
-    let currentFirstDay = moment(newDate).isoWeekday(1);
-    this.firstDay = currentFirstDay;
-    let currentLastDay = moment(newDate).isoWeekday(5);
-    this.lastDay = currentLastDay;
+    this.selectedDate = newDate;
+    // this.weekNumber = moment(newDate).isoWeek();
+    // this.firstDay = moment(newDate).isoWeekday(1);
+    // this.lastDay = moment(newDate).isoWeekday(5);
+    this.refreshDate(newDate);
   }
 }
