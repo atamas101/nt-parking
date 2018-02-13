@@ -11,16 +11,16 @@
     </div>
   </div>
 
-  <mat-spinner diameter="60" *ngIf="showLoader()"></mat-spinner>
+  <mat-spinner diameter="60" *ngIf="shouldShowLoader()"></mat-spinner>
 
-  <div *ngIf="!showLoader()" class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column"
+  <div *ngIf="!shouldShowLoader()" class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column"
     fxLayout.xs="column" fxLayoutAlign.sm="space-between stretch" fxLayoutAlign.xs="space-between stretch">
     <slot [user]="subscribers.alocated[0].user" [ngClass]="{'empty': !subscribers.alocated[0].user.name}"></slot>
     <slot [user]="subscribers.alocated[1].user" [ngClass]="{'empty': !subscribers.alocated[1].user.name}"></slot>
     <slot class='outside' [user]="subscribers.alocated[2].user" [ngClass]="{'empty': !subscribers.alocated[2].user.name}"></slot>
   </div>
 
-  <div *ngIf="!showLoader()" class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column"
+  <div *ngIf="!shouldShowLoader()" class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column"
     fxLayout.xs="column" fxLayoutAlign.sm="space-between end" fxLayoutAlign.xs="space-around stretch">
     <div class="others" [ngClass]="{'others-hide': !othersNumber }" fxLayout="row" fxLayoutAlign=" center">
       <waiting-list-display matTooltip="Waiting List" [selectedDay]='inputDay' [waitingList]='subscribers.others' [othersCount]='othersNumber'></waiting-list-display>

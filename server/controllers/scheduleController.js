@@ -36,7 +36,7 @@ exports.subscribe = async (req, res, next) => {
   const output = {
     date: daySchedule.date,
     alocated: sortedSubs.slice(0, 3),
-    others: sortedSubs.slice(3, -1)
+    others: sortedSubs.slice(2, -1)
   };
 
   console.log(output);
@@ -90,7 +90,7 @@ exports.getWeek = async (req, res, next) => {
     return {
       date: day.date,
       alocated: sortedSubs.slice(0, 3),
-      others: sortedSubs.slice(3, -1)
+      others: sortedSubs.slice(2, -1)
     };
   });
 

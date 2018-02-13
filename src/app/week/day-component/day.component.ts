@@ -36,7 +36,6 @@ export class DayComponent implements OnInit {
   private deadLine: Moment;
   private parkLimit: Moment;
   public currentUserId: any;
-  public alreadySubscribed = false;
 
   ngOnInit() {
     console.log('inputData', this.inputData);
@@ -48,7 +47,7 @@ export class DayComponent implements OnInit {
     this.inputDay.set({ hour: 0, minute: 0, second: 0 });
     this.getSubscribers(this.inputData);
   }
-  public showLoader(): Boolean {
+  public shouldShowLoader(): Boolean {
     return this.showLoading;
   }
   private getSubscribers(input): void {
@@ -57,16 +56,14 @@ export class DayComponent implements OnInit {
     this.alocatedNumber = this.subscribers.alocated.length;
     this.parkLimit = this.now.clone().add(14, 'days');
 
+    // Check if current user is in alocated or in others list
     const isAlocated = this.subscribers.alocated.find(item => {
-      console.log(item);
       return item.user._id === this.currentUserId;
     });
     const isOthers = this.subscribers.others.find(item => {
       return item.user._id === this.currentUserId;
     });
-    this.alreadySubscribed = isAlocated || isOthers;
-    console.log('userAlocated already:', this.alreadySubscribed);
-    if (this.alreadySubscribed) {
+    if (isAlocated || isOthers) {
       this.subscribeBtnState = false;
     }
 
@@ -78,6 +75,7 @@ export class DayComponent implements OnInit {
         ? this.subscribers.alocated[i]
         : (this.subscribers.alocated[i] = { user: {} });
     }
+    this.showLoading = false;
   }
 
   computeInitialDate() {
@@ -92,6 +90,7 @@ export class DayComponent implements OnInit {
     const date = moment(this.inputDay)
       .startOf('day')
       .toISOString();
+    this.showLoading = true;
     this.schedule
       .parkToggle({
         operation: parkLocation >= 0 ? 'park' : 'cancel',
