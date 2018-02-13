@@ -51,12 +51,13 @@ export class WeekNavComponent implements OnInit {
     this.selectedDate = event.value;
     this.refreshDate(event.value);
   }
-  getCurrentWeek(newDate: Date) {
-    let currentWeekNr = moment(newDate).isoWeek();
-    this.weekNumber = currentWeekNr;
-    let currentFirstDay = moment(newDate).isoWeekday(1);
-    this.firstDay = currentFirstDay;
-    let currentLastDay = moment(newDate).isoWeekday(5);
-    this.lastDay = currentLastDay;
+
+  goToCurrentWeek() {
+    this.selectedDate = new Date();
+    this.refreshDate(this.selectedDate);
+  }
+
+  isCurrentWeek(): Boolean {
+    return this.weekNow === this.weekNumber;
   }
 }

@@ -20,5 +20,5 @@
   <i matTooltip="Next Week" matTooltipPosition='left' (click)="changeWeek(1)" class="material-icons size pointer">keyboard_arrow_right</i>
 </div>
 <div class="curent-week-cont">
-  <a class="current-week" (click)="getCurrentWeek(Date)">Current Week</a>
+  <a *ngIf="!isCurrentWeek()" class="current-week" (click)="goToCurrentWeek()">(back to current Week)</a>
 </div>

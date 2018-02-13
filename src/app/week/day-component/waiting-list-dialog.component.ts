@@ -15,8 +15,9 @@ export class WaitingListDialogComponent {
   constructor(public dialog: MatDialog) {}
 
   openDialog(): void {
-    let dialogRef = this.dialog.open(WaitingListContentComponent, {
-      data: { selectedDay: this.selectedDay, people: this.waitingList }
+    this.dialog.open(WaitingListContentComponent, {
+      data: { selectedDay: this.selectedDay, people: this.waitingList },
+      minWidth: '70vw'
     });
   }
 }

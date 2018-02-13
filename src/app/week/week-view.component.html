@@ -3,8 +3,7 @@
   <!-- weekDays will be maped with the result info (alocated ppl) -->
   <li *ngFor="let day of weekDays">
     <!-- inputDay becomes smarter, containing alocated ppl, if any -->
-    <day-comp [inputData]="day">
-    </day-comp>
+    <day-comp [inputData]="day" [showLoading]="showLoading"></day-comp>
   </li>
 </div>
 <div>

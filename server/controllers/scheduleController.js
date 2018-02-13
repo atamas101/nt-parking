@@ -30,9 +30,18 @@ exports.subscribe = async (req, res, next) => {
     ).populate('subscribers.user');
   }
 
-  console.log(daySchedule);
+  let sortedSubs = daySchedule.subscribers
+    ? sortByHireDate(daySchedule.subscribers)
+    : [];
+  const output = {
+    date: daySchedule.date,
+    alocated: sortedSubs.slice(0, 3),
+    others: sortedSubs.slice(3, -1)
+  };
 
-  res.json(daySchedule);
+  console.log(output);
+
+  res.json(output);
 };
 
 sortByHireDate = users => {

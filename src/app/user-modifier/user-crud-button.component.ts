@@ -1,4 +1,4 @@
-import { Component, Input, Output } from '@angular/core';
+import { Component, Input, Output, OnInit } from '@angular/core';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { UpdateUserComponent } from './dialog-update-user.component';
 import 'rxjs/add/operator/filter';
@@ -15,7 +15,7 @@ import { DeleteDialog } from './delete-dialog.component';
   template: `<i class="material-icons button-icon" matTooltip="{{buttonTitle}}" (click)="openDialog()" >{{buttonIcon}}</i>
   <i *ngIf="btnType ==='edit'" class="material-icons button-icon" matTooltip="Delete User"  (click)="doDelete(selectedUser)">delete</i>`
 })
-export class UserCrudBtn {
+export class UserCrudBtn implements OnInit {
   @Input() selectedUser;
   @Input() btnType;
   @Output() changedList: EventEmitter<any> = new EventEmitter();
@@ -35,26 +35,19 @@ export class UserCrudBtn {
   }
 
   doDelete(selectedUser) {
-<<<<<<< HEAD
-    this._usersService.deleteUser(selectedUser).subscribe(result => {
-      this.changedList.emit(null);
-    });
-=======
     console.log(this.selectedUser);
     const deleteDialog = this.dialog
       .open(DeleteDialog, { data: this.selectedUser })
       .afterClosed()
       .subscribe(result => {
         if (result === 'yes') {
-          this._usersService.deleteUser(selectedUser).subscribe(result => {
-            console.log(result, 'user deleted');
+          this._usersService.deleteUser(selectedUser).subscribe(() => {
             this.changedList.emit(null);
           });
         } else if (result === 'no') {
           return;
         }
       });
->>>>>>> origin/dev
   }
 
   openDialog() {

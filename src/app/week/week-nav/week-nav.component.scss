@@ -44,10 +44,13 @@ h2 {
   padding-top: 3px;
   text-align: center;
 }
-.current-week {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 10px;
-  cursor: pointer;
-  color: $ntGreen !important;
+.curent-week-cont {
+  height: 18px;
+  .current-week {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: $ntGreen !important;
+  }
 }

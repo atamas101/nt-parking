@@ -21,6 +21,7 @@ import {
   MatSidenavModule,
   MatListModule,
   MatFormFieldModule,
+  MatProgressSpinnerModule,
   MatSnackBarModule
 } from '@angular/material';
 
@@ -47,10 +48,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
     ReactiveFormsModule,
     MatSnackBarModule,
-    FormsModule,
-    MatTooltipModule
+    FormsModule
   ],
   exports: [
     CommonModule,
@@ -72,10 +74,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatSidenavModule,
     MatListModule,
     MatFormFieldModule,
-    ReactiveFormsModule,
+    MatProgressSpinnerModule,
+    MatTooltipModule,
     MatSnackBarModule,
-    FormsModule,
-    MatTooltipModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   declarations: [],
   providers: []
