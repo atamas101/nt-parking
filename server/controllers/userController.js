@@ -1,7 +1,9 @@
 const mongoose = require('mongoose');
-const User = mongoose.model('User');
 const promisify = require('es6-promisify');
 const moment = require('moment');
+
+const User = mongoose.model('User');
+const Schedule = mongoose.model('Schedule');
 
 exports.validateRegister = (req, res, next) => {
   req.sanitizeBody('name');
@@ -46,6 +48,17 @@ exports.getUsers = async (req, res, next) => {
 };
 
 exports.deleteUser = async (req, res, next) => {
+  const userIdToDelete = req.params.id;
+  await Schedule.update(
+    {
+      'subscribers.user': mongoose.Types.ObjectId(userIdToDelete)
+    },
+    {
+      $pull: { subscribers: { user: userIdToDelete } }
+    },
+    { multi: true }
+  );
+
   const user = await User.findByIdAndRemove(req.params.id, (err, usr) => {
     if (err) {
       next(err);
