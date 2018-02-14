@@ -18,7 +18,7 @@ exports.subscribe = async (req, res, next) => {
       $pull: { subscribers: { user: data.user } }
     },
     options
-  ).populate('subscribers.user');
+  );
   // Add back new subscriptionrs
   if (data.operation === 'park') {
     daySchedule = await Schedule.findOneAndUpdate(
@@ -27,16 +27,16 @@ exports.subscribe = async (req, res, next) => {
         $push: { subscribers: { user: data.user, slotType: data.slotType } }
       },
       options
-    ).populate('subscribers.user');
+    );
   }
-
+  await daySchedule.populate('subscribers.user');
   let sortedSubs = daySchedule.subscribers
     ? sortByHireDate(daySchedule.subscribers)
     : [];
   const output = {
     date: daySchedule.date,
     alocated: sortedSubs.slice(0, 3),
-    others: sortedSubs.slice(2, -1)
+    others: sortedSubs.slice(3)
   };
 
   console.log(output);
@@ -90,7 +90,7 @@ exports.getWeek = async (req, res, next) => {
     return {
       date: day.date,
       alocated: sortedSubs.slice(0, 3),
-      others: sortedSubs.slice(2, -1)
+      others: sortedSubs.slice(3)
     };
   });
 
