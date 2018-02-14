@@ -27,9 +27,9 @@ export class DayComponent implements OnInit {
   @Input() showLoading: Boolean;
 
   public inputDay: Moment;
+  public alocatedSorted;
   public subscribers;
-  public othersNumber: number;
-  private alocatedNumber: number;
+  public othersCount: number;
   public subscribeBtnState = true;
   public subscribeBtnDisabled = false;
   private now = moment();
@@ -38,23 +38,47 @@ export class DayComponent implements OnInit {
   public currentUserId: any;
 
   ngOnInit() {
-    console.log('inputData', this.inputData);
-
     this.inputDay = this.inputData.day;
+    this.inputDay.set({ hour: 0, minute: 0, second: 0 });
 
     this.currentUserId = this.auth.getCurrentUser()._id;
 
-    this.inputDay.set({ hour: 0, minute: 0, second: 0 });
+    this.deadLine = this.inputDay.clone().add(-2, 'hour');
+
     this.getSubscribers(this.inputData);
   }
+
   public shouldShowLoader(): Boolean {
     return this.showLoading;
   }
+
+  private groupBy(arr, funcProp) {
+    return arr.reduce(function(acc, val) {
+      (acc[funcProp(val)] = acc[funcProp(val)] || []).push(val);
+      return acc;
+    }, {});
+  }
+  private getDistributedSlots(alocated) {
+    const alocatedGroupped = this.groupBy(alocated, item => item.slotType);
+    // Make sure each type is an array
+    for (let i = 0; i < 3; i++) {
+      alocatedGroupped[i] = alocatedGroupped[i] || [];
+    }
+    // Build final allocated order
+    return [
+      ...alocatedGroupped[1],
+      ...alocatedGroupped[0],
+      ...alocatedGroupped[2].reverse()
+    ];
+  }
+
   private getSubscribers(input): void {
     this.subscribers = input;
-    this.othersNumber = this.subscribers.others.length;
-    this.alocatedNumber = this.subscribers.alocated.length;
-    this.parkLimit = this.now.clone().add(14, 'days');
+    this.othersCount = this.subscribers.others.length;
+    this.parkLimit = this.now
+      .clone()
+      .add(14, 'days')
+      .endOf('week');
 
     // Check if current user is in alocated or in others list
     const isAlocated = this.subscribers.alocated.find(item => {
@@ -66,15 +90,15 @@ export class DayComponent implements OnInit {
     if (isAlocated || isOthers) {
       this.subscribeBtnState = false;
     }
-
-    this.deadLine = this.inputDay.clone().add(-2, 'hour');
     this.computeInitialDate();
 
-    for (let i = 0; i < 3; i += 1) {
-      this.subscribers.alocated[i]
-        ? this.subscribers.alocated[i]
-        : (this.subscribers.alocated[i] = { user: {} });
+    for (let i = 0; i < 3; i++) {
+      if (!this.subscribers.alocated[i]) {
+        this.subscribers.alocated[i] = { user: {}, slotType: 0 };
+      }
     }
+    this.alocatedSorted = this.getDistributedSlots(this.subscribers.alocated);
+
     this.showLoading = false;
   }
 
@@ -86,6 +110,7 @@ export class DayComponent implements OnInit {
       this.subscribeBtnDisabled = true;
     }
   }
+
   subscribeBtnToggle(parkLocation) {
     const date = moment(this.inputDay)
       .startOf('day')
@@ -99,8 +124,6 @@ export class DayComponent implements OnInit {
       })
       .subscribe((data: any) => {
         this.subscribeBtnState = !this.subscribeBtnState;
-        console.log('inputData', this.inputData);
-        console.log('Data', data);
 
         this.getSubscribers({
           day: moment(data.date),
