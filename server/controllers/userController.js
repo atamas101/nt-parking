@@ -34,7 +34,9 @@ exports.register = async (req, res, next) => {
   const user = new User({
     email: req.body.email,
     name: req.body.name,
-    hireDate: req.body.hireDate
+    hireDate: moment(req.body.hireDate)
+      .startOf('day')
+      .toDate()
   });
   const register = promisify(User.register, User);
   await register(user, req.body.password);
@@ -82,7 +84,6 @@ exports.updateUser = async (req, res) => {
     email: req.body.email,
     admin: req.body.admin,
     hireDate: moment(req.body.hireDate)
-      .utc()
       .startOf('day')
       .toDate()
   };
