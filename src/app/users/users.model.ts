@@ -1,7 +1,8 @@
 export interface IUser {
-  admin: boolean;
+  admin: Boolean;
   hireDate: Date;
-  _id?: number;
-  email: string;
-  name: string;
+  _id?: Number;
+  email: String;
+  name: String;
+  isFirstPassword?: Boolean;
 }

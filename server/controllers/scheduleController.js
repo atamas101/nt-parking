@@ -2,6 +2,9 @@ const mongoose = require('mongoose');
 const Schedule = mongoose.model('Schedule');
 const promisify = require('es6-promisify');
 const moment = require('moment');
+const PARKING_SPOTS = 3;
+const PARK_DEADLINE = 2; // Hours before midnight
+const PARK_LIMIT = 14; // Days available in future
 
 exports.subscribe = async (req, res, next) => {
   const query = { date: req.body.date };
@@ -21,13 +24,22 @@ exports.subscribe = async (req, res, next) => {
   ).populate('subscribers.user');
   // Add back new subscriptionrs
   if (data.operation === 'park') {
-    daySchedule = await Schedule.findOneAndUpdate(
-      query,
-      {
-        $push: { subscribers: { user: data.user, slotType: data.slotType } }
-      },
-      options
-    ).populate('subscribers.user');
+    if (parkingIsAvailable(req.body.date)) {
+      daySchedule = await Schedule.findOneAndUpdate(
+        query,
+        {
+          $push: { subscribers: { user: data.user, slotType: data.slotType } }
+        },
+        options
+      ).populate('subscribers.user');
+    } else {
+      res
+        .status(401)
+        .send(
+          'Parking not available for date: ' + moment(req.body.date).toDate()
+        );
+      return;
+    }
   }
 
   let sortedSubs = daySchedule.subscribers
@@ -35,8 +47,8 @@ exports.subscribe = async (req, res, next) => {
     : [];
   const output = {
     date: daySchedule.date,
-    alocated: sortedSubs.slice(0, 3),
-    others: sortedSubs.slice(3)
+    alocated: sortedSubs.slice(0, PARKING_SPOTS),
+    others: sortedSubs.slice(PARKING_SPOTS)
   };
 
   console.log(output);
@@ -44,15 +56,24 @@ exports.subscribe = async (req, res, next) => {
   res.json(output);
 };
 
+parkingIsAvailable = date => {
+  const now = moment();
+  const deadLine = moment(date)
+    .clone()
+    .add(-PARK_DEADLINE, 'hour');
+  const parkLimit = now
+    .clone()
+    .add(PARK_LIMIT, 'days')
+    .endOf('week');
+  return (
+    now.isBefore(deadLine, 'minute') && moment(date).isBefore(parkLimit, 'day')
+  );
+};
+
 sortByHireDate = users => {
   return users.sort((userA, userB) => {
     const dateA = moment(userA.user.hireDate);
     const dateB = moment(userB.user.hireDate);
-    console.log(
-      userA.user.hireDate,
-      userB.user.hireDate,
-      dateA.diff(dateB, 'days')
-    );
     return dateA.diff(dateB, 'days');
   });
 };
@@ -70,8 +91,6 @@ exports.getWeek = async (req, res, next) => {
     .endOf('day')
     .toDate();
 
-  console.log(weekNo, startDate, endDate);
-
   const schedules = await Schedule.find(
     {
       $and: [{ date: { $lte: endDate } }, { date: { $gte: startDate } }]
@@ -86,11 +105,10 @@ exports.getWeek = async (req, res, next) => {
 
   const output = schedules.map(day => {
     let sortedSubs = day.subscribers ? sortByHireDate(day.subscribers) : [];
-    console.log(day);
     return {
       date: day.date,
-      alocated: sortedSubs.slice(0, 3),
-      others: sortedSubs.slice(3)
+      alocated: sortedSubs.slice(0, PARKING_SPOTS),
+      others: sortedSubs.slice(PARKING_SPOTS)
     };
   });
 

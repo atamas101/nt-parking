@@ -25,8 +25,12 @@ export class LoginComponent {
   loginUser() {
     this.authenticationService
       .loginUser(this.email.value, this.password.value)
-      .subscribe(() => {
-        this.router.navigate(['/dashboard']);
+      .subscribe(user => {
+        if (this.authenticationService.shouldResetPassword()) {
+          this.router.navigate(['/reset-password']);
+        } else {
+          this.router.navigate(['/dashboard']);
+        }
       });
   }
 }

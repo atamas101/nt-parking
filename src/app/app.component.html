@@ -1,6 +1,7 @@
 <app-login *ngIf="!isLoggedIn()"></app-login>
+<app-reset *ngIf="shouldResetPassword()"></app-reset>
 
-<ng-container *ngIf="isLoggedIn()">
+<ng-container *ngIf="isLoggedIn() && !shouldResetPassword()">
 
   <mat-toolbar color="primary">
 

@@ -13,6 +13,10 @@ import * as moment from 'moment';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { AuthenticationService } from '../../login/auth.service';
 
+const PARKING_SPOTS = 3;
+const PARK_DEADLINE = 2; // Hours before midnight
+const PARK_LIMIT = 14; // Days available in future
+
 @Component({
   selector: 'day-comp',
   templateUrl: './day.component.html',
@@ -43,7 +47,11 @@ export class DayComponent implements OnInit {
 
     this.currentUserId = this.auth.getCurrentUser()._id;
 
-    this.deadLine = this.inputDay.clone().add(-2, 'hour');
+    this.deadLine = this.inputDay.clone().add(-PARK_DEADLINE, 'hour');
+    this.parkLimit = this.now
+      .clone()
+      .add(PARK_LIMIT, 'days')
+      .endOf('week');
 
     this.getSubscribers(this.inputData);
   }
@@ -58,10 +66,11 @@ export class DayComponent implements OnInit {
       return acc;
     }, {});
   }
+
   private getDistributedSlots(alocated) {
     const alocatedGroupped = this.groupBy(alocated, item => item.slotType);
     // Make sure each type is an array
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < PARKING_SPOTS; i++) {
       alocatedGroupped[i] = alocatedGroupped[i] || [];
     }
     // Build final allocated order
@@ -75,10 +84,6 @@ export class DayComponent implements OnInit {
   private getSubscribers(input): void {
     this.subscribers = input;
     this.othersCount = this.subscribers.others.length;
-    this.parkLimit = this.now
-      .clone()
-      .add(14, 'days')
-      .endOf('week');
 
     // Check if current user is in alocated or in others list
     const isAlocated = this.subscribers.alocated.find(item => {
@@ -92,7 +97,7 @@ export class DayComponent implements OnInit {
     }
     this.computeInitialDate();
 
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < PARKING_SPOTS; i++) {
       if (!this.subscribers.alocated[i]) {
         this.subscribers.alocated[i] = { user: {}, slotType: 0 };
       }
@@ -122,14 +127,19 @@ export class DayComponent implements OnInit {
         date: date,
         preference: parkLocation
       })
-      .subscribe((data: any) => {
-        this.subscribeBtnState = !this.subscribeBtnState;
+      .subscribe(
+        (data: any) => {
+          this.subscribeBtnState = !this.subscribeBtnState;
 
-        this.getSubscribers({
-          day: moment(data.date),
-          alocated: data.alocated,
-          others: data.others
-        });
-      });
+          this.getSubscribers({
+            day: moment(data.date),
+            alocated: data.alocated,
+            others: data.others
+          });
+        },
+        () => {
+          this.showLoading = false;
+        }
+      );
   }
 }

@@ -45,6 +45,11 @@ router.delete(
   authController.isAdmin,
   catchErrors(userController.deleteUser)
 );
+router.post(
+  '/resetPassword',
+  authController.isLoggedIn,
+  catchErrors(userController.resetPassword)
+);
 
 router.post('/login', authController.login);
 

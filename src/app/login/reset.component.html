@@ -1,0 +1,64 @@
+<div class="wrap">
+  <div class="outer">
+    <div class="inner">
+      <div class="flex-container">
+        <div class="row">
+          <div class="flex-item">
+            <img src=".\assets\img\logo.png" />
+          </div>
+          <div class="flex-item sign-in-text">
+            <p>RESET PASSWORD</p>
+          </div>
+          <form (ngSubmit)="resetPassword()">
+
+            <div class="flex-item">
+              <mat-form-field>
+                <input matInput placeholder="NEW PASSWORD" [formControl]="password" [type]="hide ? 'password' : 'text'" class="sign-in-text">
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="password.invalid">You must enter a password</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="flex-item">
+              <mat-form-field>
+                <input matInput placeholder="NEW PASSWORD CONFIRM" [formControl]="passwordc" [type]="hide ? 'password' : 'text'" class="sign-in-text">
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+                <mat-error *ngIf="passwordc.invalid">You must enter a password confirmation</mat-error>
+              </mat-form-field>
+            </div>
+            <div class="flex-item">
+              <div class="form-actions">
+                <button mat-button color="primary">Reset password</button>
+              </div>
+            </div>
+          </form>
+          <p class="logout-link">
+            <a (click)="logout() ">logout</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- <mat-card>
+      <form (ngSubmit)="loginUser()" class="login-form" fxLayout="column" fxFlex="grow" fxLayoutAlign="center">
+        <mat-form-field>
+          <input matInput placeholder="Enter your email" [formControl]="email" type="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <input matInput placeholder="Enter your password" [formControl]="password" [type]="hide ? 'password' : 'text'" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error *ngIf="password.invalid">You must enter a password</mat-error>
+        </mat-form-field>
+
+
+        <div class="form-actions">
+          <button mat-button>Cancel</button>
+          <button mat-button color="primary">Login</button>
+        </div>
+      </form>
+    </mat-card> -->

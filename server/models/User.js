@@ -21,7 +21,7 @@ const userSchema = new Schema({
     required: 'Please supply a name',
     trim: true
   },
-  admin: {
+  isFirstPassword: {
     type: Boolean,
     default: false
   },
@@ -31,6 +31,10 @@ const userSchema = new Schema({
       .utc()
       .startOf('day')
       .toDate()
+  },
+  admin: {
+    type: Boolean,
+    default: false
   },
   resetPasswordToken: String,
   resetPasswordExpires: Date

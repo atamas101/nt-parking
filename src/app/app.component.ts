@@ -29,6 +29,10 @@ export class AppComponent implements OnDestroy {
     return this.auth.isAuthenticated();
   }
 
+  public shouldResetPassword() {
+    return this.auth.shouldResetPassword();
+  }
+
   ngOnDestroy() {
     this.watcher.unsubscribe();
   }

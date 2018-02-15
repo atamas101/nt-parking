@@ -28,8 +28,29 @@ export class AuthenticationService {
     });
   }
 
+  resetPassword(
+    password: string,
+    passwordConfirmation: string
+  ): Observable<IUser> {
+    return this.$http
+      .post<IUser>('resetPassword', {
+        password: password,
+        'password-confirm': passwordConfirmation
+      })
+      .do(response => {
+        if (response) {
+          this.currentUser = <IUser>response;
+          localStorage.setItem('currentUser', JSON.stringify(this.currentUser));
+        }
+      });
+  }
+
   isAuthenticated() {
     return !!this.currentUser;
+  }
+
+  shouldResetPassword() {
+    return !!this.currentUser && this.currentUser.isFirstPassword;
   }
 
   getCurrentUser() {

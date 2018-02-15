@@ -7,6 +7,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NtmaterialModule } from './ntmaterial/ntmaterial.module';
 import { LoginComponent } from './login/login.component';
+import { ResetPasswordComponent } from './login/reset.component';
 import { routes } from './app.routes';
 import { RouterModule } from '@angular/router';
 import { UsersModule } from './users/users.module';
@@ -16,7 +17,7 @@ import { AuthGuard } from './login/auth-guard.service';
 import { NtHttpInterceptor } from './shared/http.interceptor';
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent],
+  declarations: [AppComponent, LoginComponent, ResetPasswordComponent],
 
   imports: [
     BrowserModule,

@@ -8,12 +8,10 @@ const User = mongoose.model('User');
 exports.login = (req, res, next) => {
   passport.authenticate('local', (err, user, info) => {
     if (err) {
-      // return next(err);
       return res.status(401).send(err);
     }
     if (!user) {
       return res.status(401).send('Invalid user or password.');
-      // return next(err);
     }
     req.logIn(user, err => {
       if (err) {
@@ -23,6 +21,7 @@ exports.login = (req, res, next) => {
         name: user.name,
         email: user.email,
         admin: user.admin,
+        isFirstPassword: user.isFirstPassword,
         _id: user._id
       });
     });

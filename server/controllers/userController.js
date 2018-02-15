@@ -34,6 +34,7 @@ exports.register = async (req, res, next) => {
   const user = new User({
     email: req.body.email,
     name: req.body.name,
+    isFirstPassword: true,
     hireDate: moment(req.body.hireDate)
       .startOf('day')
       .toDate()
@@ -79,19 +80,60 @@ exports.deleteUser = async (req, res, next) => {
 };
 
 exports.updateUser = async (req, res) => {
-  const updates = {
-    name: req.body.name,
-    email: req.body.email,
-    admin: req.body.admin,
-    hireDate: moment(req.body.hireDate)
-      .startOf('day')
-      .toDate()
-  };
+  const user = await User.findById(req.params.id);
 
-  const user = await User.findOneAndUpdate(
-    { _id: req.params.id },
-    { $set: updates },
-    { new: true, runValidators: true, context: 'query' }
-  );
-  res.json(user);
+  if (!user) {
+    res.status(500).send('User not found!');
+    return;
+  }
+
+  user.name = req.body.name;
+  user.email = req.body.email;
+  // user.admin = req.body.admin;
+  user.hireDate = moment(req.body.hireDate)
+    .startOf('day')
+    .toDate();
+
+  if (
+    req.body.password &&
+    req.body['password-confirm'] &&
+    req.body.password === req.body['password-confirm']
+  ) {
+    const setPassword = promisify(user.setPassword, user);
+    await setPassword(req.body.password);
+    user.isFirstPassword = true;
+  } else {
+    res.status(500).send("Passwords don't match");
+    return;
+  }
+
+  const updatedUser = await user.save();
+
+  res.json(updatedUser);
+};
+
+exports.resetPassword = async (req, res) => {
+  const user = await User.findById(req.user._id);
+
+  if (!user) {
+    res.status(500).send('User not found!');
+    return;
+  }
+
+  if (
+    req.body.password &&
+    req.body['password-confirm'] &&
+    req.body.password === req.body['password-confirm']
+  ) {
+    const setPassword = promisify(user.setPassword, user);
+    await setPassword(req.body.password);
+    user.isFirstPassword = false;
+  } else {
+    res.status(500).send("Passwords don't match");
+    return;
+  }
+
+  const updatedUser = await user.save();
+
+  res.json(updatedUser);
 };
