@@ -1,0 +1,31 @@
+<app-login *ngIf="!isLoggedIn()"></app-login>
+<app-reset *ngIf="shouldResetPassword()"></app-reset>
+
+<ng-container *ngIf="isLoggedIn() && !shouldResetPassword()">
+
+  <mat-toolbar color="primary">
+
+    <div class="logo-container" [ngClass]="{'sidebar-open':sidenav.opened}"></div>
+
+    <i matTooltip="Menu" class="material-icons toggle-sidebar" (click)="sidenav.toggle(); ">menu</i>
+
+    <span class="toolbar-spacer"></span>
+
+    <i matTooltip="Logout" class="material-icons shut-down-btn " *ngIf="isLoggedIn()" (click)="logout() ">power_settings_new</i>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="sidenav-container ">
+    <mat-sidenav #sidenav [(opened)]="opened" [mode]="sideNavMode">
+      <mat-nav-list class="side-nav-list">
+        <a matTooltip="Weekly Status" matTooltipPosition='right' routerLink="/dashboard" routerLinkActive="active-link" mat-list-item>Dashboard</a>
+        <a matTooltip="Users List" matTooltipPosition='right' routerLink="/users" routerLinkActive="active-link" mat-list-item>Users</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+
+</ng-container>

@@ -1,0 +1,73 @@
+@import './shared/styles/_variables.scss';
+
+//side nav
+mat-sidenav {
+  width: 260px;
+  background: $ntGray;
+}
+
+.mat-button .mat-button-wrapper {
+  border-radius: 50%;
+  background: $ntGray;
+}
+
+.mat-drawer-container {
+  min-height: 100%;
+}
+
+.mat-drawer.mat-drawer-push {
+  background: $ntGray;
+}
+
+.material-icons {
+  cursor: pointer;
+  color: $ntGreen;
+  margin: 15px;
+
+  &.shut-down-btn {
+    background-color: $ntDarkGray;
+    border-radius: 50%;
+  }
+
+  &.toggle-sidebar {
+    color: $ntGray;
+  }
+}
+
+//toolbar
+.mat-toolbar {
+  background: white;
+  height: 64px;
+  margin: 0px;
+  padding: 0px;
+}
+.logo-container {
+  transition: width 0.31s;
+  margin: 0;
+  padding: 0;
+  width: 64px;
+  height: 64px;
+  float: left;
+  background: $ntGrayLight url('../assets/img/nexttech_logo_final.png') 15px 50%
+    no-repeat;
+
+  &.sidebar-open {
+    width: 260px;
+    height: 64px;
+  }
+}
+
+.mat-list-item {
+  color: white;
+  font-size: 18px;
+}
+
+.toolbar-spacer {
+  flex: 1 1 auto;
+}
+
+.active-link {
+  color: $ntGreen;
+  background: $link-active;
+  border-left: 3px solid $ntGreen;
+}

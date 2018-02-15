@@ -1,0 +1,56 @@
+@import '../../shared/styles/_variables.scss';
+.week-nav-wrapper {
+  margin-bottom: 0.8rem;
+}
+.hidden {
+  display: none;
+  visibility: hidden;
+}
+h2 {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: normal;
+  margin-bottom: 0.1rem;
+}
+.size {
+  font-size: 50px;
+  cursor: pointer;
+}
+.pointer {
+  cursor: pointer;
+  color: $ntGreen;
+  font-size: 3rem;
+}
+.second-row-text {
+  cursor: pointer;
+  color: $ntPurple;
+  font-size: 1.7rem;
+  display: block;
+}
+.first-row-text {
+  cursor: pointer;
+  color: $ntGreen;
+  font-size: 2rem;
+  display: block;
+}
+.calendar-icon {
+  cursor: pointer;
+  background-color: $ntGreen;
+  border-radius: 50%;
+  margin-left: 10px;
+  color: white;
+  width: 30px;
+  height: 30px;
+  padding-top: 3px;
+  text-align: center;
+}
+.curent-week-cont {
+  height: 18px;
+  .current-week {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: $ntGreen !important;
+  }
+}

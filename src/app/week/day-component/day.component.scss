@@ -1,0 +1,150 @@
+@import '../../shared/styles/_variables.scss';
+
+.day-component-wrapper {
+  margin-bottom: 6px;
+  background-color: $lightGray;
+}
+
+.week-day {
+  flex: 0 1 auto;
+  min-width: 90px;
+  font-size: 1.33em;
+  div {
+    height: 40px;
+    span {
+      align-self: center;
+      padding-right: 0.2em;
+      padding-left: 0.2em;
+    }
+  }
+  .month-info {
+    background-color: $darkGray;
+    color: $white;
+  }
+  .day-info {
+    background-color: $gray;
+    color: $ntGreen;
+  }
+}
+
+.parking-slots {
+  flex-grow: 1;
+  slot {
+    background-color: $ntGreen;
+    font-weight: 400;
+    padding-top: 10px;
+    color: $white;
+    font-size: 1.25em;
+    text-align: center;
+    width: 160px;
+    height: 40px;
+    &.empty {
+      background-color: transparentize($ntGreen, 0.5);
+      opacity: 0.7;
+    }
+    &.outside {
+      background-color: $ntPurple;
+      &.empty {
+        background-color: transparentize($ntPurple, 0.5);
+      }
+    }
+  }
+}
+
+.others-and-dropdown {
+  font-size: 1.25em;
+  flex-grow: 1;
+  color: $ntTextColor;
+  div {
+    display: inline-block;
+  }
+  .parking-buttons {
+    width: 200px;
+  }
+
+  .others {
+    height: 40px;
+
+    p {
+      text-align: center;
+      margin-bottom: 0px;
+    }
+  }
+  .others-hide {
+    visibility: hidden;
+  }
+  button {
+    font-family: $font-family-base;
+    color: $ntGreen;
+    background-color: $white;
+    border-color: $gray;
+    height: 40px;
+    &.btn-text {
+      flex-grow: 3;
+    }
+    &.btn-cancel {
+      width: 200px;
+    }
+    &.btn-disabled {
+      opacity: 0.5;
+    }
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+.xsView {
+  &.day-component-wrapper {
+    height: 320px;
+    margin-bottom: 30px;
+  }
+  .week-day {
+    height: 80px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .parking-slots {
+    height: 140px;
+    padding: 0 15px;
+    flex-grow: 1;
+    slot {
+      width: auto;
+    }
+  }
+  .others-and-dropdown {
+    padding: 0 15px;
+  }
+  .parking-buttons {
+    width: 100%;
+  }
+}
+
+.mediumView {
+  &.day-component-wrapper {
+    height: 280px;
+    padding: 40px 40px 40px 40px;
+    flex-wrap: wrap;
+  }
+  .week-day {
+    order: 1;
+  }
+  .others-and-dropdown {
+    order: 2;
+    .others {
+      order: 2;
+    }
+    .parking-buttons {
+      order: 1;
+    }
+  }
+  .parking-slots {
+    margin-top: 10px;
+    width: 100%;
+    order: 3;
+    slot {
+      width: auto;
+      margin-top: 10px;
+    }
+  }
+}

@@ -1,0 +1,75 @@
+@import '../shared/styles/_variables.scss';
+.material-icons {
+  font-size: 26px;
+}
+.list-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+}
+.filter-container {
+  display: flex;
+  flex-direction: row-reverse;
+}
+.search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+  padding: 8px;
+  background-color: $gray;
+}
+mat-table {
+  background-color: $lightGray;
+}
+mat-header-cell {
+  display: flex;
+  justify-content: space-around;
+  color: $ntGreen;
+}
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+mat-sort-header,
+mat-cell {
+  text-align: center;
+}
+.edit-button,
+.delete-button {
+  text-align: center;
+  color: $ntDarkGray;
+  font-size: 2em;
+  cursor: pointer;
+}
+.search-button {
+  background-color: $ntDarkGray;
+  color: white;
+  border-radius: 60%;
+  max-height: 30px;
+  max-width: 30px;
+  cursor: pointer;
+  margin: auto;
+}
+.table-footer {
+  justify-content: space-between;
+  display: flex;
+  align-items: center;
+  background-color: $gray;
+}
+
+.add-button {
+  color: $ntPurple;
+  margin: 11px 14px;
+  padding: 7px;
+  cursor: pointer;
+}
+
+::ng-deep .add-button .button-icon {
+  font-size: 40px;
+}
+
+.search-header{
+  height: 57px;
+}

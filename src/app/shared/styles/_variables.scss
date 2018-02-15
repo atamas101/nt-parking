@@ -1,0 +1,98 @@
+$ntGreen: #19b798;
+$ntPurple: #8b96c3;
+$gray: #d3d6d8;
+$lightGray: #dcdfe0;
+$darkGray: #7d7d7d;
+$ntLogoBg: #354146;
+$ntDarkGray: #222f35;
+$ntTextColor: #455a64;
+
+$ntGray: #26353c;
+$ntGrayLight: #3c4a50;
+$toggleColor: #b6bbbd;
+$link-active: #1F2A30;
+
+// Grayscale and brand colors for use across Bootstrap.
+
+// Start with assigning color names to specific hex values.
+$white: #fff !default;
+$black: #000 !default;
+$red: #d9534f !default;
+$orange: #f0ad4e !default;
+$yellow: #ffd500 !default;
+$green: #5cb85c !default;
+$blue: #0275d8 !default;
+$teal: #5bc0de !default;
+$pink: #ff5b77 !default;
+$purple: #613d7c !default;
+
+// Create grayscale
+$gray-dark: #292b2c !default;
+$gray: #464a4c !default;
+$gray-light: #636c72 !default;
+$gray-lighter: #eceeef !default;
+$gray-lightest: #f7f7f9 !default;
+
+// Reassign color vars to semantic color scheme
+$brand-primary: $ntGreen !default;
+$brand-secondary: $ntPurple !default;
+$brand-success: $green !default;
+$brand-info: $teal !default;
+$brand-warning: $orange !default;
+$brand-danger: $red !default;
+$brand-inverse: $gray-dark !default;
+
+// Body
+//
+// Settings for the `<body>` element.
+
+$body-bg: $white !default;
+$body-color: $ntDarkGray !default;
+$inverse-bg: $gray-dark !default;
+$inverse-color: $gray-lighter !default;
+
+// Fonts
+//
+// Font, line-height, and color for body text, headings, and more.
+
+$font-family-sans-serif: Roboto, 'Segoe UI', 'Helvetica Neue', Arial,
+  sans-serif !default;
+$font-family-serif: Georgia, 'Times New Roman', Times, serif !default;
+$font-family-monospace: Menlo, Monaco, Consolas, 'Liberation Mono',
+  'Courier New', monospace !default;
+$font-family-base: $font-family-sans-serif !default;
+
+$font-size-base: 1rem !default; // Assumes the browser default, typically `16px`
+$font-size-lg: 1.25rem !default;
+$font-size-sm: 0.875rem !default;
+$font-size-xs: 0.75rem !default;
+
+$font-weight-normal: normal !default;
+$font-weight-bold: bold !default;
+
+$font-weight-base: $font-weight-normal !default;
+$line-height-base: 1.5 !default;
+
+$font-size-h1: 2.5rem !default;
+$font-size-h2: 2rem !default;
+$font-size-h3: 1.75rem !default;
+$font-size-h4: 1.5rem !default;
+$font-size-h5: 1.25rem !default;
+$font-size-h6: 1rem !default;
+
+$dt-font-weight: $font-weight-bold !default;
+
+$text-muted: $gray-light !default;
+
+// Links
+//
+// Style anchor elements.
+
+$link-color: $brand-primary !default;
+$link-decoration: none !default;
+$link-hover-color: darken($link-color, 15%) !default;
+$link-hover-decoration: underline !default;
+
+// Others
+
+$cursor-disabled: not-allowed !default;
