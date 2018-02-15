@@ -4,8 +4,8 @@
   <div class="search-header">
     <span style="margin: auto 1.5em">USERS</span>
     <div class="filter-container">
-      <i matTooltip="Search" class="material-icons search-button" (click)="show = !show">search</i>
-      <div class="filter-header" *ngIf="show">
+      <i matTooltip="Search" class="material-icons search-button" (click)="showSearch = !showSearch">search</i>
+      <div class="filter-header" *ngIf="showSearch">
         <mat-form-field>
           <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Filter">
         </mat-form-field>
@@ -45,6 +45,6 @@
   <!-- Pagination Component -->
   <div class="table-footer">
     <list-pagination class="mat-paginator" [incomingList]="usersList"></list-pagination>
-    <user-crud-button class="add-button" *ngIf="auth.isAdmin()" (changedList)="refreshUser($event)" btnType="add"></user-crud-button>
+    <user-crud-button class="add-button" *ngIf="isAdmin()" (changedList)="refreshUser($event)" btnType="add"></user-crud-button>
   </div>
 </div>

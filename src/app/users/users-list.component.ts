@@ -11,7 +11,7 @@ import {
 } from '@angular/material';
 
 import { AuthenticationService } from '../login/auth.service';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatTooltipModule } from '@angular/material/tooltip';
 @Component({
   selector: 'users-list',
   templateUrl: './users-list.component.html',
@@ -19,6 +19,7 @@ import {MatTooltipModule} from '@angular/material/tooltip';
 })
 export class UsersComponent implements OnInit, AfterViewInit {
   public usersList: any;
+  public showSearch: Boolean;
   displayedColumns = ['name', 'hireDate', 'email', 'edit'];
   errorMessage: String;
 
@@ -28,7 +29,7 @@ export class UsersComponent implements OnInit, AfterViewInit {
   constructor(
     private users: UsersService,
     private auth: AuthenticationService
-  ) { }
+  ) {}
 
   ngOnInit() {
     this.usersList = new MatTableDataSource<IUser>();
@@ -36,11 +37,14 @@ export class UsersComponent implements OnInit, AfterViewInit {
       this.usersList.data = user;
     });
     if (!this.auth.isAdmin()) {
-      this.verifyAdmin = "none";
+      this.verifyAdmin = 'none';
+    } else {
+      this.verifyAdmin = '';
     }
-    else {
-      this.verifyAdmin = "";
-    }
+  }
+
+  isAdmin() {
+    return this.auth.isAdmin();
   }
 
   applyFilter(filterValue: string) {
@@ -58,6 +62,4 @@ export class UsersComponent implements OnInit, AfterViewInit {
       this.usersList.data = user;
     });
   }
-
 }
-
