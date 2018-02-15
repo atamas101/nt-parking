@@ -35,7 +35,7 @@ export class UserCrudBtn implements OnInit {
   }
 
   doDelete(selectedUser) {
-    console.log(this.selectedUser);
+    // console.log(this.selectedUser);
     const deleteDialog = this.dialog
       .open(DeleteDialog, { data: this.selectedUser })
       .afterClosed()

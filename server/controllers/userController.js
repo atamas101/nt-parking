@@ -137,3 +137,52 @@ exports.resetPassword = async (req, res) => {
 
   res.json(updatedUser);
 };
+
+capitalizeString = string => string.charAt(0).toUpperCase() + string.slice(1);
+
+getName = email => {
+  const namePart = email.split('@')[0];
+  const firstName = capitalizeString(namePart.split('.')[0]);
+  const lastName = capitalizeString(namePart.split('.')[1]);
+
+  return firstName + ' ' + lastName;
+};
+
+reverseString = str => {
+  if (str === '') return '';
+  else return reverseString(str.substr(1)) + str.charAt(0);
+};
+
+getPassword = email => {
+  return '2018' + reverseString(email.split('@')[0]);
+};
+
+// Mass populate users
+// exports.addUserList = async (req, res, next) => {
+//   let users = [];
+
+//   if (req.body) {
+//     users = await req.body.map(async user => {
+//       const password = getPassword(user.email);
+//       const userObject = {
+//         name: getName(user.email),
+//         email: user.email,
+//         isFirstPassword: true,
+//         password: password,
+//         hireDate: moment(user.hireDate, 'DD/MM/YYYY')
+//           .startOf('day')
+//           .toDate()
+//       };
+
+//       const register = promisify(User.register, User);
+//       await register(new User(userObject), password);
+
+//       return userObject;
+//     });
+//   } else {
+//     res.status(500).send('Please provide user list');
+//     return;
+//   }
+
+//   res.json(users);
+// };

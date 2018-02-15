@@ -30,7 +30,7 @@ export class NtHttpInterceptor implements HttpInterceptor {
     // send the newly created request
     return next.handle(request).catch((err, caught) => {
       // intercept the respons error and displace it to the console
-      console.log(err.error);
+      // console.log(err.error);
       if (err.error.message) {
         this.openSnackBar(err.error.message);
       } else {

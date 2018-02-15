@@ -51,8 +51,6 @@ exports.subscribe = async (req, res, next) => {
     others: sortedSubs.slice(PARKING_SPOTS)
   };
 
-  console.log(output);
-
   res.json(output);
 };
 
