@@ -22,7 +22,6 @@ export class NtHttpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log(env);
     const urlBase = env.production ? '/api/' : 'http://localhost:7778/api/';
     // Clone the request to add the new header.
     const request = req.clone({
