@@ -82,6 +82,7 @@ exports.getWeek = async (req, res, next) => {
     .day('Monday')
     .isoWeek(weekNo)
     .startOf('day')
+    .add(-4, 'hour')
     .toDate();
   const endDate = moment()
     .day('Friday')

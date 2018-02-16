@@ -10,6 +10,8 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 
+import { environment as env } from '../../environments/environment';
+
 import { MatSnackBar } from '@angular/material';
 
 @Injectable()
@@ -20,9 +22,11 @@ export class NtHttpInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    console.log(env);
+    const urlBase = env.production ? '/api/' : 'http://localhost:7778/api/';
     // Clone the request to add the new header.
     const request = req.clone({
-      url: `http://localhost:7778/api/${req.url}`,
+      url: urlBase + req.url,
       headers: req.headers.set('Content-Type', 'application/json'),
       withCredentials: true
     });
