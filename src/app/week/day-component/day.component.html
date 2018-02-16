@@ -39,7 +39,8 @@
           <button mat-menu-item (click)="subscribeBtnToggle(2)">Park Outside</button>
         </mat-menu>
       </div>
-      <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" (click)="subscribeBtnToggle(-1)">Cancel</button>
+      <button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" [ngClass]="{'btn-disabled': cancelBtnDisabled }" [disabled]='cancelBtnDisabled'
+        (click)="subscribeBtnToggle(-1)">Cancel</button>
     </div>
   </div>
 

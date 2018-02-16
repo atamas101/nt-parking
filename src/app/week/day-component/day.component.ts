@@ -15,6 +15,7 @@ import { AuthenticationService } from '../../login/auth.service';
 
 const PARKING_SPOTS = 3;
 const PARK_DEADLINE = 2; // Hours before midnight
+const CANCEL_DEADLINE = 7; // Hour of the day until you can cancel
 const PARK_LIMIT = 14; // Days available in future
 
 @Component({
@@ -36,7 +37,9 @@ export class DayComponent implements OnInit {
   public othersCount: number;
   public subscribeBtnState = true;
   public subscribeBtnDisabled = false;
+  public cancelBtnDisabled = false;
   private now = moment();
+  private cancelDeadline: Moment;
   private deadLine: Moment;
   private parkLimit: Moment;
   public currentUserId: any;
@@ -48,6 +51,8 @@ export class DayComponent implements OnInit {
     this.currentUserId = this.auth.getCurrentUser()._id;
 
     this.deadLine = this.inputDay.clone().add(-PARK_DEADLINE, 'hour');
+    this.cancelDeadline = this.inputDay.clone().add(CANCEL_DEADLINE, 'hour');
+
     this.parkLimit = this.now
       .clone()
       .add(PARK_LIMIT, 'days')
@@ -113,6 +118,10 @@ export class DayComponent implements OnInit {
       this.inputDay.isAfter(this.parkLimit, 'day')
     ) {
       this.subscribeBtnDisabled = true;
+    }
+
+    if (this.now.isAfter(this.cancelDeadline, 'minute')) {
+      this.cancelBtnDisabled = true;
     }
   }
 
