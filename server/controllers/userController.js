@@ -36,7 +36,9 @@ exports.register = async (req, res, next) => {
     name: req.body.name,
     isFirstPassword: true,
     hireDate: moment(req.body.hireDate)
+      .utc()
       .startOf('day')
+      .add(12, 'hour')
       .toDate()
   });
   const register = promisify(User.register, User);
@@ -51,7 +53,15 @@ exports.getUsers = async (req, res, next) => {
     admin: true,
     hireDate: true
   });
-  res.json(users);
+  const output = users.map(user => {
+    user.hireDate = moment(user.hireDate)
+      .utc()
+      .startOf('day')
+      .add(12, 'hour')
+      .toDate();
+    return user;
+  });
+  res.json(output);
 };
 
 exports.deleteUser = async (req, res, next) => {
@@ -91,22 +101,21 @@ exports.updateUser = async (req, res) => {
   user.email = req.body.email;
   // user.admin = req.body.admin;
   user.hireDate = moment(req.body.hireDate)
+    .utc()
     .startOf('day')
+    .add(12, 'hour')
     .toDate();
 
-  if (
-    req.body.password &&
-    req.body['password-confirm'] &&
-    req.body.password === req.body['password-confirm']
-  ) {
-    const setPassword = promisify(user.setPassword, user);
-    await setPassword(req.body.password);
-    user.isFirstPassword = true;
-  } else {
-    res.status(500).send("Passwords don't match");
-    return;
+  if (req.body.password && req.body['password-confirm']) {
+    if (req.body.password === req.body['password-confirm']) {
+      const setPassword = promisify(user.setPassword, user);
+      await setPassword(req.body.password);
+      user.isFirstPassword = true;
+    } else {
+      res.status(500).send("Passwords don't match");
+      return;
+    }
   }
-
   const updatedUser = await user.save();
 
   res.json(updatedUser);

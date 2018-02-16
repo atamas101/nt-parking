@@ -49,7 +49,7 @@ export class DayComponent implements OnInit {
 
   ngOnInit() {
     this.inputDay = this.inputData.day;
-    this.inputDay.set({ hour: 0, minute: 0, second: 0 });
+    this.inputDay.set({ hour: 12, minute: 0, second: 0 });
     this.currentUserId = this.auth.getCurrentUser()._id;
     this.deadLine = this.inputDay.clone().add(-PARK_DEADLINE, 'hour');
     this.cancelDeadline = this.inputDay.clone().add(CANCEL_DEADLINE, 'hour');
@@ -72,7 +72,12 @@ export class DayComponent implements OnInit {
       return acc;
     }, {});
   }
-
+  private getExactDate(date: Moment | Date): Moment {
+    return moment(date)
+      .utc()
+      .startOf('day')
+      .add(12, 'hour');
+  }
   private getDistributedSlots(alocated) {
     const alocatedGroupped = this.groupBy(alocated, item => item.slotType);
     // Make sure each type is an array
@@ -133,9 +138,7 @@ export class DayComponent implements OnInit {
   }
 
   public subscribeBtnToggle(parkLocation) {
-    const date = moment(this.inputDay)
-      .startOf('day')
-      .toISOString();
+    const date = this.getExactDate(this.inputDay).toISOString();
     this.showLoading = true;
     this.schedule
       .parkToggle({

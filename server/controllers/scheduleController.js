@@ -79,12 +79,13 @@ sortByHireDate = users => {
 exports.getWeek = async (req, res, next) => {
   const weekNo = req.params.weekNo;
   const startDate = moment()
+    .utc()
     .day('Monday')
     .isoWeek(weekNo)
     .startOf('day')
-    .add(-4, 'hour')
     .toDate();
   const endDate = moment()
+    .utc()
     .day('Friday')
     .isoWeek(weekNo)
     .endOf('day')
