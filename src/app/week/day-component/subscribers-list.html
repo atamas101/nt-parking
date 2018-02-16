@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Selected day : {{data.selectedDay | date}}</h1>
+
+<div mat-dialog-title>
+  <mat-list fxLayout='column' fxLayoutAlign=' center'>
+    <mat-list-item class='info-row' *ngFor='let person of data.people'>
+      <span class='name'> {{person.user.name}} </span>
+      <span class='hiredOn'>Hire Date: {{person.user.hireDate | date}}</span>
+    </mat-list-item>
+  </mat-list>
+</div>
+
+<div mat-dialog-actions fxLayoutAlign="end">
+  <button mat-button (click)="onClose()">Close</button>
+</div>

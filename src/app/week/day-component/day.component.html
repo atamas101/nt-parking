@@ -24,7 +24,7 @@
   <div *ngIf="!shouldShowLoader()" class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column"
     fxLayout.xs="column" fxLayoutAlign.sm="space-between end" fxLayoutAlign.xs="space-around stretch">
     <div class="others" [ngClass]="{'others-hide': !othersCount }" fxLayout="row" fxLayoutAlign=" center">
-      <waiting-list-display matTooltip="Waiting List" [selectedDay]='inputDay' [waitingList]='subscribers.others' [othersCount]='othersCount'></waiting-list-display>
+      <button matTooltip="Waiting List" (click)="openSubscribersList()">...{{othersCount}} more waiting</button>
     </div>
     <div class="parking-buttons">
       <div *ngIf="subscribeBtnState" class="btn-group" fxLayout="row" fxLayoutAlign="end none" fxLayoutAlign.xs="none stretch">

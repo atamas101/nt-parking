@@ -12,6 +12,8 @@ import { Moment } from 'moment';
 import * as moment from 'moment';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { AuthenticationService } from '../../login/auth.service';
+import { MatDialog } from '@angular/material';
+import { SubscribersListComponent } from './subscribers-list.component';
 
 const PARKING_SPOTS = 3;
 const PARK_DEADLINE = 2; // Hours before midnight
@@ -26,7 +28,8 @@ const PARK_LIMIT = 14; // Days available in future
 export class DayComponent implements OnInit {
   constructor(
     private schedule: ScheduleService,
-    private auth: AuthenticationService
+    private auth: AuthenticationService,
+    public dialog: MatDialog
   ) {}
   @Input() inputData;
   @Input() showLoading: Boolean;
@@ -38,18 +41,16 @@ export class DayComponent implements OnInit {
   public subscribeBtnState = true;
   public subscribeBtnDisabled = false;
   public cancelBtnDisabled = false;
+  public currentUserId: any;
   private now = moment();
   private cancelDeadline: Moment;
   private deadLine: Moment;
   private parkLimit: Moment;
-  public currentUserId: any;
 
   ngOnInit() {
     this.inputDay = this.inputData.day;
     this.inputDay.set({ hour: 0, minute: 0, second: 0 });
-
     this.currentUserId = this.auth.getCurrentUser()._id;
-
     this.deadLine = this.inputDay.clone().add(-PARK_DEADLINE, 'hour');
     this.cancelDeadline = this.inputDay.clone().add(CANCEL_DEADLINE, 'hour');
 
@@ -112,7 +113,7 @@ export class DayComponent implements OnInit {
     this.showLoading = false;
   }
 
-  computeInitialDate() {
+  private computeInitialDate() {
     if (
       this.now.isAfter(this.deadLine, 'minute') ||
       this.inputDay.isAfter(this.parkLimit, 'day')
@@ -125,7 +126,13 @@ export class DayComponent implements OnInit {
     }
   }
 
-  subscribeBtnToggle(parkLocation) {
+  public openSubscribersList(): void {
+    this.dialog.open(SubscribersListComponent, {
+      data: { selectedDay: this.inputDay, people: this.subscribers.others }
+    });
+  }
+
+  public subscribeBtnToggle(parkLocation) {
     const date = moment(this.inputDay)
       .startOf('day')
       .toISOString();

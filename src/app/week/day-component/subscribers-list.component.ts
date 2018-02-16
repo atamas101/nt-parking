@@ -2,13 +2,13 @@ import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 
 @Component({
-  selector: 'waiting-list-content',
-  templateUrl: 'waiting-list-content.html',
+  selector: 'subscribers-list',
+  templateUrl: 'subscribers-list.html',
   styleUrls: ['./waiting-list-content.scss']
 })
-export class WaitingListContentComponent {
+export class SubscribersListComponent {
   constructor(
-    public dialogRef: MatDialogRef<WaitingListContentComponent>,
+    public dialogRef: MatDialogRef<SubscribersListComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 

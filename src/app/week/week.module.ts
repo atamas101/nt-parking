@@ -7,8 +7,7 @@ import { NgModule } from '@angular/core';
 
 import { NtmaterialModule } from '../ntmaterial/ntmaterial.module';
 import { ScheduleService } from './schedule.service';
-import { WaitingListDialogComponent } from './day-component/waiting-list-dialog.component';
-import { WaitingListContentComponent } from './day-component/waiting-list-content.component';
+import { SubscribersListComponent } from './day-component/subscribers-list.component';
 
 @NgModule({
   declarations: [
@@ -16,10 +15,9 @@ import { WaitingListContentComponent } from './day-component/waiting-list-conten
     WeekNavComponent,
     DayComponent,
     SlotComponent,
-    WaitingListDialogComponent,
-    WaitingListContentComponent
+    SubscribersListComponent
   ],
-  entryComponents: [WaitingListDialogComponent, WaitingListContentComponent],
+  entryComponents: [SubscribersListComponent],
   imports: [NtmaterialModule],
   providers: [ScheduleService]
 })
