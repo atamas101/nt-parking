@@ -16,15 +16,15 @@
   <div *ngIf="!shouldShowLoader()" class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column"
     fxLayout.xs="column" fxLayoutAlign.sm="space-between stretch" fxLayoutAlign.xs="space-between stretch">
 
-    <slot [user]="alocatedSorted[0].user" [ngClass]="{'empty': !alocatedSorted[0].user.name}"></slot>
-    <slot [user]="alocatedSorted[1].user" [ngClass]="{'empty': !alocatedSorted[1].user.name}"></slot>
-    <slot [user]="alocatedSorted[2].user" [ngClass]="{'empty': !alocatedSorted[2].user.name}" class='outside'></slot>
+    <slot class="slot" [user]="alocatedSorted[0].user" [ngClass]="{'empty': !alocatedSorted[0].user.name}"></slot>
+    <slot class="slot" [user]="alocatedSorted[1].user" [ngClass]="{'empty': !alocatedSorted[1].user.name}"></slot>
+    <slot class="slot outside" [user]="alocatedSorted[2].user" [ngClass]="{'empty': !alocatedSorted[2].user.name}"></slot>
   </div>
 
   <div *ngIf="!shouldShowLoader()" class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column"
     fxLayout.xs="column" fxLayoutAlign.sm="space-between end" fxLayoutAlign.xs="space-around stretch">
     <div class="others" [ngClass]="{'others-hide': !othersCount }" fxLayout="row" fxLayoutAlign=" center">
-      <button matTooltip="Waiting List" (click)="openSubscribersList()">...{{othersCount}} more waiting</button>
+      <button class="button-waiting" matTooltip="Waiting List" (click)="openSubscribersList()">...{{othersCount}} more waiting</button>
     </div>
     <div class="parking-buttons">
       <div *ngIf="subscribeBtnState" class="btn-group" fxLayout="row" fxLayoutAlign="end none" fxLayoutAlign.xs="none stretch">
