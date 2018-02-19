@@ -20,8 +20,8 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class UsersComponent implements OnInit, AfterViewInit {
   public usersList: any;
   public showSearch: Boolean;
-  displayedColumns = ['name', 'hireDate', 'email', 'edit'];
-  errorMessage: String;
+  public displayedColumns = ['name', 'hireDate', 'email', 'edit'];
+  public errorMessage: String;
 
   public verifyAdmin: string;
 

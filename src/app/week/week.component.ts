@@ -4,10 +4,10 @@ import * as moment from 'moment';
 import { ScheduleService } from './schedule.service';
 
 @Component({
-  selector: 'week-wrapper',
-  templateUrl: './week-view.component.html'
+  selector: 'week',
+  templateUrl: './week.component.html'
 })
-export class WeekViewComponent {
+export class WeekComponent {
   public weekNumber;
   public weekDays;
   public weekDaysStatus;

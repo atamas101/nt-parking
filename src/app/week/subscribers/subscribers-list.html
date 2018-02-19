@@ -1,8 +1,15 @@
 <h1 mat-dialog-title>Selected day : {{data.selectedDay | date}}</h1>
 
-<div mat-dialog-title>
+<div mat-dialog-content>
+  <mat-table [dataSource]="subscribersList">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+    </ng-container>
+  </mat-table>
   <mat-list fxLayout='column' fxLayoutAlign=' center'>
-    <mat-list-item class='info-row' *ngFor='let person of data.people'>
+    <mat-list-item class='info-row' *ngFor='let person of data.subscribers.others'>
       <span class='name'> {{person.user.name}} </span>
       <span class='hiredOn'>Hire Date: {{person.user.hireDate | date}}</span>
     </mat-list-item>

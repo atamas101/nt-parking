@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Routes } from '@angular/router';
-import { WeekViewComponent } from './week/week-view.component';
+import { WeekComponent } from './week/week.component';
 
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './login/reset.component';
@@ -16,7 +16,7 @@ export const routes: Routes = [
   },
   {
     path: 'dashboard',
-    component: WeekViewComponent,
+    component: WeekComponent,
     canActivate: [AuthGuard]
   },
   { path: 'users', component: UsersComponent, canActivate: [AuthGuard] },

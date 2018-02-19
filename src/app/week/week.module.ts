@@ -1,17 +1,17 @@
-import { SlotComponent } from './slot-component/slot.component';
-import { DayComponent } from './day-component/day.component';
-import { WeekViewComponent } from './week-view.component';
+import { SlotComponent } from './slot/slot.component';
+import { DayComponent } from './day/day.component';
+import { WeekComponent } from './week.component';
 import { WeekNavComponent } from './week-nav/week-nav.component';
 
 import { NgModule } from '@angular/core';
 
 import { NtmaterialModule } from '../ntmaterial/ntmaterial.module';
 import { ScheduleService } from './schedule.service';
-import { SubscribersListComponent } from './day-component/subscribers-list.component';
+import { SubscribersListComponent } from './subscribers/subscribers-list.component';
 
 @NgModule({
   declarations: [
-    WeekViewComponent,
+    WeekComponent,
     WeekNavComponent,
     DayComponent,
     SlotComponent,

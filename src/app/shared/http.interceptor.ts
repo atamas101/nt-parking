@@ -10,9 +10,9 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/throw';
 import 'rxjs/add/operator/catch';
 
-import { environment as env } from '../../environments/environment';
-
 import { MatSnackBar } from '@angular/material';
+
+import { environment as env } from '../../environments/environment';
 
 @Injectable()
 export class NtHttpInterceptor implements HttpInterceptor {
@@ -45,7 +45,7 @@ export class NtHttpInterceptor implements HttpInterceptor {
       // }
       if (err.error === 'Must be authenticated.') {
         localStorage.removeItem('currentUser');
-        this.router.navigate(['/login']);
+        this.router.navigate(['/login'], { queryParams: { expired: true } });
       }
       // return the error to the method that called it
       return Observable.throw(err);

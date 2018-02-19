@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { AuthenticationService } from './auth.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,9 +12,17 @@ export class LoginComponent {
   public email = new FormControl('', [Validators.required, Validators.email]);
   public password = new FormControl('', [Validators.required]);
   constructor(
-    private authenticationService: AuthenticationService,
-    private router: Router
-  ) {}
+    private auth: AuthenticationService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    if (
+      this.route.snapshot.queryParams.expired ||
+      this.auth.isAuthenticated()
+    ) {
+      this.auth.logout();
+    }
+  }
 
   getErrorMessage() {
     return this.email.hasError('required')
@@ -23,10 +31,10 @@ export class LoginComponent {
   }
 
   loginUser() {
-    this.authenticationService
+    this.auth
       .loginUser(this.email.value, this.password.value)
       .subscribe(user => {
-        if (this.authenticationService.shouldResetPassword()) {
+        if (this.auth.shouldResetPassword()) {
           this.router.navigate(['/reset-password']);
         } else {
           this.router.navigate(['/dashboard']);

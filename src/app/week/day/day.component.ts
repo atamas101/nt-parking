@@ -13,7 +13,7 @@ import * as moment from 'moment';
 import { OnInit } from '@angular/core/src/metadata/lifecycle_hooks';
 import { AuthenticationService } from '../../login/auth.service';
 import { MatDialog } from '@angular/material';
-import { SubscribersListComponent } from './subscribers-list.component';
+import { SubscribersListComponent } from '../subscribers/subscribers-list.component';
 
 const PARKING_SPOTS = 3;
 const PARK_DEADLINE = 2; // Hours before midnight
@@ -35,7 +35,7 @@ export class DayComponent implements OnInit {
   @Input() showLoading: Boolean;
 
   public inputDay: Moment;
-  public alocatedSorted;
+  public dayLocked: Boolean;
   public subscribers;
   public othersCount: number;
   public subscribeBtnState = true;
@@ -106,19 +106,21 @@ export class DayComponent implements OnInit {
     if (isAlocated || isOthers) {
       this.subscribeBtnState = false;
     }
-    this.computeInitialDate();
+    this.checkAvailability();
 
     for (let i = 0; i < PARKING_SPOTS; i++) {
       if (!this.subscribers.alocated[i]) {
         this.subscribers.alocated[i] = { user: {}, slotType: 0 };
       }
     }
-    this.alocatedSorted = this.getDistributedSlots(this.subscribers.alocated);
+    this.subscribers.alocated = this.getDistributedSlots(
+      this.subscribers.alocated
+    );
 
     this.showLoading = false;
   }
 
-  private computeInitialDate() {
+  private checkAvailability() {
     if (
       this.now.isAfter(this.deadLine, 'minute') ||
       this.inputDay.isAfter(this.parkLimit, 'day')
@@ -129,11 +131,12 @@ export class DayComponent implements OnInit {
     if (this.now.isAfter(this.cancelDeadline, 'minute')) {
       this.cancelBtnDisabled = true;
     }
+    this.dayLocked = this.subscribeBtnDisabled && this.cancelBtnDisabled;
   }
 
   public openSubscribersList(): void {
     this.dialog.open(SubscribersListComponent, {
-      data: { selectedDay: this.inputDay, people: this.subscribers.others }
+      data: { selectedDay: this.inputDay, subscribers: this.subscribers }
     });
   }
 
