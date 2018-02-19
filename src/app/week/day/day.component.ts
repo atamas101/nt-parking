@@ -136,7 +136,8 @@ export class DayComponent implements OnInit {
 
   public openSubscribersList(): void {
     this.dialog.open(SubscribersListComponent, {
-      data: { selectedDay: this.inputDay, subscribers: this.subscribers }
+      data: { selectedDay: this.inputDay, subscribers: this.subscribers },
+      width: '80vw'
     });
   }
 

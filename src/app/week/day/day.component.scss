@@ -39,6 +39,7 @@
     text-align: center;
     width: 160px;
     height: 40px;
+    cursor: pointer;
     &.empty {
       background-color: transparentize($ntGreen, 0.5);
       opacity: 0.7;

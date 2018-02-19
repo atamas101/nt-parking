@@ -33,8 +33,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
     this.usersList = new MatTableDataSource<IUser>();
-    this.users.getUsers().subscribe(user => {
-      this.usersList.data = user;
+    this.users.getUsers().subscribe(users => {
+      this.usersList.data = users;
     });
     if (!this.auth.isAdmin()) {
       this.verifyAdmin = 'none';
@@ -58,8 +58,8 @@ export class UsersComponent implements OnInit, AfterViewInit {
   }
 
   refreshUser(newUser) {
-    this.users.getUsers().subscribe(user => {
-      this.usersList.data = user;
+    this.users.getUsers().subscribe(users => {
+      this.usersList.data = users;
     });
   }
 }

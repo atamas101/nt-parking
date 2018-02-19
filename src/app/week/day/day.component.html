@@ -17,9 +17,9 @@
     <div class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.sm="space-between stretch"
       fxLayoutAlign.xs="space-between stretch">
 
-      <slot class="slot" [user]="subscribers.alocated[0].user" [ngClass]="{'empty': !subscribers.alocated[0].user.name}"></slot>
-      <slot class="slot" [user]="subscribers.alocated[1].user" [ngClass]="{'empty': !subscribers.alocated[1].user.name}"></slot>
-      <slot class="slot outside" [user]="subscribers.alocated[2].user" [ngClass]="{'empty': !subscribers.alocated[2].user.name}"></slot>
+      <slot class="slot" (click)="openSubscribersList()" [user]="subscribers.alocated[0].user" [ngClass]="{'empty': !subscribers.alocated[0].user.name}"></slot>
+      <slot class="slot" (click)="openSubscribersList()" [user]="subscribers.alocated[1].user" [ngClass]="{'empty': !subscribers.alocated[1].user.name}"></slot>
+      <slot class="slot outside" (click)="openSubscribersList()" [user]="subscribers.alocated[2].user" [ngClass]="{'empty': !subscribers.alocated[2].user.name}"></slot>
     </div>
 
     <div class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column"

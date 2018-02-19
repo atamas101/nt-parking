@@ -1,19 +1,54 @@
-<h1 mat-dialog-title>Selected day : {{data.selectedDay | date}}</h1>
+<h1 mat-dialog-title>Selected day : {{selectedDate | date}}</h1>
 
 <div mat-dialog-content>
-  <mat-table [dataSource]="subscribersList">
+  <h2>Alocated</h2>
+  <mat-table [dataSource]="alocatedList">
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
     </ng-container>
+    <!-- Hire Date Column -->
+    <ng-container matColumnDef="hireDate">
+      <mat-header-cell *matHeaderCellDef> Hire Date </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.hireDate | date}} </mat-cell>
+    </ng-container>
+
+    <!-- Slot Type Column -->
+    <ng-container matColumnDef="slotType">
+      <mat-header-cell *matHeaderCellDef> Preffered </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.slotType }} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
   </mat-table>
-  <mat-list fxLayout='column' fxLayoutAlign=' center'>
-    <mat-list-item class='info-row' *ngFor='let person of data.subscribers.others'>
-      <span class='name'> {{person.user.name}} </span>
-      <span class='hiredOn'>Hire Date: {{person.user.hireDate | date}}</span>
-    </mat-list-item>
-  </mat-list>
+
+
+  <h2>Waiting List</h2>
+  <mat-table [dataSource]="othersList">
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+    </ng-container>
+    <!-- Hire Date Column -->
+    <ng-container matColumnDef="hireDate">
+      <mat-header-cell *matHeaderCellDef> Hire Date </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.hireDate | date}} </mat-cell>
+    </ng-container>
+
+    <!-- Slot Type Column -->
+    <ng-container matColumnDef="slotType">
+      <mat-header-cell *matHeaderCellDef> Preffered </mat-header-cell>
+      <mat-cell *matCellDef="let user"> {{user.slotType }} </mat-cell>
+    </ng-container>
+
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
 </div>
 
 <div mat-dialog-actions fxLayoutAlign="end">
