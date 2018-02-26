@@ -16,8 +16,8 @@ import { MatDialog } from '@angular/material';
 import { SubscribersListComponent } from '../subscribers/subscribers-list.component';
 
 const PARKING_SPOTS = 3;
-const PARK_DEADLINE = 2; // Hours before midnight
-const CANCEL_DEADLINE = 7; // Hour of the day until you can cancel
+const PARK_DEADLINE = 4; // Hours before (utc) midnight
+const CANCEL_DEADLINE = 5; // Hour of the day (utc) until you can cancel
 const PARK_LIMIT = 14; // Days available in future
 
 @Component({
@@ -51,11 +51,21 @@ export class DayComponent implements OnInit {
     this.inputDay = this.inputData.day;
     this.inputDay.set({ hour: 12, minute: 0, second: 0 });
     this.currentUserId = this.auth.getCurrentUser()._id;
-    this.deadLine = this.inputDay.clone().add(-PARK_DEADLINE, 'hour');
-    this.cancelDeadline = this.inputDay.clone().add(CANCEL_DEADLINE, 'hour');
+    this.deadLine = this.inputDay
+      .clone()
+      .utc()
+      .startOf('day')
+      .add(-PARK_DEADLINE, 'hour');
+    this.cancelDeadline = this.inputDay
+      .utc()
+      .clone()
+      .startOf('day')
+      .add(CANCEL_DEADLINE, 'hour');
 
     this.parkLimit = this.now
       .clone()
+      .utc()
+      .startOf('day')
       .add(PARK_LIMIT, 'days')
       .endOf('week');
 
@@ -122,13 +132,13 @@ export class DayComponent implements OnInit {
 
   private checkAvailability() {
     if (
-      this.now.isAfter(this.deadLine, 'minute') ||
+      this.now.utc().isAfter(this.deadLine, 'minute') ||
       this.inputDay.isAfter(this.parkLimit, 'day')
     ) {
       this.subscribeBtnDisabled = true;
     }
 
-    if (this.now.isAfter(this.cancelDeadline, 'minute')) {
+    if (this.now.utc().isAfter(this.cancelDeadline, 'minute')) {
       this.cancelBtnDisabled = true;
     }
     this.dayLocked = this.subscribeBtnDisabled && this.cancelBtnDisabled;

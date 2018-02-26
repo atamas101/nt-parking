@@ -3,7 +3,7 @@ const Schedule = mongoose.model('Schedule');
 const promisify = require('es6-promisify');
 const moment = require('moment');
 const PARKING_SPOTS = 3;
-const PARK_DEADLINE = 2; // Hours before midnight
+const PARK_DEADLINE = 4; // Hours before (utc) midnight
 const PARK_LIMIT = 14; // Days available in future
 
 exports.subscribe = async (req, res, next) => {
@@ -55,14 +55,17 @@ exports.subscribe = async (req, res, next) => {
 };
 
 parkingIsAvailable = date => {
-  const now = moment();
+  const now = moment().utc();
   const deadLine = moment(date)
     .clone()
+    .startOf('day')
     .add(-PARK_DEADLINE, 'hour');
   const parkLimit = now
     .clone()
+    .startOf('day')
     .add(PARK_LIMIT, 'days')
     .endOf('week');
+  console.log(now, deadLine);
   return (
     now.isBefore(deadLine, 'minute') && moment(date).isBefore(parkLimit, 'day')
   );
