@@ -5,6 +5,8 @@ const moment = require('moment');
 const PARKING_SPOTS = 3;
 const PARK_DEADLINE = 4; // Hours before (utc) midnight
 const PARK_LIMIT = 14; // Days available in future
+const flatMap = require('lodash.flatmap');
+const groupBy = require('lodash.groupby');
 
 exports.subscribe = async (req, res, next) => {
   const query = { date: req.body.date };
@@ -24,7 +26,7 @@ exports.subscribe = async (req, res, next) => {
   ).populate('subscribers.user');
   // Add back new subscriptionrs
   if (data.operation === 'park') {
-    if (parkingIsAvailable(req.body.date)) {
+    if (parkingIsAvailable(req.body.date, daySchedule.subscribers.length)) {
       daySchedule = await Schedule.findOneAndUpdate(
         query,
         {
@@ -54,7 +56,8 @@ exports.subscribe = async (req, res, next) => {
   res.json(output);
 };
 
-parkingIsAvailable = date => {
+parkingIsAvailable = (date, count) => {
+  console.log(count);
   const now = moment().utc();
   const deadLine = moment(date)
     .clone()
@@ -67,7 +70,9 @@ parkingIsAvailable = date => {
     .endOf('week');
   console.log(now, deadLine);
   return (
-    now.isBefore(deadLine, 'minute') && moment(date).isBefore(parkLimit, 'day')
+    count <= PARKING_SPOTS ||
+    (now.isBefore(deadLine, 'minute') &&
+      moment(date).isBefore(parkLimit, 'day'))
   );
 };
 
@@ -79,21 +84,7 @@ sortByHireDate = users => {
   });
 };
 
-exports.getWeek = async (req, res, next) => {
-  const weekNo = req.params.weekNo;
-  const startDate = moment()
-    .utc()
-    .day('Monday')
-    .isoWeek(weekNo)
-    .startOf('day')
-    .toDate();
-  const endDate = moment()
-    .utc()
-    .day('Friday')
-    .isoWeek(weekNo)
-    .endOf('day')
-    .toDate();
-
+getIntervalSchedule = async (startDate, endDate) => {
   const schedules = await Schedule.find(
     {
       $and: [{ date: { $lte: endDate } }, { date: { $gte: startDate } }]
@@ -114,6 +105,66 @@ exports.getWeek = async (req, res, next) => {
       others: sortedSubs.slice(PARKING_SPOTS)
     };
   });
+  return output;
+};
+
+exports.getWeek = async (req, res, next) => {
+  const weekNo = req.params.weekNo;
+  const startDate = moment()
+    .utc()
+    .day('Monday')
+    .isoWeek(weekNo)
+    .startOf('day')
+    .toDate();
+  const endDate = moment()
+    .utc()
+    .day('Friday')
+    .isoWeek(weekNo)
+    .endOf('day')
+    .toDate();
+
+  const output = await getIntervalSchedule(startDate, endDate);
 
   res.json(output);
+};
+
+exports.getStats = async (req, res, next) => {
+  const weekNo = moment().isoWeek();
+  // Last 30 days
+  const startDate = moment()
+    .utc()
+    .day('Monday')
+    .isoWeek(weekNo)
+    .startOf('day')
+    .add(-30, 'day')
+    .toDate();
+  const endDate = moment()
+    .utc()
+    .day('Friday')
+    .isoWeek(weekNo)
+    .endOf('day')
+    .toDate();
+
+  const schedules = await getIntervalSchedule(startDate, endDate);
+
+  // alocated
+  const userStats = groupBy(
+    flatMap(schedules, item => item.alocated),
+    i => i.user.name
+  );
+  let alocated = {};
+  for (let user in userStats) {
+    alocated[user] = userStats[user].length;
+  }
+  // others
+  const otherStats = groupBy(
+    flatMap(schedules, item => item.others),
+    i => i.user.name
+  );
+  let others = {};
+  for (let user in otherStats) {
+    others[user] = otherStats[user].length;
+  }
+
+  res.json({ parked: alocated, waited: others });
 };

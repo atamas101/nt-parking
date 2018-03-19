@@ -132,8 +132,9 @@ export class DayComponent implements OnInit {
 
   private checkAvailability() {
     if (
-      this.now.utc().isAfter(this.deadLine, 'minute') ||
-      this.inputDay.isAfter(this.parkLimit, 'day')
+      this.subscribers.alocated.length >= 3 &&
+      (this.now.utc().isAfter(this.deadLine, 'minute') ||
+        this.inputDay.isAfter(this.parkLimit, 'day'))
     ) {
       this.subscribeBtnDisabled = true;
     }
