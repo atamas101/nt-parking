@@ -1,7 +1,5 @@
 @import '../shared/styles/_variables.scss';
-.material-icons {
-  font-size: 26px;
-}
+
 .list-container {
   display: flex;
   flex-direction: column;
@@ -70,6 +68,6 @@ mat-cell {
   font-size: 40px;
 }
 
-.search-header{
+.search-header {
   height: 57px;
 }

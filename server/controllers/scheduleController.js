@@ -13,6 +13,7 @@ exports.subscribe = async (req, res, next) => {
   const data = {
     operation: req.body.operation,
     user: req.user._id,
+    hadPriority: req.user.priority,
     slotType: req.body.preference
   };
   const options = { upsert: true, new: true };
@@ -30,7 +31,13 @@ exports.subscribe = async (req, res, next) => {
       daySchedule = await Schedule.findOneAndUpdate(
         query,
         {
-          $push: { subscribers: { user: data.user, slotType: data.slotType } }
+          $push: {
+            subscribers: {
+              user: data.user,
+              hadPriority: data.hadPriority,
+              slotType: data.slotType
+            }
+          }
         },
         options
       ).populate('subscribers.user');
@@ -45,7 +52,7 @@ exports.subscribe = async (req, res, next) => {
   }
 
   let sortedSubs = daySchedule.subscribers
-    ? sortByHireDate(daySchedule.subscribers)
+    ? sortSubscribers(daySchedule.subscribers)
     : [];
   const output = {
     date: daySchedule.date,
@@ -84,6 +91,19 @@ sortByHireDate = users => {
   });
 };
 
+sortSubscribers = users => {
+  return sortByHireDate(users).sort((userA, userB) => {
+    if (userA.hadPriority === userB.hadPriority) {
+      return 0;
+    } else if (userA.hadPriority) {
+      return -1;
+    } else if (userB.hadPriority) {
+      return 1;
+    }
+    return 0;
+  });
+};
+
 getIntervalSchedule = async (startDate, endDate) => {
   const schedules = await Schedule.find(
     {
@@ -98,7 +118,7 @@ getIntervalSchedule = async (startDate, endDate) => {
   ).populate('subscribers.user');
 
   const output = schedules.map(day => {
-    let sortedSubs = day.subscribers ? sortByHireDate(day.subscribers) : [];
+    let sortedSubs = day.subscribers ? sortSubscribers(day.subscribers) : [];
     return {
       date: day.date,
       alocated: sortedSubs.slice(0, PARKING_SPOTS),

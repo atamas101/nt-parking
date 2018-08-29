@@ -6,7 +6,9 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+      <mat-cell *matCellDef="let user"> {{user.name}}
+        <i *ngIf="user.hadPriority" matTooltip="Has Priority" class="material-icons md-10">grade</i>
+      </mat-cell>
     </ng-container>
     <!-- Hire Date Column -->
     <ng-container matColumnDef="hireDate">
@@ -15,10 +17,10 @@
     </ng-container>
 
     <!-- Slot Type Column -->
-    <ng-container matColumnDef="slotType">
+    <!-- <ng-container matColumnDef="slotType">
       <mat-header-cell *matHeaderCellDef> Preffered </mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.slotType }} </mat-cell>
-    </ng-container>
+    </ng-container> -->
 
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -40,10 +42,10 @@
     </ng-container>
 
     <!-- Slot Type Column -->
-    <ng-container matColumnDef="slotType">
+    <!-- <ng-container matColumnDef="slotType">
       <mat-header-cell *matHeaderCellDef> Preffered </mat-header-cell>
       <mat-cell *matCellDef="let user"> {{user.slotType }} </mat-cell>
-    </ng-container>
+    </ng-container> -->
 
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>

@@ -16,7 +16,12 @@
     <!-- Name Column -->
     <ng-container matColumnDef="name">
       <mat-header-cell *matHeaderCellDef mat-sort-header> Name </mat-header-cell>
-      <mat-cell *matCellDef="let user"> {{user.name}} </mat-cell>
+      <mat-cell *matCellDef="let user">
+        {{user.name}}
+        <i *ngIf="user.priority" matTooltip="Has Priority" class="material-icons md-14">grade</i>
+        <i *ngIf="user.admin" matTooltip="Is Admin" class="material-icons md-14">priority_high</i>
+
+      </mat-cell>
     </ng-container>
 
     <!-- Email Column -->

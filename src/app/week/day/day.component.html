@@ -17,11 +17,9 @@
     <div class='parking-slots' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column" fxLayoutAlign.sm="space-between stretch"
       fxLayoutAlign.xs="space-between stretch">
 
-      <nt-slot class="slot" (click)="openSubscribersList()" [user]="subscribers.alocated[0].user" [ngClass]="{'empty': !subscribers.alocated[0].user.name}"></nt-slot>
-      <nt-slot class="slot" (click)="openSubscribersList()" [user]="subscribers.alocated[1].user" [ngClass]="{'empty': !subscribers.alocated[1].user.name}"></nt-slot>
-      <nt-slot class="slot" (click)="openSubscribersList()" [user]="subscribers.alocated[2].user" [ngClass]="{'empty': !subscribers.alocated[2].user.name}"></nt-slot>
-      <nt-slot class="slot" (click)="openSubscribersList()" [user]="subscribers.alocated[3].user" [ngClass]="{'empty': !subscribers.alocated[3].user.name}"></nt-slot>
-      <nt-slot class="slot" (click)="openSubscribersList()" [user]="subscribers.alocated[4].user" [ngClass]="{'empty': !subscribers.alocated[4].user.name}"></nt-slot>
+      <ng-container *ngFor="let items of subscribers.alocated">
+        <nt-slot class="slot" (click)="openSubscribersList()" [user]="items.user" [hadPriority]="items.hadPriority" [ngClass]="{'empty': !items.user.name}"></nt-slot>
+      </ng-container>
     </div>
 
     <div class='others-and-dropdown' fxLayout="row" fxLayoutAlign="space-around center" fxLayout.sm="column" fxLayout.xs="column"
@@ -30,10 +28,10 @@
         <button class="button-waiting" matTooltip="Waiting List" (click)="openSubscribersList()">...{{othersCount}} more waiting</button>
       </div>
       <div class="parking-buttons">
-        <button mat-button *ngIf="subscribeBtnState" class="btn btn-text btn-park" [ngClass]="{'btn-disabled': subscribeBtnDisabled }" [disabled]='subscribeBtnDisabled' (click)="subscribeBtnToggle(0)"
-          value="{{inputDay}}">Park</button>
-        <button mat-button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" [ngClass]="{'btn-disabled': cancelBtnDisabled }" [disabled]='cancelBtnDisabled'
-          (click)="subscribeBtnToggle(-1)">Cancel</button>
+        <button mat-button *ngIf="subscribeBtnState" class="btn btn-text btn-park" [ngClass]="{'btn-disabled': subscribeBtnDisabled }"
+          [disabled]='subscribeBtnDisabled' (click)="subscribeBtnToggle(0)" value="{{inputDay}}">Park</button>
+        <button mat-button *ngIf="!subscribeBtnState" class="btn btn-text btn-cancel" [ngClass]="{'btn-disabled': cancelBtnDisabled }"
+          [disabled]='cancelBtnDisabled' (click)="subscribeBtnToggle(-1)">Cancel</button>
       </div>
     </div>
   </ng-container>

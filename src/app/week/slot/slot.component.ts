@@ -5,5 +5,8 @@ import { Input } from '@angular/core';
   templateUrl: './slot.component.html'
 })
 export class SlotComponent {
-  @Input() user;
+  @Input()
+  user;
+  @Input()
+  hadPriority;
 }

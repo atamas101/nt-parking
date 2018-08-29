@@ -32,6 +32,10 @@ const userSchema = new Schema({
       .startOf('day')
       .toDate()
   },
+  priority: {
+    type: Boolean,
+    default: false
+  },
   admin: {
     type: Boolean,
     default: false

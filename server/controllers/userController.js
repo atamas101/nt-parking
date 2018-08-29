@@ -35,6 +35,7 @@ exports.register = async (req, res, next) => {
     email: req.body.email,
     name: req.body.name,
     isFirstPassword: true,
+    priority: req.body.priority,
     hireDate: moment(req.body.hireDate)
       .utc()
       .startOf('day')
@@ -51,6 +52,7 @@ exports.getUsers = async (req, res, next) => {
     name: true,
     email: true,
     admin: true,
+    priority: true,
     hireDate: true
   });
   const output = users.map(user => {
@@ -99,6 +101,7 @@ exports.updateUser = async (req, res) => {
 
   user.name = req.body.name;
   user.email = req.body.email;
+  user.priority = req.body.priority;
   // user.admin = req.body.admin;
   user.hireDate = moment(req.body.hireDate)
     .utc()

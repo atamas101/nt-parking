@@ -1,1 +1,7 @@
- {{user.name ||'&lt;empty slot&gt;' }}
+<ng-container *ngIf="user.name; else noUser">
+  {{user.name}}
+  <i *ngIf="hadPriority" matTooltip="Has Priority" class="material-icons md-10">grade</i>
+</ng-container>
+<ng-template #noUser>
+  &lt;empty slot&gt;
+</ng-template>

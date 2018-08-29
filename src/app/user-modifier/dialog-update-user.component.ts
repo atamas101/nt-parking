@@ -14,6 +14,7 @@ export class UpdateUserComponent implements OnInit {
   hireDate: FormControl;
   email: FormControl;
   name: FormControl;
+  priority: FormControl;
   password: FormControl;
   confirmPasswd: FormControl;
   errors: any;
@@ -28,6 +29,7 @@ export class UpdateUserComponent implements OnInit {
       hireDate: '',
       email: '',
       name: '',
+      priority: false,
       'password-confirm': ''
     },
     private _usersService: UsersService
@@ -40,7 +42,11 @@ export class UpdateUserComponent implements OnInit {
       Validators.required,
       Validators.email
     ]);
+
     this.name = new FormControl(this.data.name, Validators.required);
+
+    const prioValue = this.data.priority ? true : false;
+    this.priority = new FormControl(prioValue);
 
     const requiredValidator = this.isEditMode ? null : Validators.required;
 
@@ -65,6 +71,7 @@ export class UpdateUserComponent implements OnInit {
       email: this.email,
       name: this.name,
       password: this.password,
+      priority: this.priority,
       'password-confirm': this['password-confirm']
     });
   }

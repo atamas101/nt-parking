@@ -19,6 +19,7 @@ const scheduleSchema = new Schema({
     {
       _id: false,
       slotType: { type: Number },
+      hadPriority: { type: Boolean },
       user: { type: Schema.Types.ObjectId, ref: 'User' }
     }
   ]

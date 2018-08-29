@@ -20,7 +20,7 @@ export class SubscribersListComponent implements OnInit {
   public othersList: MatTableDataSource<IUser>;
   public selectedDate: Date;
 
-  public displayedColumns = ['name', 'hireDate', 'slotType'];
+  public displayedColumns = ['name', 'hireDate'];
 
   constructor(
     public dialogRef: MatDialogRef<SubscribersListComponent>,
@@ -38,7 +38,10 @@ export class SubscribersListComponent implements OnInit {
         item.user.slotType =
           item.slotType === 1
             ? 'Underground'
-            : item.slotType === 2 ? 'Outside' : '-';
+            : item.slotType === 2
+              ? 'Outside'
+              : '-';
+        item.user.hadPriority = item.hadPriority;
         return item.user;
       })
     );
@@ -48,7 +51,9 @@ export class SubscribersListComponent implements OnInit {
           item.user.slotType =
             item.slotType === 1
               ? 'Underground'
-              : item.slotType === 2 ? 'Outside' : '-';
+              : item.slotType === 2
+                ? 'Outside'
+                : '-';
           return item.user;
         })
       );
