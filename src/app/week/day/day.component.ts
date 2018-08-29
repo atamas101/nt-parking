@@ -15,7 +15,7 @@ import { AuthenticationService } from '../../login/auth.service';
 import { MatDialog } from '@angular/material';
 import { SubscribersListComponent } from '../subscribers/subscribers-list.component';
 
-const PARKING_SPOTS = 3;
+const PARKING_SPOTS = 5;
 const PARK_DEADLINE = 4; // Hours before (utc) midnight
 const CANCEL_DEADLINE = 5; // Hour of the day (utc) until you can cancel
 const PARK_LIMIT = 14; // Days available in future
@@ -31,8 +31,10 @@ export class DayComponent implements OnInit {
     private auth: AuthenticationService,
     public dialog: MatDialog
   ) {}
-  @Input() inputData;
-  @Input() showLoading: Boolean;
+  @Input()
+  inputData;
+  @Input()
+  showLoading: Boolean;
 
   public inputDay: Moment;
   public dayLocked: Boolean;
@@ -123,16 +125,16 @@ export class DayComponent implements OnInit {
         this.subscribers.alocated[i] = { user: {}, slotType: 0 };
       }
     }
-    this.subscribers.alocated = this.getDistributedSlots(
-      this.subscribers.alocated
-    );
+    // this.subscribers.alocated = this.getDistributedSlots(
+    //   this.subscribers.alocated
+    // );
 
     this.showLoading = false;
   }
 
   private checkAvailability() {
     if (
-      (this.subscribers.alocated.length >= 3 &&
+      (this.subscribers.alocated.length >= PARKING_SPOTS &&
         this.now.utc().isAfter(this.deadLine, 'minute')) ||
       this.inputDay.isAfter(this.parkLimit, 'day')
     ) {

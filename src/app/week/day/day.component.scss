@@ -2,7 +2,8 @@
 
 .day-component-wrapper {
   margin-bottom: 6px;
-  background-color: $lightGray;
+  background-color: #eaeaea; //$lightGray;
+  border: 1px solid $lightGray;
 }
 
 .week-day {
@@ -35,9 +36,9 @@
     font-weight: 400;
     padding-top: 10px;
     color: $white;
-    font-size: 1.25em;
+    font-size: 1.1em;
     text-align: center;
-    width: 160px;
+    width: 120px;
     height: 40px;
     cursor: pointer;
     &.empty {
@@ -54,14 +55,14 @@
 }
 
 .others-and-dropdown {
-  font-size: 1.25em;
+  font-size: 1.1em;
   flex-grow: 1;
   color: $ntTextColor;
   div {
     display: inline-block;
   }
   .parking-buttons {
-    width: 200px;
+    width: 100px;
   }
 
   .others {
@@ -84,11 +85,15 @@
     &.btn-text {
       flex-grow: 3;
     }
-    &.btn-cancel {
+    &.btn-cancel, &.btn-park {
       width: 100%;
+    }
+    &.btn-cancel {
+      color: #c10e30;
     }
     &.btn-disabled {
       opacity: 0.5;
+      color: dimgrey;
     }
     &:hover {
       cursor: pointer;
