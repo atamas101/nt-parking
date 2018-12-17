@@ -21,4 +21,6 @@ exports.allowCrossDomain = function(req, res, next) {
   } else {
     next();
   }
+
+  res.header('Cache-Control', 'no-cache, no-store');
 };
