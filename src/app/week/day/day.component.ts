@@ -15,7 +15,7 @@ import { AuthenticationService } from '../../login/auth.service';
 import { MatDialog } from '@angular/material';
 import { SubscribersListComponent } from '../subscribers/subscribers-list.component';
 
-const PARKING_SPOTS = 5;
+const PARKING_SPOTS = 7;
 const PARK_DEADLINE = 4; // Hours before (utc) midnight
 const CANCEL_DEADLINE = 5; // Hour of the day (utc) until you can cancel
 const PARK_LIMIT = 14; // Days available in future
