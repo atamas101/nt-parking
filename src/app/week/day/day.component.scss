@@ -9,9 +9,9 @@
 .week-day {
   flex: 0 1 auto;
   min-width: 90px;
-  font-size: 1.33em;
+  font-size: 1.25em;
   div {
-    height: 40px;
+    height: 30px;
     span {
       align-self: center;
       padding-right: 0.2em;
@@ -26,6 +26,7 @@
     background-color: $gray;
     color: $ntGreen;
     font-size: 1.1rem;
+    font-weight: bold;
   }
 }
 
@@ -35,13 +36,15 @@
     background-color: $ntGreen;
     border-bottom: 1px solid $gray;
     font-weight: 400;
-    padding-top: 5px;
-    padding-bottom: 5px;
     color: $white;
     font-size: 1.1em;
     text-align: center;
-    width: 120px;
-    height: 40px;
+    min-width: 120px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 1px;
     cursor: pointer;
     &.empty {
       background-color: transparentize($ntGreen, 0.5);
@@ -68,7 +71,7 @@
   }
 
   .others {
-    height: 40px;
+    height: 30px;
 
     p {
       text-align: center;
@@ -83,7 +86,7 @@
     color: $ntGreen;
     background-color: $white;
     border-color: $gray;
-    height: 40px;
+    // height: 30px;
     &.btn-text {
       flex-grow: 3;
     }
@@ -111,7 +114,7 @@
     margin-bottom: 20px;
   }
   .week-day {
-    height: 80px;
+    height: 60px;
     width: 100%;
     margin-bottom: 10px;
   }
